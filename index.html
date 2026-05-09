@@ -7,24 +7,32 @@
   <meta name="description" content="Revenue-focused AI workflows, automation tools, and practical web systems by cerberrus144." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg:#05070a; --panel:#0f1720; --line:#203041; --text:#e5edf5; --muted:#91a2b4; --green:#4ade80; --gold:#f59e0b; }
+    :root { --bg:#05070a; --panel:#0f1720; --line:#203041; --text:#e5edf5; --muted:#91a2b4; --green:#4ade80; --gold:#f59e0b; --cyan:#67e8f9; --red:#fb7185; }
     body { min-height: 100vh; background: radial-gradient(circle at top, #102019, var(--bg) 42%); color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .hero { max-width: 980px; margin: 0 auto; padding: 86px 22px 34px; }
+    .hero, .section { max-width: 980px; margin: 0 auto; padding: 86px 22px 20px; }
+    .section { padding-top: 22px; }
     .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; margin-bottom: 18px; }
     h1 { font-size: clamp(38px, 9vw, 84px); line-height: .9; letter-spacing: -.07em; max-width: 860px; }
     h1 span { color: var(--green); }
+    h2.big { font-size: clamp(26px, 5vw, 46px); letter-spacing: -.05em; margin-bottom: 16px; }
     .sub { color: var(--muted); max-width: 760px; font-size: 18px; line-height: 1.65; margin-top: 24px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 42px auto; padding: 0 22px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 28px auto 42px; padding: 0 22px; }
+    .cast { grid-template-columns: repeat(5, 1fr); }
     .card { background: rgba(15,23,32,.86); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; }
-    .card h2 { color: var(--green); font-size: 16px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
-    .card.gold h2 { color: var(--gold); }
-    .card p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+    .role { min-height: 210px; padding: 18px; }
+    .card h2, .role h3 { color: var(--green); font-size: 16px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .card.gold h2, .role.gold h3 { color: var(--gold); }
+    .role.cyan h3 { color: var(--cyan); }
+    .role.red h3 { color: var(--red); }
+    .card p, .role p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+    .role p { font-size: 13px; }
     .btn { display: inline-block; width: fit-content; text-decoration: none; border-radius: 10px; padding: 12px 15px; font-weight: 800; font-size: 13px; background: var(--green); color: #06120a; }
     .btn.secondary { background: rgba(255,255,255,.06); color: var(--text); border: 1px solid var(--line); }
     .btn.gold { background: var(--gold); color: #120800; }
     .note { max-width: 980px; margin: 0 auto; padding: 0 22px 46px; color: #66798a; font-size: 13px; line-height: 1.6; }
     footer { max-width: 980px; margin: 0 auto; padding: 28px 22px 40px; color: #536578; border-top: 1px solid var(--line); font-size: 13px; }
-    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1100px) { .cast { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 860px) { .grid, .cast { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -34,23 +42,54 @@
     <p class="sub">I build revenue-focused AI workflows and practical web systems. ANGELA DOLORES is the public theatre layer. TITANIUS AI is the product machine. The flagship public product is TITANIUS_CERBERRUS, a lead recovery workflow for founders, consultants, creators, agencies, and small teams.</p>
   </header>
 
+  <section class="section">
+    <div class="eyebrow">Public cast</div>
+    <h2 class="big">Five roles, one revenue path.</h2>
+  </section>
+
+  <main class="grid cast">
+    <section class="card role gold">
+      <div>
+        <h3>ANGELA DOLORES</h3>
+        <p>Public theatre, attention, story, aesthetic hooks, and cultural energy.</p>
+      </div>
+      <a class="btn gold" href="https://github.com/charlysmoky2010-hub/ANGELADOLORES">Open</a>
+    </section>
+
+    <section class="card role">
+      <div>
+        <h3>PHIANDO CEO</h3>
+        <p>Founder strategy, market thesis, daily target narrative, product bets, and business direction.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/PhiANDO_PRIME">Open</a>
+    </section>
+
+    <section class="card role">
+      <div>
+        <h3>TITANIUS AI</h3>
+        <p>Workflow products, revenue automation, industry research, reports, and storefront routing.</p>
+      </div>
+      <a class="btn" href="https://github.com/charlysmoky2010-hub/TITANIUS_CERBERRUS">Open</a>
+    </section>
+
+    <section class="card role red">
+      <div>
+        <h3>CERBERRUS144 Security</h3>
+        <p>Trust layer, repository hygiene, local-first proof, source visibility, and risk notes.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/CERBERRUS144">Open</a>
+    </section>
+
+    <section class="card role cyan">
+      <div>
+        <h3>PTN Onchain</h3>
+        <p>Onchain research, wallet intelligence prototypes, ecosystem notes, and data-quality logs.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/ptn-whale-intel">Open</a>
+    </section>
+  </main>
+
   <main class="grid">
-    <section class="card gold">
-      <div>
-        <h2>Public queen</h2>
-        <p>ANGELA DOLORES is the story, performance, attention, and public narrative layer for turning industry pain into scenes people remember.</p>
-      </div>
-      <a class="btn gold" href="https://github.com/charlysmoky2010-hub/ANGELADOLORES">Open ANGELA DOLORES</a>
-    </section>
-
-    <section class="card">
-      <div>
-        <h2>Machine queen</h2>
-        <p>TITANIUS AI turns messy business inputs into workflow products, reports, storefronts, and GitHub-backed proof.</p>
-      </div>
-      <a class="btn" href="https://github.com/charlysmoky2010-hub/TITANIUS_CERBERRUS">Open TITANIUS_CERBERRUS</a>
-    </section>
-
     <section class="card">
       <div>
         <h2>Storefront</h2>
@@ -69,14 +108,6 @@
 
     <section class="card">
       <div>
-        <h2>Private core</h2>
-        <p>CERBERRUS144 is the private research and orchestration core. Public releases are exported as focused product slices.</p>
-      </div>
-      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/CERBERRUS144">View repository</a>
-    </section>
-
-    <section class="card">
-      <div>
         <h2>Labs</h2>
         <p>PHITRACTATUSNEXUS, PTN, KLEOPATRA, and related repositories are experimental ecosystem and architecture work.</p>
       </div>
@@ -84,7 +115,7 @@
     </section>
   </main>
 
-  <p class="note">Daily directional target: 100,000 JPY/day through focused workflow products, setup support, and repeatable industry-specific audit packs. Use GitHub as proof, not as a maze.</p>
+  <p class="note">Daily directional target: 100,000 JPY/day through focused workflow products, setup support, and repeatable industry-specific audit packs. Use GitHub as proof, not as a maze. Social rule: one post, one role, one call to action.</p>
   <footer>© 2026 cerberrus144 · TITANIUS revenue workflows · ANGELA DOLORES public theatre layer</footer>
 </body>
 </html>
