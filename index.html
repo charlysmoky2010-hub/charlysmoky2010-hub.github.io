@@ -1,58 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>ANGELA DOLORES · TITANIUS · PHI_NEXUS_ONE</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>cerberrus144 · TITANIUS Revenue Workflows</title>
+  <meta name="description" content="Revenue-focused AI workflows, automation tools, and practical web systems by cerberrus144." />
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:#050510;color:#e2e8f0;font-family:"Courier New",monospace;min-height:100vh}
-    .hero{padding:80px 20px 60px;text-align:center;background:linear-gradient(135deg,#1a0533,#0a0a1f)}
-    h1{color:#f59e0b;font-size:2.2rem;letter-spacing:.12em;margin-bottom:12px}
-    .sub{color:#94a3b8;font-size:.95rem;letter-spacing:.06em}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:1000px;margin:50px auto;padding:0 20px}
-    .card{background:#0f172a;border:1px solid #1e293b;border-radius:14px;padding:24px;transition:border-color .2s}
-    .card:hover{border-color:#f59e0b}
-    .card h2{color:#f59e0b;font-size:.9rem;letter-spacing:.08em;margin-bottom:8px}
-    .card p{color:#64748b;font-size:.82rem;margin-bottom:16px;line-height:1.5}
-    .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-size:.82rem;font-weight:bold;text-decoration:none;letter-spacing:.05em}
-    .btn-gold{background:#f59e0b;color:#000}
-    .btn-purple{background:#7c3aed;color:#fff}
-    .btn-red{background:#dc2626;color:#fff}
-    .btn-blue{background:#2563eb;color:#fff}
-    .btn:hover{opacity:.85}
-    footer{text-align:center;padding:40px;color:#334155;font-size:.75rem;border-top:1px solid #1e293b;margin-top:40px}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#05070a; --panel:#0f1720; --line:#203041; --text:#e5edf5; --muted:#91a2b4; --green:#4ade80; --blue:#60a5fa; }
+    body { min-height: 100vh; background: radial-gradient(circle at top, #102019, var(--bg) 42%); color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .hero { max-width: 980px; margin: 0 auto; padding: 86px 22px 34px; }
+    .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; margin-bottom: 18px; }
+    h1 { font-size: clamp(38px, 9vw, 84px); line-height: .9; letter-spacing: -.07em; max-width: 860px; }
+    h1 span { color: var(--green); }
+    .sub { color: var(--muted); max-width: 740px; font-size: 18px; line-height: 1.65; margin-top: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 42px auto; padding: 0 22px; }
+    .card { background: rgba(15,23,32,.86); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; }
+    .card h2 { color: var(--green); font-size: 16px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+    .btn { display: inline-block; width: fit-content; text-decoration: none; border-radius: 10px; padding: 12px 15px; font-weight: 800; font-size: 13px; background: var(--green); color: #06120a; }
+    .btn.secondary { background: rgba(255,255,255,.06); color: var(--text); border: 1px solid var(--line); }
+    .note { max-width: 980px; margin: 0 auto; padding: 0 22px 46px; color: #66798a; font-size: 13px; line-height: 1.6; }
+    footer { max-width: 980px; margin: 0 auto; padding: 28px 22px 40px; color: #536578; border-top: 1px solid var(--line); font-size: 13px; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>ANGELA DOLORES · TITANIUS</h1>
-    <p class="sub">PHI_NEXUS_ONE — Art · Web3 · Digital Products · Code</p>
-  </div>
+  <header class="hero">
+    <div class="eyebrow">cerberrus144 · TITANIUS</div>
+    <h1>Revenue-focused <span>AI workflows</span> and practical web systems.</h1>
+    <p class="sub">I build small, useful automation products that turn messy business inputs into decision-ready outputs. The flagship public product is TITANIUS_CERBERRUS, a lead recovery workflow for founders, consultants, creators, agencies, and small teams.</p>
+  </header>
 
-  <div class="grid">
-    <div class="card">
-      <h2>PTN TOKEN</h2>
-      <p>Phi Tractatus Nexus — ERC-20 on Ethereum Mainnet. Genesis, Nexus & Sovereign packs.</p>
-      <a class="btn btn-gold" href="https://angeladolores2018-arch.github.io/ptncore-pages/">BUY PTN</a>
-    </div>
-    <div class="card">
-      <h2>DIGITAL PRODUCTS</h2>
-      <p>Prompt kits, brand identity, AI architecture, clarity audits — on Gumroad.</p>
-      <a class="btn btn-purple" href="https://smokycharly.gumroad.com">GUMROAD</a>
-    </div>
-    <div class="card">
-      <h2>CERBERRUS144</h2>
-      <p>Web3 due diligence & on-chain risk reports. Institutional-grade audits.</p>
-      <a class="btn btn-red" href="https://github.com/charlysmoky2010-hub/CERBERRUS144">GITHUB</a>
-    </div>
-    <div class="card">
-      <h2>TITANIUS ENGINE</h2>
-      <p>Modular agentic platform — orchestration, automation, venture architecture.</p>
-      <a class="btn btn-blue" href="https://github.com/charlysmoky2010-hub/TITANIUS_CERBERRUS">EXPLORE</a>
-    </div>
-  </div>
+  <main class="grid">
+    <section class="card">
+      <div>
+        <h2>Flagship product</h2>
+        <p>TITANIUS_CERBERRUS turns stale lead lists into ranked follow-up queues with JSON and Markdown reports.</p>
+      </div>
+      <a class="btn" href="https://github.com/charlysmoky2010-hub/TITANIUS_CERBERRUS">Open GitHub repo</a>
+    </section>
 
-  <footer>ANGELA DOLORES · charlysmoky2010-hub · artistichorizonx@gmail.com</footer>
+    <section class="card">
+      <div>
+        <h2>Storefront</h2>
+        <p>Buy the lead recovery workflow, inspect the delivery tiers, and preview the product package.</p>
+      </div>
+      <a class="btn" href="https://charlysmoky2010-hub.github.io/titanius-storefront/">Open storefront</a>
+    </section>
+
+    <section class="card">
+      <div>
+        <h2>Portfolio proof</h2>
+        <p>Restaurant landing page prototype with multilingual UI, menu sections, contact cards, and assistant panel.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/senparkpizza">View senparkpizza</a>
+    </section>
+
+    <section class="card">
+      <div>
+        <h2>Private core</h2>
+        <p>CERBERRUS144 is the private research and orchestration core. Public releases are exported as focused product slices.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/CERBERRUS144">View repository</a>
+    </section>
+
+    <section class="card">
+      <div>
+        <h2>Labs</h2>
+        <p>PHITRACTATUSNEXUS, PTN, KLEOPATRA, and related repositories are experimental ecosystem and architecture work.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub?tab=repositories">Browse repos</a>
+    </section>
+
+    <section class="card">
+      <div>
+        <h2>Contact</h2>
+        <p>For now, use GitHub and linked profile channels. A dedicated business inbox will be added later.</p>
+      </div>
+      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub">GitHub profile</a>
+    </section>
+  </main>
+
+  <p class="note">Focus: practical automation, clean outputs, local-first workflows, and productized slices from a larger private research system. No financial advice is provided by this page.</p>
+  <footer>© 2026 cerberrus144 · TITANIUS revenue workflows</footer>
 </body>
 </html>
