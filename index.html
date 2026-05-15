@@ -2,120 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>cerberrus144 · TITANIUS Revenue Workflows</title>
-  <meta name="description" content="Revenue-focused AI workflows, automation tools, and practical web systems by cerberrus144." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yusuf · Client Audit Pack</title>
+  <meta name="description" content="Independent builder profile for local-first client audit packs, website trust checks, and evidence-based improvement notes." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg:#05070a; --panel:#0f1720; --line:#203041; --text:#e5edf5; --muted:#91a2b4; --green:#4ade80; --gold:#f59e0b; --cyan:#67e8f9; --red:#fb7185; }
-    body { min-height: 100vh; background: radial-gradient(circle at top, #102019, var(--bg) 42%); color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .hero, .section { max-width: 980px; margin: 0 auto; padding: 86px 22px 20px; }
-    .section { padding-top: 22px; }
-    .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; margin-bottom: 18px; }
-    h1 { font-size: clamp(38px, 9vw, 84px); line-height: .9; letter-spacing: -.07em; max-width: 860px; }
+    :root {
+      --bg: #07090d;
+      --panel: #101721;
+      --panel2: #0c1118;
+      --line: #253246;
+      --text: #edf3f8;
+      --muted: #9bacbd;
+      --soft: #cbd5e1;
+      --green: #61d394;
+      --blue: #7dd3fc;
+      --gold: #f8c471;
+      --red: #fb7185;
+    }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #183323 0, var(--bg) 38%), linear-gradient(180deg, #07090d, #0a0f15);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 72px 22px 36px; }
+    .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 800; margin-bottom: 16px; }
+    h1 { font-size: clamp(40px, 8vw, 82px); line-height: .95; letter-spacing: -.065em; max-width: 920px; }
     h1 span { color: var(--green); }
-    h2.big { font-size: clamp(26px, 5vw, 46px); letter-spacing: -.05em; margin-bottom: 16px; }
-    .sub { color: var(--muted); max-width: 760px; font-size: 18px; line-height: 1.65; margin-top: 24px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 28px auto 42px; padding: 0 22px; }
-    .cast { grid-template-columns: repeat(5, 1fr); }
-    .card { background: rgba(15,23,32,.86); border: 1px solid var(--line); border-radius: 18px; padding: 24px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; }
-    .role { min-height: 210px; padding: 18px; }
-    .card h2, .role h3 { color: var(--green); font-size: 16px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
-    .card.gold h2, .role.gold h3 { color: var(--gold); }
-    .role.cyan h3 { color: var(--cyan); }
-    .role.red h3 { color: var(--red); }
-    .card p, .role p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-    .role p { font-size: 13px; }
-    .btn { display: inline-block; width: fit-content; text-decoration: none; border-radius: 10px; padding: 12px 15px; font-weight: 800; font-size: 13px; background: var(--green); color: #06120a; }
+    .sub { color: var(--soft); max-width: 790px; font-size: clamp(17px, 2vw, 21px); margin-top: 24px; }
+    .truth { margin-top: 24px; display: inline-flex; flex-wrap: wrap; gap: 10px; }
+    .pill { border: 1px solid var(--line); background: rgba(16,23,33,.72); color: var(--muted); border-radius: 999px; padding: 9px 12px; font-size: 13px; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 34px; }
+    .card { background: rgba(16,23,33,.82); border: 1px solid var(--line); border-radius: 20px; padding: 24px; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 70px rgba(0,0,0,.22); }
+    .card h2 { color: var(--green); text-transform: uppercase; letter-spacing: .09em; font-size: 15px; margin-bottom: 12px; }
+    .card.blue h2 { color: var(--blue); }
+    .card.gold h2 { color: var(--gold); }
+    .card.red h2 { color: var(--red); }
+    .card p, li { color: var(--muted); font-size: 15px; }
+    ul { padding-left: 18px; margin-top: 10px; }
+    li { margin: 8px 0; }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .btn { display: inline-block; text-decoration: none; border-radius: 12px; padding: 12px 15px; font-weight: 850; font-size: 14px; background: var(--green); color: #06120a; }
     .btn.secondary { background: rgba(255,255,255,.06); color: var(--text); border: 1px solid var(--line); }
-    .btn.gold { background: var(--gold); color: #120800; }
-    .note { max-width: 980px; margin: 0 auto; padding: 0 22px 46px; color: #66798a; font-size: 13px; line-height: 1.6; }
-    footer { max-width: 980px; margin: 0 auto; padding: 28px 22px 40px; color: #536578; border-top: 1px solid var(--line); font-size: 13px; }
-    @media (max-width: 1100px) { .cast { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 860px) { .grid, .cast { grid-template-columns: 1fr; } }
+    .section { margin-top: 42px; padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: rgba(12,17,24,.78); }
+    .section h2 { font-size: clamp(25px, 4vw, 40px); letter-spacing: -.04em; margin-bottom: 12px; }
+    .section p { color: var(--muted); max-width: 860px; }
+    .steps { grid-template-columns: repeat(4, 1fr); }
+    .small { min-height: 190px; }
+    .small strong { color: var(--text); display: block; margin-bottom: 8px; }
+    footer { max-width: 1080px; margin: 0 auto; padding: 26px 22px 42px; color: #66758a; font-size: 13px; border-top: 1px solid var(--line); }
+    @media (max-width: 950px) { .grid, .steps { grid-template-columns: 1fr; } .wrap { padding-top: 48px; } }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="eyebrow">cerberrus144 · TITANIUS · ANGELA DOLORES</div>
-    <h1>Theatre for attention. <span>Automation</span> for trust. Product for money.</h1>
-    <p class="sub">I build revenue-focused AI workflows and practical web systems. ANGELA DOLORES is the public theatre layer. TITANIUS AI is the product machine. The flagship public product is TITANIUS_CERBERRUS, a lead recovery workflow for founders, consultants, creators, agencies, and small teams.</p>
-  </header>
-
-  <section class="section">
-    <div class="eyebrow">Public cast</div>
-    <h2 class="big">Five roles, one revenue path.</h2>
-  </section>
-
-  <main class="grid cast">
-    <section class="card role gold">
-      <div>
-        <h3>ANGELA DOLORES</h3>
-        <p>Public theatre, attention, story, aesthetic hooks, and cultural energy.</p>
+  <main class="wrap">
+    <header>
+      <div class="eyebrow">Independent builder · local-first audit packs</div>
+      <h1>I build simple <span>client audit packs</span> for websites that need clearer trust, local visibility, and conversion paths.</h1>
+      <p class="sub">I am not presenting this as a company. This is an independent, early-stage builder profile. My current offer is a practical website audit package: manual observations in, client-ready report out. No fake security testing, no automated spam, no exaggerated guarantees.</p>
+      <div class="truth">
+        <span class="pill">Independent / amateur builder</span>
+        <span class="pill">Public GitHub proof</span>
+        <span class="pill">No automatic outreach</span>
+        <span class="pill">No live security scan claims</span>
       </div>
-      <a class="btn gold" href="https://github.com/charlysmoky2010-hub/ANGELADOLORES">Open</a>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <div>
+          <h2>Current product</h2>
+          <p><strong>Client Audit Pack</strong> is a local-first report workflow for small businesses, freelancers, and digital teams. It turns concrete evidence notes into an HTML audit report, JSON proof summary, and client message draft.</p>
+        </div>
+        <div class="btns">
+          <a class="btn" href="https://github.com/charlysmoky2010-hub?tab=repositories">Browse GitHub</a>
+        </div>
+      </article>
+
+      <article class="card blue">
+        <div>
+          <h2>What it checks</h2>
+          <ul>
+            <li>Local SEO and city/service clarity</li>
+            <li>Trust proof, testimonials, certifications, cases</li>
+            <li>Homepage CTA and contact friction</li>
+            <li>Basic technical, privacy, speed, and clarity issues</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card gold">
+        <div>
+          <h2>Public contact rule</h2>
+          <p>I do not use private email as the public contact channel here. For now, use public GitHub channels only: repository issues, repository discussions if enabled, or public profile activity.</p>
+        </div>
+        <div class="btns">
+          <a class="btn secondary" href="https://github.com/charlysmoky2010-hub">Open profile</a>
+        </div>
+      </article>
     </section>
 
-    <section class="card role">
-      <div>
-        <h3>PHIANDO CEO</h3>
-        <p>Founder strategy, market thesis, daily target narrative, product bets, and business direction.</p>
+    <section class="section">
+      <div class="eyebrow">Offer ladder</div>
+      <h2>Small, honest, sellable.</h2>
+      <p>The goal is not to look like a big agency. The goal is to be useful, specific, and verifiable. Each package has visible limits and requires real client identity plus real evidence notes before anything is sendable.</p>
+      <div class="grid steps">
+        <article class="card small">
+          <p><strong>EUR 149 Starter Audit</strong>One client-ready audit report, proof summary, and top improvement notes.</p>
+        </article>
+        <article class="card small">
+          <p><strong>EUR 390 Proof Pack</strong>Before/after style improvement plan and clearer implementation scope.</p>
+        </article>
+        <article class="card small">
+          <p><strong>EUR 790 Fix Pack</strong>Hands-on support after approval, scoped carefully and delivered in small slices.</p>
+        </article>
+        <article class="card small red">
+          <p><strong>Safety boundary</strong>No credentials, no penetration test, no crawl, no ranking or revenue guarantees unless explicitly scoped and proven.</p>
+        </article>
       </div>
-      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/PhiANDO_PRIME">Open</a>
     </section>
 
-    <section class="card role">
-      <div>
-        <h3>TITANIUS AI</h3>
-        <p>Workflow products, revenue automation, industry research, reports, and storefront routing.</p>
+    <section class="section">
+      <div class="eyebrow">Evidence workflow</div>
+      <h2>Manual proof before sales language.</h2>
+      <p>The latest local workflow blocks placeholder companies and placeholder websites. A real package requires a real company, a real HTTPS website, and at least three concrete manual observations. The output stays quiet in the terminal and reports file paths only.</p>
+      <div class="btns">
+        <a class="btn" href="https://github.com/charlysmoky2010-hub/charlysmoky2010-hub.github.io">View this site repository</a>
+        <a class="btn secondary" href="https://github.com/charlysmoky2010-hub?tab=repositories">View public work</a>
       </div>
-      <a class="btn" href="https://github.com/charlysmoky2010-hub/TITANIUS_CERBERRUS">Open</a>
-    </section>
-
-    <section class="card role red">
-      <div>
-        <h3>CERBERRUS144 Security</h3>
-        <p>Trust layer, repository hygiene, local-first proof, source visibility, and risk notes.</p>
-      </div>
-      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/CERBERRUS144">Open</a>
-    </section>
-
-    <section class="card role cyan">
-      <div>
-        <h3>PTN Onchain</h3>
-        <p>Onchain research, wallet intelligence prototypes, ecosystem notes, and data-quality logs.</p>
-      </div>
-      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/ptn-whale-intel">Open</a>
     </section>
   </main>
 
-  <main class="grid">
-    <section class="card">
-      <div>
-        <h2>Storefront</h2>
-        <p>Buy the lead recovery workflow, inspect the delivery tiers, and preview the product package.</p>
-      </div>
-      <a class="btn" href="https://charlysmoky2010-hub.github.io/titanius-storefront/">Open storefront</a>
-    </section>
-
-    <section class="card">
-      <div>
-        <h2>Portfolio proof</h2>
-        <p>Restaurant landing page prototype with multilingual UI, menu sections, contact cards, and assistant panel.</p>
-      </div>
-      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub/senparkpizza">View senparkpizza</a>
-    </section>
-
-    <section class="card">
-      <div>
-        <h2>Labs</h2>
-        <p>PHITRACTATUSNEXUS, PTN, KLEOPATRA, and related repositories are experimental ecosystem and architecture work.</p>
-      </div>
-      <a class="btn secondary" href="https://github.com/charlysmoky2010-hub?tab=repositories">Browse repos</a>
-    </section>
-  </main>
-
-  <p class="note">Daily directional target: 100,000 JPY/day through focused workflow products, setup support, and repeatable industry-specific audit packs. Use GitHub as proof, not as a maze. Social rule: one post, one role, one call to action.</p>
-  <footer>© 2026 cerberrus144 · TITANIUS revenue workflows · ANGELA DOLORES public theatre layer</footer>
+  <footer>
+    Yusuf · independent builder. Public profile only. No company claim, no automatic sending, no fake guarantees.
+  </footer>
 </body>
 </html>
