@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-07-20",
+  "version": "1.1.0",
+  "updated": "2026-07-22",
   "name": "PHI NEXUS Living Constellation",
   "principle": "Every repository must explain its role, boundary, next action, and relationship to the whole.",
   "nodes": [
@@ -14,7 +14,8 @@
       "phase": "foundation",
       "privacy": "site shell",
       "signal": "central",
-      "next": "Enable GitHub Pages and use this surface as the ecosystem entry point.",
+      "next": "Route visitors to the live offer hub and keep product claims evidence-based.",
+      "actionUrl": "https://charlysmoky2010-hub.github.io/offers.html",
       "x": 50,
       "y": 48,
       "tone": "violet"
@@ -51,15 +52,16 @@
     },
     {
       "id": "storefront",
-      "title": "TITANIUS STOREFRONT",
-      "role": "Commercial discovery, offers, and conversion paths",
-      "repo": "titanius-storefront",
-      "url": "https://github.com/charlysmoky2010-hub/titanius-storefront",
-      "status": "active",
+      "title": "LIVE REVENUE OFFERS",
+      "role": "Commercial discovery, direct checkout, and conversion paths",
+      "repo": "charlysmoky2010-hub.github.io",
+      "url": "https://github.com/charlysmoky2010-hub/charlysmoky2010-hub.github.io",
+      "status": "live",
       "phase": "market",
-      "privacy": "surface",
-      "signal": "conversion",
-      "next": "Connect proof, product pages, and clear request routes to the product core.",
+      "privacy": "public offer surface",
+      "signal": "€14.90 · €29 · €99",
+      "next": "Send qualified visitors to the unified English offer hub and measure verified payments.",
+      "actionUrl": "https://charlysmoky2010-hub.github.io/offers.html",
       "x": 86,
       "y": 69,
       "tone": "gold"
@@ -114,7 +116,7 @@
   "edges": [
     {"from": "hub", "to": "core", "label": "governs"},
     {"from": "hub", "to": "product", "label": "routes"},
-    {"from": "hub", "to": "storefront", "label": "presents"},
+    {"from": "hub", "to": "storefront", "label": "sells"},
     {"from": "hub", "to": "research", "label": "maps"},
     {"from": "hub", "to": "launcher", "label": "launches"},
     {"from": "hub", "to": "story", "label": "frames"},
