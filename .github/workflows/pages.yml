@@ -26,8 +26,10 @@ jobs:
 
       - name: Prepare static artifact
         run: |
+          set -euo pipefail
           mkdir -p _site
-          cp index.html hub.json .nojekyll _site/
+          cp index.html hub.json hidden-lantern.html .nojekyll _site/
+          test -s _site/hidden-lantern.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
