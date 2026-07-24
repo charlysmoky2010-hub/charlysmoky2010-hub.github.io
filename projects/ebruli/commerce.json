@@ -1,17 +1,58 @@
 {
   "project": "EBRULI_SU_LALESI",
-  "version": "2.0.0",
+  "version": "3.0.0-real-archive",
   "updated_at": "2026-07-24",
   "live_url": "https://ebruli-su-lalesi-live.vercel.app",
   "default_language": "en",
   "languages": ["en", "de", "nl", "es", "ar"],
   "rtl_languages": ["ar"],
+  "release": {
+    "name": "Real Archive Release",
+    "production_deployment": "dpl_GSeBb18mB4eLURGMzSnBn2kQUvJ2",
+    "status": "READY",
+    "http_status": 200,
+    "real_media": true,
+    "ai_placeholder_archive": false
+  },
   "vercel": {
     "main_project": {
       "name": "ebruli-su-lalesi-live",
       "id": "prj_TkWN05rW5r9qBuVl2bCYvWNMoqsh",
-      "production_deployment": "dpl_7b9iPmB5FFWFKnRTRm3CA6f7NrBp",
+      "production_deployment": "dpl_GSeBb18mB4eLURGMzSnBn2kQUvJ2",
       "status": "READY"
+    },
+    "application_project": {
+      "name": "ebruli-app",
+      "id": "prj_eBQqptCRAIflTwW5NwuBZo3qdbJZ",
+      "production_deployment": "dpl_GBjHnJ8HBRmvz8g66cb6h7s4HeCG",
+      "status": "READY"
+    },
+    "media_projects": {
+      "artist_hero": {
+        "name": "ebruli-media-hero",
+        "id": "prj_JehKCTOhurG1OdyJ2fCNQeo0WvAD",
+        "deployment": "dpl_99xMC2JeChYKqqr4jybrUzVQUgnx",
+        "status": "READY"
+      },
+      "workshop_archive": {
+        "name": "ebruli-media-workshop",
+        "id": "prj_4cgdVTyjJUIEO0afdUY2cRdWR0uX",
+        "deployment": "dpl_39ysN4XqrcgwPD9Fd17y616PS5xi",
+        "status": "READY",
+        "usage_boundary": "educational_documentation"
+      },
+      "original_work_collage": {
+        "name": "ebruli-media-collage",
+        "id": "prj_7cOVXzP8koH2GUpiMdemqOQzG23Q",
+        "deployment": "dpl_Bv1NmEmMCbSX8CGpG6QBrNMQwyaZ",
+        "status": "READY"
+      },
+      "process_closeup": {
+        "name": "ebruli-media-process",
+        "id": "prj_KDdduPyB07pDpADgfuhnkiK3sEnG",
+        "deployment": "dpl_J7bYjEw4etM17bohHXdochy4KPtS",
+        "status": "READY"
+      }
     },
     "digital_delivery_project": {
       "name": "ebruli-wt-pack-9q7k2m",
@@ -21,6 +62,18 @@
       "indexing": "noindex,nofollow"
     }
   },
+  "features": [
+    "original_artist_photo_hero",
+    "original_ebru_work_archive",
+    "documented_workshop_section",
+    "process_closeup",
+    "image_lightbox",
+    "interactive_digital_ebru_canvas",
+    "five_language_interface",
+    "arabic_rtl",
+    "multilingual_ebruli_assistant",
+    "live_stripe_checkout"
+  ],
   "offers": [
     {
       "key": "digital_art_pack",
@@ -56,15 +109,22 @@
   "assistant": {
     "name": "Ebruli Assistant",
     "mode": "browser_rule_based",
-    "tested_scenarios": 12,
-    "test_result": "12/12",
+    "knowledge": ["ebru", "real_archive", "workshop", "live_offers", "payment", "event_truth_boundary"],
     "truth_boundary": [
       "do_not_invent_event_dates",
       "do_not_invent_venues",
       "do_not_invent_capacity",
       "do_not_invent_partners",
+      "do_not_invent_credentials",
+      "do_not_claim_sales_without_completed_payment",
       "state_only_verified_prices"
     ]
+  },
+  "media_privacy": {
+    "workshop_images_are_educational_documentation": true,
+    "remove_or_replace_when_public_permission_is_not_desired": true,
+    "videos_received": true,
+    "videos_publicly_embedded_in_this_release": false
   },
   "separation": {
     "cerberrus_overwrite": false,
