@@ -1,0 +1,148 @@
+{
+  "schema": "cerberrus.commerce.hub.v1",
+  "updated": "2026-07-24",
+  "brand": {
+    "system": "CERBERRUS144",
+    "public_hub": "CERBERRUS Commerce Hub",
+    "heritage_brand": "Anadolu Textile Atlas",
+    "sales_collection": "EBRU × ALACA — Founding Capsule",
+    "operator_status": "independent digital-services project",
+    "contact": "charlysmoky2010@gmail.com"
+  },
+  "operations": {
+    "commerce_control": "CERBERRUS Economic Control + Revenue Runtime",
+    "payments": "Stripe live mode",
+    "hosting": [
+      "GitHub Pages",
+      "Vercel"
+    ],
+    "mail": "Gmail with CERBERRUS operational labels",
+    "languages": [
+      "en",
+      "de",
+      "tr"
+    ],
+    "physical_policy": "Verify maker, material, sample, EU product information and fulfilment before checkout."
+  },
+  "offers": [
+    {
+      "id": "natural-cushion-waitlist",
+      "name": "Anatolian Natural Textile Cushion",
+      "category": "physical_waitlist",
+      "price_label": "Target €79",
+      "status": "verification",
+      "checkout": null,
+      "landing": "https://anadolu-textile-atlas.vercel.app/",
+      "contact": "mailto:charlysmoky2010@gmail.com?subject=%5BCERBERRUS%20BUYER%5D%20Natural%20Textile%20Cushion%20Waitlist"
+    },
+    {
+      "id": "storybridge",
+      "name": "StoryBridge Multilingual Family Memory Bundle",
+      "category": "digital_product",
+      "price_label": "€14.90",
+      "status": "live_checkout",
+      "checkout": "https://buy.stripe.com/5kQeVdagcfKeetl9b36Na0R",
+      "landing": "https://storybridge-family.charlysmoky20151527.chatgpt.site"
+    },
+    {
+      "id": "hidden-lantern-trial",
+      "name": "The Hidden Lantern — Trial Story Pack",
+      "category": "digital_service",
+      "price_label": "€29",
+      "status": "live_checkout",
+      "checkout": "https://book.stripe.com/28E5kD740fKe4SLcnf6Na0X",
+      "landing": "https://charlysmoky2010-hub.github.io/hidden-lantern.html"
+    },
+    {
+      "id": "hidden-lantern-custom",
+      "name": "The Hidden Lantern — Custom Story Pack",
+      "category": "digital_service",
+      "price_label": "€99",
+      "status": "live_checkout",
+      "checkout": "https://book.stripe.com/8x228rfAweGaetldrj6Na0S",
+      "landing": "https://charlysmoky2010-hub.github.io/hidden-lantern.html"
+    },
+    {
+      "id": "bewerbung-express",
+      "name": "Bewerbung Express 48h",
+      "category": "digital_service",
+      "price_label": "€49",
+      "status": "live_checkout",
+      "checkout": "https://book.stripe.com/28E28ragc1Todph3QJ6Na10",
+      "landing": "https://bewerbung-match-de-tr.vercel.app"
+    },
+    {
+      "id": "phi-nexus",
+      "name": "PHI NEXUS AI Systems Audit",
+      "category": "b2b_service",
+      "price_label": "€490",
+      "status": "live_checkout",
+      "checkout": "https://book.stripe.com/fZu7sLgEAdC65WPbjb6Na0Y",
+      "landing": "https://phi-nexus-market-proof.vercel.app"
+    },
+    {
+      "id": "kizuna",
+      "name": "Kizuna 5-Day Japan–Europe Market Sprint",
+      "category": "b2b_service",
+      "price_label": "Fixed scope",
+      "status": "live_checkout",
+      "checkout": "https://buy.stripe.com/dRmdR9agcdC60Cv2MF6Na0Z",
+      "landing": "https://kizuna-revenue-bridge.charlysmoky20151527.chatgpt.site"
+    }
+  ],
+  "surfaces": [
+    {
+      "name": "CERBERRUS Digital Studio",
+      "url": "https://ebru-alaca-storefront.vercel.app/",
+      "role": "existing sales studio"
+    },
+    {
+      "name": "Anadolu Textile Atlas",
+      "url": "https://anadolu-textile-atlas.vercel.app/",
+      "role": "heritage research and buyer/maker discovery"
+    },
+    {
+      "name": "EBRU × ALACA",
+      "url": "https://ebru-alaca-storefront.vercel.app/ebru-alaca.html",
+      "role": "founding physical capsule concept"
+    },
+    {
+      "name": "Lapta Hesap İşi",
+      "url": "https://ebru-alaca-storefront.vercel.app/lapta.html",
+      "role": "premium heritage capsule concept"
+    },
+    {
+      "name": "Policies",
+      "url": "https://ebru-alaca-storefront.vercel.app/policies.html",
+      "role": "delivery, privacy and refund information"
+    },
+    {
+      "name": "CERBERRUS144",
+      "url": "https://github.com/charlysmoky2010-hub/CERBERRUS144",
+      "role": "private system core"
+    }
+  ],
+  "mail_routes": [
+    {
+      "subject_prefix": "[CERBERRUS BUYER]",
+      "purpose": "buyer interest and waitlist"
+    },
+    {
+      "subject_prefix": "[CERBERRUS MAKER]",
+      "purpose": "artisan, cooperative and supplier applications"
+    },
+    {
+      "subject_prefix": "[CERBERRUS ORDER]",
+      "purpose": "order and delivery questions"
+    },
+    {
+      "subject_prefix": "[CERBERRUS SUPPORT]",
+      "purpose": "general support"
+    }
+  ],
+  "truth": {
+    "verified_revenue_eur": 0,
+    "physical_checkout_open": false,
+    "note": "A live page or Stripe link is not revenue. Revenue is counted only after a completed live payment."
+  }
+}
