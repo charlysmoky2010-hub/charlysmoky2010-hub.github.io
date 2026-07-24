@@ -1,0 +1,2 @@
+Ebruli live deployment check — 2026-07-24
+This file is isolated from the existing CERBERRUS homepage.
