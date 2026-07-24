@@ -1,4 +1,4 @@
-name: Deploy PHI Nexus to GitHub Pages
+name: Deploy CERBERRUS Commerce Hub to GitHub Pages
 
 on:
   push:
@@ -35,12 +35,19 @@ jobs:
             -exec cp '{}' _site/ \;
 
           test -s _site/index.html
+          test -s _site/commerce.json
           test -s _site/offers.html
           test -s _site/ai-systems-audit.html
           test -s _site/ai-systems-audit-sample.html
 
+          grep -Fq 'CERBERRUS COMMERCE HUB' _site/index.html
+          grep -Fq 'https://buy.stripe.com/5kQeVdagcfKeetl9b36Na0R' _site/index.html
+          grep -Fq 'https://anadolu-textile-atlas.vercel.app/' _site/index.html
+          grep -Fq '[CERBERRUS BUYER]' _site/index.html
           grep -Fq 'https://book.stripe.com/fZu7sLgEAdC65WPbjb6Na0Y' _site/ai-systems-audit.html
           grep -Fq 'Fictional demonstration' _site/ai-systems-audit-sample.html
+
+          python -m json.tool _site/commerce.json >/dev/null
 
           printf 'Published files:\n'
           find _site -maxdepth 1 -type f -printf '%f\n' | sort
