@@ -1,0 +1,74 @@
+{
+  "project": "EBRULI_SU_LALESI",
+  "version": "2.0.0",
+  "updated_at": "2026-07-24",
+  "live_url": "https://ebruli-su-lalesi-live.vercel.app",
+  "default_language": "en",
+  "languages": ["en", "de", "nl", "es", "ar"],
+  "rtl_languages": ["ar"],
+  "vercel": {
+    "main_project": {
+      "name": "ebruli-su-lalesi-live",
+      "id": "prj_TkWN05rW5r9qBuVl2bCYvWNMoqsh",
+      "production_deployment": "dpl_7b9iPmB5FFWFKnRTRm3CA6f7NrBp",
+      "status": "READY"
+    },
+    "digital_delivery_project": {
+      "name": "ebruli-wt-pack-9q7k2m",
+      "id": "prj_XW1Dth0zNxy7LYPPNuK7BYq09Ngq",
+      "production_deployment": "dpl_CAe4Y7FBpn4qXTF9J1wZHkxYPGwq",
+      "status": "READY",
+      "indexing": "noindex,nofollow"
+    }
+  },
+  "offers": [
+    {
+      "key": "digital_art_pack",
+      "name": "Ebruli Water Tulip Digital Art Pack",
+      "price_eur": 19,
+      "stripe_product": "prod_UwfV8uTlXoGvm6",
+      "stripe_price": "price_1TwmAgGup9HWwEMCkf2LnmSn",
+      "stripe_payment_link": "plink_1TwmB5Gup9HWwEMCQ2Ao7a7M",
+      "delivery": "instant_redirect_to_private_download_page",
+      "status": "live"
+    },
+    {
+      "key": "online_workshop",
+      "name": "Ebruli Online Ebru Workshop",
+      "price_eur": 49,
+      "stripe_product": "prod_UwfVL0hWunZ1SX",
+      "stripe_price": "price_1TwmAtGup9HWwEMCDUmXgLQz",
+      "stripe_payment_link": "plink_1TwmBAGup9HWwEMC7ns8cxrX",
+      "delivery": "manual_schedule_by_checkout_email",
+      "status": "live"
+    },
+    {
+      "key": "custom_digital_ebru",
+      "name": "Ebruli Custom Digital Ebru Commission",
+      "price_eur": 79,
+      "stripe_product": "prod_UwfWjxzbJlyBJb",
+      "stripe_price": "price_1TwmAyGup9HWwEMC1elGgR8A",
+      "stripe_payment_link": "plink_1TwmBHGup9HWwEMCu5fpdKMR",
+      "delivery": "manual_brief_and_delivery_by_checkout_email",
+      "status": "live"
+    }
+  ],
+  "assistant": {
+    "name": "Ebruli Assistant",
+    "mode": "browser_rule_based",
+    "tested_scenarios": 12,
+    "test_result": "12/12",
+    "truth_boundary": [
+      "do_not_invent_event_dates",
+      "do_not_invent_venues",
+      "do_not_invent_capacity",
+      "do_not_invent_partners",
+      "state_only_verified_prices"
+    ]
+  },
+  "separation": {
+    "cerberrus_overwrite": false,
+    "independent_art_identity": true,
+    "cerberrus_learning_allowed_from_documented_patterns": true
+  }
+}
