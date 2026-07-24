@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://charlysmoky2010-hub.github.io/sitemap.xml
