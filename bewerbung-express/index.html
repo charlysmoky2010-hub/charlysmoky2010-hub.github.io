@@ -1,63 +1,94 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Bewerbung Express 48h: Deutscher Lebenslauf, individuelles Anschreiben und fertige Bewerbungs-E-Mail mit türkischsprachiger Unterstützung.">
-  <title>Bewerbung Express 48h</title>
+  <meta name="description" content="Career Application Express: AI-assisted, human-reviewed CV, cover letter and application email in English, German, Turkish and additional languages.">
+  <meta name="robots" content="index,follow">
+  <title>Career Application Express | Multilingual, human-reviewed</title>
   <style>
-    :root{--ink:#17212b;--muted:#5c6772;--paper:#f7f3ec;--card:#fff;--accent:#c94e36;--line:#ddd4c8}
-    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55}
-    .wrap{max-width:900px;margin:auto;padding:28px 18px 70px}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 14px 40px rgba(36,28,20,.07)}
-    .badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#eee4d7;font-weight:800;font-size:14px}h1{font-size:clamp(42px,8vw,76px);line-height:.98;letter-spacing:-.05em;margin:18px 0}
-    .lead{font-size:21px;max-width:740px}.price{font-size:54px;font-weight:900;margin:24px 0 2px}.btn{display:inline-block;margin-top:16px;padding:16px 24px;border-radius:13px;background:var(--accent);color:#fff;text-decoration:none;font-weight:900}
-    .btn:hover{filter:brightness(.95)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.card{padding:24px}.card h2{margin-top:0}.small{font-size:14px;color:var(--muted)}
-    .note{margin-top:16px;padding:18px 20px;border-left:5px solid var(--accent);background:#fff8f4;border-radius:12px}.footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px}
-    @media(max-width:680px){.grid{grid-template-columns:1fr}.hero{padding:24px}.lead{font-size:18px}}
+    :root{--ink:#17212b;--muted:#596570;--paper:#f5f1e9;--card:#fff;--accent:#c94e36;--accent2:#163f4d;--line:#d9d1c6;--ok:#e7f4ec;--warn:#fff5e6}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.6}
+    a{color:var(--accent2)}.wrap{max-width:1080px;margin:auto;padding:24px 18px 72px}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:18px}.brand{font-weight:900;letter-spacing:.02em}.languages{display:flex;gap:8px;flex-wrap:wrap}.lang-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 13px;font-weight:800;cursor:pointer}.lang-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .hero,.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:0 14px 38px rgba(36,28,20,.07)}.hero{padding:42px}.eyebrow{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.13em;color:var(--accent)}h1{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-.055em;margin:16px 0}.lead{font-size:21px;max-width:800px}.trust-row{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.pill{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:#edf1f2;font-size:14px;font-weight:800}.price{font-size:56px;font-weight:950;margin:18px 0 0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-block;padding:15px 22px;border-radius:13px;text-decoration:none;font-weight:900}.primary{background:var(--accent);color:#fff}.secondary{border:1px solid var(--line);background:#fff;color:var(--ink)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:26px}.card h2,.card h3{margin-top:0}.section{margin-top:18px}.step{font-size:34px;font-weight:950;color:var(--accent);line-height:1}.note{padding:20px;border-left:5px solid var(--accent);border-radius:12px;background:var(--warn)}.trust{background:var(--ok)}.small{font-size:14px;color:var(--muted)}.sample{display:grid;grid-template-columns:1fr 1fr;gap:14px}.sample-box{border:1px solid var(--line);border-radius:16px;padding:20px;background:#faf9f6}.before{opacity:.78}.after{border-color:#9fc9ae;background:#f3fbf6}.footer{margin-top:30px;padding:24px;text-align:center;color:var(--muted);font-size:13px}.lang-panel[hidden]{display:none}
+    @media(max-width:800px){.grid,.grid.three,.sample{grid-template-columns:1fr}.hero{padding:28px}.lead{font-size:18px}.top{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
 <body>
 <main class="wrap">
-  <section class="hero">
-    <span class="badge">Deutsch · Türkçe destek</span>
-    <h1>Bewerbung<br>Express 48h</h1>
-    <p class="lead">Almanya’daki iş başvurunuz için profesyonel Almanca CV, ilana özel Anschreiben ve göndermeye hazır başvuru e-postası.</p>
-    <div class="price">49 €</div>
-    <p>Tek seferlik ödeme. 48 saatlik süre, gerekli belgeler eksiksiz ulaştıktan sonra başlar.</p>
-    <a class="btn" href="https://book.stripe.com/28E28ragc1Todph3QJ6Na10" rel="noopener">Güvenli ödeme yap / Sicher bezahlen</a>
+  <header class="top">
+    <div class="brand">CERBERRUS Career Services</div>
+    <nav class="languages" aria-label="Language selector">
+      <button class="lang-btn active" data-lang="en" type="button">English</button>
+      <button class="lang-btn" data-lang="de" type="button">Deutsch</button>
+      <button class="lang-btn" data-lang="tr" type="button">Türkçe</button>
+    </nav>
+  </header>
+
+  <section class="lang-panel" data-panel="en">
+    <section class="hero">
+      <div class="eyebrow">English-first · Multilingual delivery</div>
+      <h1>Career Application Express</h1>
+      <p class="lead">A fact-based CV, role-specific cover letter and ready-to-send application email for your target country and language. AI-assisted drafting, human review and no automatic submission.</p>
+      <div class="trust-row"><span class="pill">Human-reviewed</span><span class="pill">No invented claims</span><span class="pill">English · German · Turkish</span><span class="pill">Other languages on request</span></div>
+      <div class="price">€49</div>
+      <p>One-time payment. The 48-hour delivery window starts after payment and all required information are complete.</p>
+      <div class="actions"><a class="btn primary" href="https://book.stripe.com/28E28ragc1Todph3QJ6Na10" rel="noopener">Open secure checkout</a><a class="btn secondary" href="sample.html">View fictional sample</a></div>
+    </section>
+
+    <div class="grid three">
+      <section class="card"><div class="step">01</div><h3>Choose the target</h3><p>Tell us the target country, role, job advertisement, source language and desired output language.</p></section>
+      <section class="card"><div class="step">02</div><h3>Build the verified profile</h3><p>Your real education, experience, skills and achievements are structured into a reusable master profile.</p></section>
+      <section class="card"><div class="step">03</div><h3>Localize and review</h3><p>The documents are adapted to the role and market, then checked by a human before delivery.</p></section>
+    </div>
+
+    <div class="grid">
+      <section class="card"><h2>What you receive</h2><ul><li>One professionally structured CV or résumé</li><li>One role-specific cover letter</li><li>One ready-to-send application email</li><li>PDF and editable file</li><li>One minor revision round</li></ul></section>
+      <section class="card"><h2>What you provide</h2><ul><li>Your existing CV or work history</li><li>The job advertisement or role description</li><li>Education, certificates and verified skills</li><li>Target country and target language</li><li>Any truthful achievements you want highlighted</li></ul></section>
+    </div>
+
+    <section class="card section trust"><h2>Who does the work?</h2><p>The service is provided and personally supervised by <strong>Yusuf Şen</strong>. AI-supported tools may be used to organize information and create first drafts. Every final document is reviewed by a human. We do not invent employment history, qualifications, certificates, achievements or personal information.</p><p><strong>Your application is never sent automatically.</strong> You receive the files, review them and decide where and when to submit them.</p></section>
+
+    <section class="card section"><h2>Transparent fictional example</h2><div class="sample"><div class="sample-box before"><strong>Before</strong><p>“Worked in warehouse. Responsible for orders. Good team worker.”</p><p class="small">Generic wording, no measurable scope and no connection to the target role.</p></div><div class="sample-box after"><strong>After</strong><p>“Prepared and verified daily outbound orders, coordinated stock discrepancies with the shift lead and maintained accurate handover records in a high-volume warehouse environment.”</p><p class="small">Clear, factual and role-relevant. No invented numbers or achievements.</p></div></div><p><a href="sample.html">Open the full fictional before-and-after sample →</a></p></section>
+
+    <div class="grid">
+      <section class="card"><h2>Data and privacy</h2><p>Your documents are used only to deliver the purchased service. They are not sold and are not submitted to employers without your instruction. You may request deletion of working files by email.</p></section>
+      <section class="card"><h2>Boundaries</h2><p>The service improves the structure, language and role alignment of your documents. It does not guarantee an interview, visa, admission, employment contract or other outcome.</p></section>
+    </div>
+    <div class="note section"><strong>Before purchasing:</strong> read the <a href="transparency.html">service transparency, AI-use, revision, cancellation and data-handling summary</a>.</div>
   </section>
 
-  <div class="grid">
-    <section class="card">
-      <h2>Paket içeriği</h2>
-      <ul>
-        <li>Almanca Lebenslauf düzenleme</li>
-        <li>İlana özel Anschreiben</li>
-        <li>Göndermeye hazır Bewerbungs-E-Mail</li>
-        <li>Bir düzeltme turu</li>
-        <li>PDF ve düzenlenebilir dosya</li>
-      </ul>
-    </section>
-    <section class="card">
-      <h2>Nasıl çalışır?</h2>
-      <ol>
-        <li>Ödemeyi güvenli Stripe sayfasında tamamlayın.</li>
-        <li>Mevcut CV, ilan ve belgelerinizi e-posta ile gönderin.</li>
-        <li>Eksik bilgiler varsa kısa bir soru listesi gelir.</li>
-        <li>Başvuru paketi e-posta ile teslim edilir.</li>
-      </ol>
-    </section>
-  </div>
-
-  <section class="card" style="margin-top:16px">
-    <h2>Gönderilecek belgeler</h2>
-    <p>Mevcut CV, başvurulacak iş ilanı veya bağlantısı, eğitim ve iş deneyimi bilgileri, varsa sertifika ve çalışma belgeleri.</p>
-    <p><strong>E-posta:</strong> <a href="mailto:charlysmoky2010@gmail.com">charlysmoky2010@gmail.com</a></p>
+  <section class="lang-panel" data-panel="de" hidden>
+    <section class="hero"><div class="eyebrow">Englische Kernstruktur · Mehrsprachige Lieferung</div><h1>Career Application Express</h1><p class="lead">Faktenbasierter Lebenslauf, stellenbezogenes Anschreiben und versandfertige Bewerbungs-E-Mail für Ihr Zielland und Ihre Zielsprache. KI-gestützter Entwurf, menschliche Prüfung und kein automatischer Versand.</p><div class="trust-row"><span class="pill">Menschlich geprüft</span><span class="pill">Keine erfundenen Angaben</span><span class="pill">Englisch · Deutsch · Türkisch</span><span class="pill">Weitere Sprachen auf Anfrage</span></div><div class="price">49 €</div><p>Einmalige Zahlung. Die 48-Stunden-Frist beginnt nach Zahlungseingang und nachdem alle erforderlichen Angaben vollständig vorliegen.</p><div class="actions"><a class="btn primary" href="https://book.stripe.com/28E28ragc1Todph3QJ6Na10" rel="noopener">Sicher bezahlen</a><a class="btn secondary" href="sample.html">Fiktives Beispiel ansehen</a></div></section>
+    <div class="grid"><section class="card"><h2>Lieferumfang</h2><ul><li>Ein professionell strukturierter Lebenslauf</li><li>Ein stellenbezogenes Anschreiben</li><li>Eine versandfertige Bewerbungs-E-Mail</li><li>PDF und bearbeitbare Datei</li><li>Eine kleine Korrekturrunde</li></ul></section><section class="card"><h2>Benötigte Angaben</h2><ul><li>Vorhandener Lebenslauf oder beruflicher Werdegang</li><li>Stellenanzeige oder Rollenbeschreibung</li><li>Ausbildung, Zertifikate und belegbare Fähigkeiten</li><li>Zielland und Zielsprache</li><li>Wahrheitsgemäße Erfolge, die hervorgehoben werden sollen</li></ul></section></div>
+    <section class="card section trust"><h2>Wer erstellt die Unterlagen?</h2><p>Der Service wird von <strong>Yusuf Şen</strong> angeboten und persönlich betreut. KI-gestützte Werkzeuge können zur Strukturierung und für erste Entwürfe eingesetzt werden. Jedes Enddokument wird von einem Menschen geprüft. Berufserfahrung, Qualifikationen, Zertifikate oder persönliche Angaben werden nicht erfunden.</p><p><strong>Ihre Bewerbung wird niemals automatisch versendet.</strong> Sie erhalten die Dateien und entscheiden selbst über den Versand.</p></section>
+    <div class="grid"><section class="card"><h2>Daten</h2><p>Ihre Unterlagen werden ausschließlich zur Erbringung des gebuchten Services verwendet, nicht verkauft und nicht ohne Ihre Anweisung an Arbeitgeber übermittelt.</p></section><section class="card"><h2>Keine Erfolgsgarantie</h2><p>Verbessert werden Struktur, Sprache und Stellenbezug. Ein Vorstellungsgespräch, Visum oder Arbeitsvertrag wird nicht garantiert.</p></section></div>
+    <div class="note section"><strong>Vor dem Kauf:</strong> Lesen Sie die <a href="transparency.html">Transparenz-, KI-, Korrektur-, Storno- und Datenhinweise</a>.</div>
   </section>
 
-  <div class="note"><strong>Önemli:</strong> Hizmet başvuru belgelerini profesyonel biçimde hazırlar. İş görüşmesi, kabul veya iş sözleşmesi garanti edilmez. Yanlış veya uydurma bilgi eklenmez.</div>
+  <section class="lang-panel" data-panel="tr" hidden>
+    <section class="hero"><div class="eyebrow">İngilizce merkezli · Çok dilli teslimat</div><h1>Career Application Express</h1><p class="lead">Hedef ülke ve dile göre gerçek bilgilere dayalı CV, ilana özel ön yazı ve göndermeye hazır başvuru e-postası. AI destekli taslak, insan kontrolü ve otomatik başvuru gönderimi yok.</p><div class="trust-row"><span class="pill">İnsan kontrollü</span><span class="pill">Uydurma bilgi yok</span><span class="pill">İngilizce · Almanca · Türkçe</span><span class="pill">Diğer diller talep üzerine</span></div><div class="price">49 €</div><p>Tek seferlik ödeme. 48 saatlik teslim süresi, ödeme ve tüm gerekli bilgiler tamamlandıktan sonra başlar.</p><div class="actions"><a class="btn primary" href="https://book.stripe.com/28E28ragc1Todph3QJ6Na10" rel="noopener">Güvenli ödemeyi aç</a><a class="btn secondary" href="sample.html">Kurgusal örneği gör</a></div></section>
+    <div class="grid"><section class="card"><h2>Teslim edilenler</h2><ul><li>Profesyonel biçimde yapılandırılmış bir CV</li><li>Belirli ilana uygun bir ön yazı</li><li>Göndermeye hazır başvuru e-postası</li><li>PDF ve düzenlenebilir dosya</li><li>Bir küçük düzeltme turu</li></ul></section><section class="card"><h2>Sizden gerekenler</h2><ul><li>Mevcut CV veya çalışma geçmişi</li><li>İş ilanı veya rol açıklaması</li><li>Eğitim, sertifika ve doğrulanabilir beceriler</li><li>Hedef ülke ve hedef dil</li><li>Vurgulanmasını istediğiniz gerçek başarılar</li></ul></section></div>
+    <section class="card section trust"><h2>İşi kim yapıyor?</h2><p>Hizmet <strong>Yusuf Şen</strong> tarafından sunulur ve kişisel olarak denetlenir. Bilgileri düzenlemek ve ilk taslağı oluşturmak için AI destekli araçlar kullanılabilir. Her nihai belge insan tarafından kontrol edilir. İş deneyimi, eğitim, sertifika, başarı veya kişisel bilgi uydurulmaz.</p><p><strong>Başvurunuz hiçbir zaman otomatik gönderilmez.</strong> Dosyaları siz alır, kontrol eder ve ne zaman nereye göndereceğinize siz karar verirsiniz.</p></section>
+    <div class="grid"><section class="card"><h2>Verileriniz</h2><p>Belgeleriniz yalnızca satın aldığınız hizmeti sunmak için kullanılır; satılmaz ve talimatınız olmadan işverenlere gönderilmez.</p></section><section class="card"><h2>Sınırlar</h2><p>Hizmet belge yapısını, dili ve ilana uygunluğu geliştirir. Görüşme, vize, kabul veya iş sözleşmesi garanti edilmez.</p></section></div>
+    <div class="note section"><strong>Satın almadan önce:</strong> <a href="transparency.html">şeffaflık, AI kullanımı, düzeltme, iptal ve veri özeti</a> bölümünü okuyun.</div>
+  </section>
 
-  <div class="footer">Anbieter: Yusuf Şen · Kontakt: charlysmoky2010@gmail.com · Zahlungs- und Pflichtangaben werden im Stripe-Checkout angezeigt.</div>
+  <footer class="footer">Service provider: Yusuf Şen · Emsdetten, Germany · <a href="mailto:charlysmoky2010@gmail.com">charlysmoky2010@gmail.com</a><br>Operational transparency summary provided for customer clarity; statutory customer rights remain unaffected.</footer>
 </main>
+<script>
+  const buttons=[...document.querySelectorAll('.lang-btn')];
+  const panels=[...document.querySelectorAll('.lang-panel')];
+  function showLanguage(lang){
+    panels.forEach(p=>p.hidden=p.dataset.panel!==lang);
+    buttons.forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+    document.documentElement.lang=lang;
+    localStorage.setItem('career-express-language',lang);
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>showLanguage(b.dataset.lang)));
+  const saved=localStorage.getItem('career-express-language');
+  if(['en','de','tr'].includes(saved))showLanguage(saved);
+</script>
 </body>
 </html>
