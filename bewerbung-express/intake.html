@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Secure Intake | Career Application Express</title>
+  <style>
+    :root{--ink:#17212b;--muted:#5c6772;--paper:#f5f1e9;--card:#fff;--accent:#c94e36;--line:#d9d1c6;--ok:#e8f5ec;--warn:#fff5e6;--danger:#fff0ef}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55}.wrap{max-width:880px;margin:auto;padding:24px 18px 72px}.top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}.brand{font-weight:950}.langs{display:flex;gap:8px}.lang{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer}.lang.active{background:var(--ink);color:#fff}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 14px 38px rgba(36,28,20,.07);margin-top:16px}h1{font-size:clamp(38px,7vw,68px);line-height:1;letter-spacing:-.05em;margin:12px 0}.lead{font-size:19px;color:var(--muted)}label{display:block;font-weight:850;margin:16px 0 7px}input,select,textarea{width:100%;padding:13px 14px;border:1px solid #bbb2a8;border-radius:12px;background:#fff;color:var(--ink);font:inherit}textarea{min-height:120px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.btn{border:0;border-radius:13px;padding:15px 20px;background:var(--accent);color:#fff;font-weight:950;font-size:16px;cursor:pointer;margin-top:18px}.btn[disabled]{opacity:.55;cursor:not-allowed}.secondary{background:var(--ink)}.status{padding:15px 17px;border-radius:13px;margin-top:16px;background:var(--warn)}.status.ok{background:var(--ok)}.status.error{background:var(--danger)}.small{font-size:13px;color:var(--muted)}.checks label{font-weight:600;display:flex;gap:10px;align-items:flex-start}.checks input{width:auto;margin-top:4px}.hidden{display:none}.progress{height:10px;background:#ece7df;border-radius:999px;overflow:hidden;margin-top:15px}.bar{height:100%;width:0;background:var(--accent);transition:width .25s}.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px}@media(max-width:700px){.grid{grid-template-columns:1fr}.card{padding:22px}.top{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div class="brand">CAREER APPLICATION EXPRESS</div>
+    <div class="langs" aria-label="Language">
+      <button class="lang active" data-lang="en">EN</button><button class="lang" data-lang="de">DE</button><button class="lang" data-lang="tr">TR</button>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="small">SECURE POST-PAYMENT INTAKE</div>
+    <h1 data-t="title">Complete your application brief.</h1>
+    <p class="lead" data-t="lead">Your payment must be verified before documents can be uploaded. Files are stored in a private bucket and are not publicly accessible.</p>
+    <div id="sessionWarning" class="status error hidden" data-t="missingSession">The Stripe checkout reference is missing. Open this page from your payment confirmation.</div>
+
+    <form id="verifyForm">
+      <label for="email" data-t="paymentEmail">Email used at checkout</label>
+      <input id="email" type="email" autocomplete="email" required placeholder="name@example.com">
+      <button id="verifyButton" class="btn secondary" type="submit" data-t="verify">Verify payment</button>
+    </form>
+    <div id="verifyStatus" class="status hidden" role="status"></div>
+  </section>
+
+  <form id="intakeForm" class="card hidden">
+    <h2 data-t="details">Application details</h2>
+    <div class="grid">
+      <div><label for="sourceLanguage" data-t="sourceLanguage">Source language</label><input id="sourceLanguage" maxlength="40" placeholder="e.g. English, Arabic, Turkish"></div>
+      <div><label for="targetLanguage" data-t="targetLanguage">Target output language</label><select id="targetLanguage" required><option value="">Select</option><option value="en">English</option><option value="de">German</option><option value="tr">Turkish</option><option value="other">Other — confirm by email</option></select></div>
+      <div><label for="targetCountry" data-t="targetCountry">Target country</label><input id="targetCountry" required maxlength="100"></div>
+      <div><label for="targetRole" data-t="targetRole">Target role or job title</label><input id="targetRole" required maxlength="160"></div>
+    </div>
+
+    <label for="jobUrl" data-t="jobUrl">Job advertisement URL</label>
+    <input id="jobUrl" type="url" maxlength="1000" placeholder="https://…">
+    <label for="jobDescription" data-t="jobDescription">Or paste the job description</label>
+    <textarea id="jobDescription" maxlength="8000"></textarea>
+    <label for="profileNotes" data-t="profileNotes">Important profile facts or instructions</label>
+    <textarea id="profileNotes" maxlength="8000" data-placeholder="profilePlaceholder" placeholder="Only include facts that can be verified from your documents or information."></textarea>
+
+    <label for="files" data-t="documents">Documents</label>
+    <input id="files" type="file" required multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png">
+    <p class="small" data-t="fileHelp">Upload 1–5 files. Maximum 10 MB per file. Accepted: PDF, DOC, DOCX, TXT, JPG and PNG. Do not upload passwords, bank details or unrelated sensitive records.</p>
+
+    <div class="checks">
+      <label><input id="factConsent" type="checkbox" required><span data-t="factConsent">I confirm that the service must use only truthful, fact-based information. No qualification or experience may be invented.</span></label>
+      <label><input id="aiConsent" type="checkbox" required><span data-t="aiConsent">I understand that AI-assisted tools may be used for drafting and that a human review is required before delivery.</span></label>
+      <label><input id="privacyConsent" type="checkbox" required><span data-t="privacyConsent">I consent to processing these documents for this order. Working files are scheduled for deletion 30 days after intake completion.</span></label>
+    </div>
+
+    <button id="submitButton" class="btn" type="submit" data-t="submit">Upload securely and submit</button>
+    <div class="progress hidden" id="progress"><div class="bar" id="bar"></div></div>
+    <div id="submitStatus" class="status hidden" role="status"></div>
+  </form>
+
+  <div class="footer"><a href="transparency.html">Service transparency</a> · Operator: Yusuf Şen · Support: <a href="mailto:charlysmoky2010@gmail.com">charlysmoky2010@gmail.com</a></div>
+</main>
+
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
+
+const PROJECT_URL = "https://vlgibwclecuhnnrgycnx.supabase.co";
+const PUBLISHABLE_KEY = "sb_publishable_AE6_88Ue_rI9s7kDpibajw_SnhMJJNL";
+const API = `${PROJECT_URL}/functions/v1/career-application-intake`;
+const supabase = createClient(PROJECT_URL, PUBLISHABLE_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
+const sessionId = new URLSearchParams(location.search).get("session_id") || "";
+let verifiedEmail = "";
+
+const text = {
+  en:{title:"Complete your application brief.",lead:"Your payment must be verified before documents can be uploaded. Files are stored in a private bucket and are not publicly accessible.",missingSession:"The Stripe checkout reference is missing. Open this page from your payment confirmation.",paymentEmail:"Email used at checkout",verify:"Verify payment",verifying:"Verifying payment…",verified:"Payment verified. Complete the secure brief below.",pending:"The payment record is still being verified. Try again in a few seconds.",mismatch:"No paid order matched that checkout email.",details:"Application details",sourceLanguage:"Source language",targetLanguage:"Target output language",targetCountry:"Target country",targetRole:"Target role or job title",jobUrl:"Job advertisement URL",jobDescription:"Or paste the job description",profileNotes:"Important profile facts or instructions",profilePlaceholder:"Only include facts that can be verified from your documents or information.",documents:"Documents",fileHelp:"Upload 1–5 files. Maximum 10 MB per file. Accepted: PDF, DOC, DOCX, TXT, JPG and PNG. Do not upload passwords, bank details or unrelated sensitive records.",factConsent:"I confirm that the service must use only truthful, fact-based information. No qualification or experience may be invented.",aiConsent:"I understand that AI-assisted tools may be used for drafting and that a human review is required before delivery.",privacyConsent:"I consent to processing these documents for this order. Working files are scheduled for deletion 30 days after intake completion.",submit:"Upload securely and submit",uploading:"Uploading securely…",complete:"Documents received. Your order is now waiting for human review. You do not need to pay again.",failed:"The submission could not be completed. Your payment is not lost; contact support with your checkout email."},
+  de:{title:"Vervollständigen Sie Ihren Bewerbungsauftrag.",lead:"Vor dem Dokumentenupload wird die Zahlung geprüft. Dateien werden privat gespeichert und sind nicht öffentlich zugänglich.",missingSession:"Die Stripe-Bestellreferenz fehlt. Öffnen Sie diese Seite aus Ihrer Zahlungsbestätigung.",paymentEmail:"Beim Checkout verwendete E-Mail",verify:"Zahlung prüfen",verifying:"Zahlung wird geprüft…",verified:"Zahlung bestätigt. Füllen Sie nun den sicheren Auftrag aus.",pending:"Der Zahlungseintrag wird noch verarbeitet. Versuchen Sie es in einigen Sekunden erneut.",mismatch:"Für diese Checkout-E-Mail wurde keine bezahlte Bestellung gefunden.",details:"Bewerbungsdetails",sourceLanguage:"Ausgangssprache",targetLanguage:"Zielsprache",targetCountry:"Zielland",targetRole:"Zielposition oder Berufsbezeichnung",jobUrl:"Link zur Stellenanzeige",jobDescription:"Oder Stellenanzeige einfügen",profileNotes:"Wichtige Profilangaben oder Hinweise",profilePlaceholder:"Nur nachprüfbare Angaben aus Ihren Unterlagen oder Informationen eintragen.",documents:"Dokumente",fileHelp:"1–5 Dateien, maximal 10 MB je Datei. PDF, DOC, DOCX, TXT, JPG und PNG. Keine Passwörter, Bankdaten oder sachfremden sensiblen Unterlagen hochladen.",factConsent:"Ich bestätige, dass nur wahrheitsgemäße Angaben verwendet werden dürfen. Qualifikationen oder Erfahrungen dürfen nicht erfunden werden.",aiConsent:"Ich verstehe, dass KI-gestützte Werkzeuge für Entwürfe verwendet werden können und vor der Lieferung eine menschliche Prüfung erforderlich ist.",privacyConsent:"Ich stimme der Verarbeitung für diesen Auftrag zu. Arbeitsdateien sind 30 Tage nach Abschluss der Aufnahme zur Löschung vorgesehen.",submit:"Sicher hochladen und absenden",uploading:"Sicherer Upload läuft…",complete:"Dokumente empfangen. Der Auftrag wartet jetzt auf menschliche Prüfung. Bitte nicht erneut bezahlen.",failed:"Die Übermittlung konnte nicht abgeschlossen werden. Ihre Zahlung ist nicht verloren; kontaktieren Sie den Support mit Ihrer Checkout-E-Mail."},
+  tr:{title:"Başvuru bilgilerinizi tamamlayın.",lead:"Belge yüklemeden önce ödeme doğrulanır. Dosyalar özel alanda saklanır ve herkese açık değildir.",missingSession:"Stripe sipariş referansı eksik. Bu sayfayı ödeme onayından açın.",paymentEmail:"Ödemede kullanılan e-posta",verify:"Ödemeyi doğrula",verifying:"Ödeme doğrulanıyor…",verified:"Ödeme doğrulandı. Aşağıdaki güvenli formu tamamlayın.",pending:"Ödeme kaydı hâlâ işleniyor. Birkaç saniye sonra tekrar deneyin.",mismatch:"Bu ödeme e-postasıyla eşleşen ücretli sipariş bulunamadı.",details:"Başvuru ayrıntıları",sourceLanguage:"Kaynak dil",targetLanguage:"Hedef çıktı dili",targetCountry:"Hedef ülke",targetRole:"Hedef görev veya meslek",jobUrl:"İş ilanı bağlantısı",jobDescription:"Veya iş ilanı metnini yapıştırın",profileNotes:"Önemli profil bilgileri veya talimatlar",profilePlaceholder:"Yalnızca belgeleriniz veya bilgilerinizle doğrulanabilen gerçekleri ekleyin.",documents:"Belgeler",fileHelp:"1–5 dosya yükleyin. Dosya başına en fazla 10 MB. PDF, DOC, DOCX, TXT, JPG ve PNG. Parola, banka bilgisi veya ilgisiz hassas kayıt yüklemeyin.",factConsent:"Hizmette yalnızca doğru ve gerçek bilginin kullanılacağını onaylıyorum. Eğitim, deneyim veya yeterlilik uydurulamaz.",aiConsent:"Taslaklarda AI destekli araçların kullanılabileceğini ve teslimden önce insan kontrolü gerektiğini anlıyorum.",privacyConsent:"Belgelerin bu sipariş için işlenmesine izin veriyorum. Çalışma dosyaları form tamamlandıktan 30 gün sonra silinmek üzere planlanır.",submit:"Güvenli yükle ve gönder",uploading:"Güvenli yükleme yapılıyor…",complete:"Belgeler alındı. Sipariş artık insan kontrolü bekliyor. Yeniden ödeme yapmayın.",failed:"Gönderim tamamlanamadı. Ödemeniz kaybolmadı; ödeme e-postanızla desteğe başvurun."}
+};
+let lang = "en";
+function applyLanguage(next){lang=next;document.documentElement.lang=lang;document.querySelectorAll("[data-t]").forEach(el=>{const key=el.dataset.t;if(text[lang][key])el.textContent=text[lang][key]});document.querySelectorAll("[data-placeholder]").forEach(el=>{const key=el.dataset.placeholder;if(text[lang][key])el.placeholder=text[lang][key]});document.querySelectorAll(".lang").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));}
+document.querySelectorAll(".lang").forEach(b=>b.addEventListener("click",()=>applyLanguage(b.dataset.lang)));
+
+function show(el,message,type=""){el.textContent=message;el.className=`status ${type}`.trim();}
+async function api(payload){const response=await fetch(API,{method:"POST",headers:{"content-type":"application/json","apikey":PUBLISHABLE_KEY},body:JSON.stringify(payload)});const data=await response.json().catch(()=>({}));return {response,data};}
+
+if(!sessionId){document.getElementById("sessionWarning").classList.remove("hidden");document.getElementById("verifyForm").classList.add("hidden");}
+
+document.getElementById("verifyForm").addEventListener("submit",async(event)=>{
+  event.preventDefault();const button=document.getElementById("verifyButton");const status=document.getElementById("verifyStatus");verifiedEmail=document.getElementById("email").value.trim().toLowerCase();button.disabled=true;show(status,text[lang].verifying);
+  try{const {response,data}=await api({action:"verify",session_id:sessionId,email:verifiedEmail});if(response.status===202){show(status,text[lang].pending);return}if(!response.ok||!data.ok){show(status,text[lang].mismatch,"error");return}show(status,text[lang].verified,"ok");const fields=data.checkout_fields||{};document.getElementById("targetCountry").value=fields.target_country||"";document.getElementById("targetLanguage").value=fields.target_language||"";document.getElementById("targetRole").value=fields.target_role||"";document.getElementById("intakeForm").classList.remove("hidden");document.getElementById("verifyForm").classList.add("hidden");}catch{show(status,text[lang].failed,"error")}finally{button.disabled=false}
+});
+
+document.getElementById("intakeForm").addEventListener("submit",async(event)=>{
+  event.preventDefault();const button=document.getElementById("submitButton");const status=document.getElementById("submitStatus");const files=[...document.getElementById("files").files];if(files.length<1||files.length>5){show(status,text[lang].failed,"error");return}if(!document.getElementById("jobUrl").value.trim()&&!document.getElementById("jobDescription").value.trim()){show(status,"Provide a job URL or paste the job description.","error");return}button.disabled=true;document.getElementById("progress").classList.remove("hidden");show(status,text[lang].uploading);
+  try{
+    const prep=await api({action:"prepare_uploads",session_id:sessionId,email:verifiedEmail,files:files.map(f=>({name:f.name,type:f.type,size:f.size}))});if(!prep.response.ok||!prep.data.ok)throw new Error("prepare_failed");const paths=[];
+    for(let i=0;i<files.length;i++){const u=prep.data.uploads[i];const {error}=await supabase.storage.from(prep.data.bucket).uploadToSignedUrl(u.path,u.token,files[i],{contentType:files[i].type,upsert:false});if(error)throw error;paths.push(u.path);document.getElementById("bar").style.width=`${Math.round(((i+1)/files.length)*75)}%`;}
+    const final=await api({action:"finalize",session_id:sessionId,email:verifiedEmail,source_language:document.getElementById("sourceLanguage").value,target_language:document.getElementById("targetLanguage").value,target_country:document.getElementById("targetCountry").value,target_role:document.getElementById("targetRole").value,job_url:document.getElementById("jobUrl").value,job_description:document.getElementById("jobDescription").value,profile_notes:document.getElementById("profileNotes").value,uploaded_paths:paths,consents:{fact_based:document.getElementById("factConsent").checked,ai_assisted:document.getElementById("aiConsent").checked,privacy:document.getElementById("privacyConsent").checked}});if(!final.response.ok||!final.data.ok)throw new Error("finalize_failed");document.getElementById("bar").style.width="100%";show(status,text[lang].complete,"ok");button.classList.add("hidden");document.querySelectorAll("#intakeForm input,#intakeForm select,#intakeForm textarea").forEach(el=>el.disabled=true);
+  }catch(error){console.error(error);show(status,text[lang].failed,"error");button.disabled=false}
+});
+</script>
+</body>
+</html>
