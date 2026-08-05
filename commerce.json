@@ -1,6 +1,6 @@
 {
   "schema": "cerberrus.commerce.hub.v1",
-  "updated": "2026-07-24",
+  "updated": "2026-08-05",
   "brand": {
     "system": "CERBERRUS144",
     "public_hub": "CERBERRUS Commerce Hub",
@@ -64,12 +64,19 @@
     },
     {
       "id": "bewerbung-express",
-      "name": "Bewerbung Express 48h",
+      "name": "Career Application Express",
       "category": "digital_service",
       "price_label": "€49",
       "status": "live_checkout",
       "checkout": "https://book.stripe.com/28E28ragc1Todph3QJ6Na10",
-      "landing": "https://bewerbung-match-de-tr.vercel.app"
+      "landing": "https://charlysmoky2010-hub.github.io/bewerbung-express/",
+      "architecture": "english_first_multilingual_delivery",
+      "supported_languages": [
+        "en",
+        "de",
+        "tr"
+      ],
+      "trust": "ai_assisted_human_reviewed_fact_based_no_auto_submission"
     },
     {
       "id": "phi-nexus",
