@@ -1,0 +1,14 @@
+const OFFLINE={
+  palette:'Start with three pigments, not six. Keep one dark anchor, one earth tone and one breathing light tone. If the field feels muddy, reduce repeated over-dropping before changing colour.',
+  lale:'For a Lale study, first build a quiet Battal field. Place one controlled drop stack, then pull the petal structure with a needle. Keep the background calmer than the flower.',
+  battal:'Battal is the field, not the finale. Let each drop open before adding the next. If everything becomes equally busy, stop and let negative space remain.',
+  material:'Physical Ebru depends on the relationship between pigment, gall, prepared water/size and paper. A digital study can rehearse composition, but it cannot reproduce the physical chemistry.',
+  workshop:'Water & Memory is designed as a three-hour analog workshop for 8–10 adults. The digital atelier can be an optional introduction or reflection layer, not the core activity.',
+  atlas:'For Anatolian Atlas, begin with 3–7 concrete milestones: a place, a departure, a first home, a person, a loss, a return or a future wish. Keep sensitive details local unless you deliberately export them.'
+};
+function offlineReply(q){const s=q.toLowerCase();if(/lale|tulip|tulpe/.test(s))return OFFLINE.lale;if(/battal/.test(s))return OFFLINE.battal;if(/renk|colour|color|farbe|palette/.test(s))return OFFLINE.palette;if(/malzeme|material|kitre|öd|gall/.test(s))return OFFLINE.material;if(/workshop|kurs|atölye/.test(s))return OFFLINE.workshop;if(/atlas|göç|migration|hafıza|memory|erinner/.test(s))return OFFLINE.atlas;return 'Offline Guide is active. Ask me about Battal, Lale, palette balance, materials, the Water & Memory workshop, or Anatolian Atlas. Connect local Ollama for open-ended dialogue.'}
+export class EbruliGuide{
+ constructor({endpoint='http://127.0.0.1:11434',model='qwen3.5:4b'}={}){this.endpoint=endpoint;this.model=model;this.online=false}
+ async health(){try{const r=await fetch(`${this.endpoint}/api/tags`,{signal:AbortSignal.timeout(1800)});this.online=r.ok;return this.online}catch{this.online=false;return false}}
+ async chat(q){if(!this.online)return {text:offlineReply(q),mode:'offline'};try{const r=await fetch(`${this.endpoint}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.model,stream:false,messages:[{role:'system',content:'You are EBRULİ Guide. Help with traditional Ebru technique, careful palette reasoning, workshops and Anatolian Atlas. Never claim digital output is a physical Yusuf Şen work. Be concise, practical and truthful. If uncertain, say so.'},{role:'user',content:q}]})});if(!r.ok)throw new Error('Ollama error');const d=await r.json();return{text:d.message?.content||'No response.',mode:'local'}}catch{this.online=false;return{text:offlineReply(q),mode:'offline'}}}
+}
