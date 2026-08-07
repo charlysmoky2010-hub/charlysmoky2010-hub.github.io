@@ -1,0 +1,10 @@
+{
+  "name": "EBRULİ — Water, Memory & Intelligence",
+  "short_name": "EBRULİ",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f1eadb",
+  "theme_color": "#f1eadb",
+  "description": "Physical Ebru, local-first digital atelier and Anatolian Atlas by Yusuf Şen.",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
