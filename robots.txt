@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://charlysmoky2010-hub.github.io/sitemap.xml
+Sitemap: https://charlysmoky2010-hub.github.io/ai-guardrails-protocol/sitemap.xml
+Sitemap: https://charlysmoky2010-hub.github.io/athena-offline-decision-toolkit/sitemap.xml
