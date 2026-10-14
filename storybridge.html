@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d0f14" />
+  <title>StoryBridge Family — İki Ülke, Bir Aile | Zwei Länder, eine Familie</title>
+  <meta name="description" content="Almanya'daki Türk ve göçmen ailelerin hikayelerini, kökenlerini ve çocukluk anılarını kaydetmek için 64 sayfalık iki dilli (Türkçe & Almanca) aile anı kitabı." />
+  <meta property="og:title" content="StoryBridge Family — Bir Aile Anı Kitabı" />
+  <meta property="og:description" content="64 Sayfalık rehberli, iki dilli dijital aile günlüğü. Anında indir, evinde yazdır." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --card: #131720;
+      --card-border: rgba(224, 185, 114, 0.2);
+      --gold: #e2ba72;
+      --gold-bright: #f5d799;
+      --text: #f7f3eb;
+      --muted: #a69f91;
+      --accent: #4a9e72;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 0%, rgba(226, 186, 114, 0.12), transparent 40%),
+                  linear-gradient(180deg, #0d0f14 0%, #08090c 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      padding: 0 16px 80px;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    header {
+      padding: 48px 0 24px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(226, 186, 114, 0.1);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 6vw, 44px);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .quote-box {
+      background: var(--card);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px 12px 12px 4px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      font-family: Georgia, serif;
+      font-style: italic;
+      color: #ded7ca;
+      font-size: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .card h2 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .price-tag {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .price {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--gold-bright);
+      line-height: 1;
+    }
+    .price-sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .features-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+    .features-list li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      color: #ded7ca;
+      font-size: 15px;
+    }
+    .features-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .sample-preview {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px dashed var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+    .sample-preview h3 {
+      font-size: 15px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sample-item {
+      margin-bottom: 14px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 10px;
+    }
+    .sample-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .sample-de { color: #8e95a5; font-style: italic; }
+    .sample-tr { color: #f7f3eb; font-weight: 500; }
+    .cta-button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(135deg, var(--gold) 0%, #b88f42 100%);
+      color: #0b0d12;
+      font-weight: 800;
+      font-size: 17px;
+      padding: 18px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(226, 186, 114, 0.3);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      margin-top: 24px;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+    .guarantee {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+    .guarantee span {
+      color: var(--accent);
+      margin-right: 6px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="badge">StoryBridge Family · Dijital Koleksiyon</div>
+      <h1>İki Ülke, <span>Bir Aile</span></h1>
+      <p class="subtitle">Zwei Länder, eine Familie — Hikâyeleri koru. Kökleri hatırla. Nesilleri birbirine bağla.</p>
+    </header>
+
+    <div class="quote-box">
+      "Büyüklerimizin çocuklukları, köyleri, Almanya'ya ilk geliş trenleri, o tahta bavullar ve verdikleri emekler... Biz onları dinleyip yazmazsak, bir nesil sonra hepsi kaybolup gidecek."
+    </div>
+
+    <div class="card">
+      <h2>StoryBridge Aile Anı Kitabı</h2>
+      <p style="color: #ded7ca; font-size: 15px;">
+        Anne-babalarımızla, dedelerimizle bir çay eşliğinde oturup konuşmak, hatıralarını ve aile ağacımızı kalıcı kılmak için özel olarak tasarlanmış <strong>64 sayfalık iki dilli rehber kitap</strong>.
+      </p>
+
+      <div class="price-tag">
+        <div class="price">€14.90</div>
+        <div class="price-sub">Tek seferlik ödeme · Anında dijital indirme</div>
+      </div>
+
+      <ul class="features-list">
+        <li><strong>Paket İçeriği:</strong> Türkçe-Almanca, Türkçe-İngilizce ve tek dilli toplam <strong>8 ayrı tam PDF (her biri 64 sayfa)</strong>.</li>
+        <li><strong>Format:</strong> Hem ev tipi yazıcılar (A4) hem US Letter ebatında, çift taraflı baskıya hazır.</li>
+        <li><strong>İçerik:</strong> Soyadı hikayesi, aile ağacı, ilk aşklar, göç yolculuğu, memleket anıları, bayram gelenekleri ve aileye bırakılan öğütler.</li>
+        <li><strong>Gizlilik:</strong> Tamamen sizin ailenize aittir. Bilgisayarınıza iner, yazdırılır veya dijital olarak doldurulur.</li>
+      </ul>
+
+      <div class="sample-preview">
+        <h3>Kitaptan Örnek Sorular / Ein Blick ins Buch</h3>
+        
+        <div class="sample-item">
+          <div class="sample-tr">✦ "Adının arkasında hangi hikâye var? Adını kim seçti?"</div>
+          <div class="sample-de">Welche Geschichte steckt hinter deinem Namen? Wer hat ihn gewählt?</div>
+        </div>
+
+        <div class="sample-item">
+          <div class="sample-tr">✦ "Çocukluğunun geçtiği evi ve o sokaktaki kokuları nasıl hatırlıyorsun?"</div>
+          <div class="sample-de">Wie erinnerst du dich an das Haus deiner Kindheit und die Gerüche dieser Straße?</div>
+        </div>
+
+        <div class="sample-item">
+          <div class="sample-tr">✦ "Bu ülkeye ilk geldiğin günü hatırla. Seni en çok ne şaşırtmıştı?"</div>
+          <div class="sample-de">Erinnere dich an den ersten Tag in diesem Land. Was hat dich am meisten überrascht?</div>
+        </div>
+
+        <div class="sample-item">
+          <div class="sample-tr">✦ "Bizim ailemizin mutfağında pişen, tarifi sadece bize ait olan o yemek neydi?"</div>
+          <div class="sample-de">Welches Gericht aus unserer Familienküche hat ein Rezept, das nur uns gehört?</div>
+        </div>
+      </div>
+
+      <a class="cta-button" href="https://buy.stripe.com/5kQeVdagcfKeetl9b36Na0R">
+        Kitap Paketini İndir — €14.90
+      </a>
+      
+      <div class="guarantee">
+        <span>✓</span> Stripe güvencesiyle 256-bit şifreli güvenli ödeme. Kredi kartı, Apple Pay, Giropay / Sofort desteklenir.
+      </div>
+    </div>
+
+    <footer>
+      <p>© StoryBridge Family · Tasarım & Editörlük: Yusuf Şen</p>
+      <p style="margin-top: 8px;">
+        <a href="offers.html">Tüm Ürünler</a> · <a href="mailto:yusuf@phi-brain.de">İletişim</a>
+      </p>
+    </footer>
+  </div>
+
+</body>
+</html>
