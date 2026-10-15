@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Try ATHENA ΦOS: a free private two-option decision matrix. Compare cost, usefulness and uncertainty in your own browser. Optional offline toolkit with four options.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#192f36">
+<link rel="canonical" href="https://charlysmoky2010-hub.github.io/athena-offline-decision-toolkit/">
+<title>ATHENA ΦOS — Free Private Decision Lab</title>
+<style>
+:root{color-scheme:light;--dark:#17333b;--teal:#36685d;--gold:#b57d44;--paper:#faf7f0;--ink:#17313a;--muted:#526971;--line:#d7d5ce;--white:#fff}*{box-sizing:border-box}
+html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #be8745;outline-offset:3px}
+.wrap{width:min(1120px,calc(100% - 42px));margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:23px 0;border-bottom:1px solid var(--line)}
+.brand{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:700;text-decoration:none;letter-spacing:.02em}.brand span{color:#ac7739}nav{display:flex;gap:24px;flex-wrap:wrap;font-size:13px;font-weight:600}nav a{text-decoration:none}nav a:hover{text-decoration:underline}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:9%;align-items:center;padding:90px 0 90px}
+.eyebrow{font-size:11px;letter-spacing:.19em;color:#997040;font-weight:750;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.045em}
+h1{font-size:clamp(45px,6.3vw,82px);line-height:1.08;margin:19px 0 24px}h1 em{color:var(--teal)}
+.lead{font-size:18px;line-height:1.85;color:#52666a;max-width:620px}
+.note{font-size:12px;color:#718282;margin:16px 0}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:49px;padding:11px 19px;border-radius:5px;background:var(--dark);color:white;font-size:14px;font-weight:750;text-decoration:none;border:1px solid var(--dark);cursor:pointer}
+.button:hover{background:#2e5857}.button.secondary{background:transparent;color:var(--dark)}.button.secondary:hover{background:#eaece8}
+.hero-art{position:relative;min-height:342px;border:1px solid #c3cabf;background:radial-gradient(circle at 40% 35%,#8fbdad60,transparent 65%),linear-gradient(135deg,#214b50,#112d34);border-radius:180px 180px 7px 7px;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.orb{position:absolute;width:72%;aspect-ratio:1;border:1px solid #e9d2a568;border-radius:50%}.orb.two{width:51%;border-style:dashed;transform:rotate(18deg)}.orb.three{width:27%;border-width:2px}.star{position:relative;font:128px Georgia,serif;color:#e9d2a5;text-shadow:0 0 32px #e5c996a1;line-height:1}.art-caption{position:absolute;bottom:18px;left:20px;right:20px;font-size:9px;color:#e3ead6;letter-spacing:.1em;text-align:center}
+.lab-bg{background:#e9ebe6;border-top:1px solid #d4d8d1;border-bottom:1px solid #d4d8d1;padding:76px 0}
+.title-row{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}.title-row h2{font-size:clamp(35px,4vw,54px);margin:7px 0 8px}.micro{font-size:12px;color:#577068;max-width:340px}
+.workspace{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:30px}
+.panel{background:#fff;border:1px solid #d3d7d0;border-radius:9px;padding:25px;box-shadow:0 9px 25px #193b3b0a}
+.panel h3{font-size:25px;margin:0 0 16px}.form-row{margin-bottom:20px}
+label{display:block;font-size:12px;letter-spacing:.02em;font-weight:750;color:#3f5958;margin-bottom:6px}
+input[type=text],textarea{width:100%;border:1px solid #cbd3ce;border-radius:5px;padding:11px 12px;font:inherit;font-size:15px;color:var(--ink);background:#fbfcfa}
+textarea{resize:vertical;min-height:70px}.criterion{margin-bottom:17px}.criterion>div{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}.criterion input[type=range]{width:100%;accent-color:#477766}
+.scale-hint{display:block;color:#6b7e77;font-size:11px}.row-actions{margin:21px 0;display:flex;flex-wrap:wrap;gap:10px}
+.result{padding:29px;border:1px solid #c2cfbd;border-radius:8px;background:#fff;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.result h3{font-size:24px;margin:5px 0}.result p{color:#60736b;font-size:13px}.big{font-family:Georgia,serif;font-size:42px;color:#315b51}.winner{grid-column:1/-1;padding-top:16px;border-top:1px solid #d9e0d9}.winner strong{color:#28664e}
+.why{font-size:13px;color:#697d73}.footer-section{display:grid;grid-template-columns:1fr 1fr;gap:13%;padding:90px 0}
+.footer-section h2{font-size:42px;margin:10px 0 18px}.footer-section p{color:#5c7270}.features{padding-left:18px;color:#44615c}.features li{margin:10px 0}
+.sale-note{margin-top:12px;color:#70807a;font-size:12px}
+footer{border-top:1px solid var(--line);padding:28px 0 37px;color:#667871;font-size:12px}.footer-flex{display:flex;gap:25px;justify-content:space-between;flex-wrap:wrap}
+.skip{position:absolute;left:-9999px;top:0}.skip:focus{left:15px;background:white;padding:10px;z-index:100}
+@media(max-width:800px){.hero,.workspace,.footer-section{grid-template-columns:1fr}.hero{padding:60px 0}.hero-art{min-height:300px}.lab-bg{padding:60px 0}.footer-section{padding:65px 0}.wrap{width:calc(100% - 32px)}}
+@media(max-width:500px){header{flex-direction:column;align-items:flex-start;gap:8px}h1{font-size:47px}.result{grid-template-columns:1fr}.winner{grid-column:1}.panel{padding:17px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#lab">Skip to free tool</a>
+<div class="wrap">
+<header>
+<a class="brand" href="#top">ATHENA <span>ΦOS</span></a>
+<nav aria-label="Navigation"><a href="#lab">Free decision lab</a><a href="#toolkit">Offline toolkit</a><a href="../offers.html">Other offers</a></nav>
+</header>
+<main id="top">
+<section class="hero">
+<div>
+<div class="eyebrow">A FREE PRIVATE RESEARCH TOOL · NO SIGN-UP</div>
+<h1>Think clearly.<br><em>Choose with evidence.</em></h1>
+<p class="lead">When two options seem equally good, compare them using visible assumptions. Score the value, cost-fit and certainty of each — and see exactly how your conclusion changes.</p>
+<div class="row-actions"><a class="button" href="#lab">Try the free 2-option lab ↘</a><a class="button secondary" href="#toolkit">Explore the offline toolkit</a></div>
+<p class="note">Your typed decision details stay in this browser tab. No login, tracking scripts, payment or cloud AI required for the free comparison.</p>
+</div>
+<div class="hero-art" role="img" aria-label="Abstract geometric ornamental symbol representing comparison, not a product image"><span class="orb"></span><span class="orb two"></span><span class="orb three"></span><span class="star">✧</span><span class="art-caption">ONE QUESTION · TWO OPTIONS · A TRACEABLE CHOICE</span></div>
+</section>
+</main>
+</div>
+<section id="lab" class="lab-bg">
+<div class="wrap">
+<div class="title-row"><div><div class="eyebrow">01 / INTERACTIVE DEMO</div><h2>Your decision, made visible.</h2></div><p class="micro">Scale: 0 = poor, 10 = strong. Higher cost-fit means more affordable; higher certainty means better verified evidence. Scores are subjective inputs, not AI predictions.</p></div>
+<div class="workspace">
+<article class="panel">
+<h3>Option A</h3>
+<div class="form-row"><label for="aName">Name</label><input id="aName" type="text" maxlength="80" value="Option A"></div>
+<div class="criterion"><div><label for="aValue">Usefulness · 50% weight</label><output id="aValueOut">7</output></div><input id="aValue" type="range" min="0" max="10" value="7"><span class="scale-hint">How well does it solve the actual problem?</span></div>
+<div class="criterion"><div><label for="aCost">Cost-fit · 30% weight</label><output id="aCostOut">5</output></div><input id="aCost" type="range" min="0" max="10" value="5"><span class="scale-hint">Can you afford the total commitment?</span></div>
+<div class="criterion"><div><label for="aProof">Evidence certainty · 20% weight</label><output id="aProofOut">4</output></div><input id="aProof" type="range" min="0" max="10" value="4"><span class="scale-hint">How strong is the verifiable information?</span></div>
+<div class="form-row"><label for="aNote">Evidence / unknowns (optional)</label><textarea id="aNote" maxlength="500" placeholder="Which source supports your assessment? What remains uncertain?"></textarea></div>
+</article>
+<article class="panel">
+<h3>Option B</h3>
+<div class="form-row"><label for="bName">Name</label><input id="bName" type="text" maxlength="80" value="Option B"></div>
+<div class="criterion"><div><label for="bValue">Usefulness · 50% weight</label><output id="bValueOut">6</output></div><input id="bValue" type="range" min="0" max="10" value="6"><span class="scale-hint">How well does it solve the actual problem?</span></div>
+<div class="criterion"><div><label for="bCost">Cost-fit · 30% weight</label><output id="bCostOut">8</output></div><input id="bCost" type="range" min="0" max="10" value="8"><span class="scale-hint">Can you afford the total commitment?</span></div>
+<div class="criterion"><div><label for="bProof">Evidence certainty · 20% weight</label><output id="bProofOut">6</output></div><input id="bProof" type="range" min="0" max="10" value="6"><span class="scale-hint">How strong is the verifiable information?</span></div>
+<div class="form-row"><label for="bNote">Evidence / unknowns (optional)</label><textarea id="bNote" maxlength="500" placeholder="Which source supports your assessment? What remains uncertain?"></textarea></div>
+</article>
+</div>
+<div class="row-actions"><button type="button" class="button" id="compute">Compare two options →</button><button type="button" class="button secondary" id="copy">Copy plain-text summary</button></div>
+<div class="result" aria-live="polite" id="results">
+<div><div class="eyebrow">Option A · Weighted score</div><h3 id="aLabel">Option A</h3><span class="big" id="aScore">5.8/10</span></div>
+<div><div class="eyebrow">Option B · Weighted score</div><h3 id="bLabel">Option B</h3><span class="big" id="bScore">6.6/10</span></div>
+<div class="winner"><strong id="recommendation">Option B scores higher on your inputs.</strong><div class="why" id="explanation">Review weak evidence before committing. A higher score is not a guarantee or a substitute for checking sources.</div></div>
+</div>
+<p class="note" id="copyFeedback" role="status"></p>
+</div>
+</section>
+<div class="wrap">
+<section class="footer-section" id="toolkit">
+<div>
+<div class="eyebrow">02 / OPTIONAL ONE-TIME TOOLKIT</div>
+<h2>Take your research offline.</h2>
+<p>The paid ATHENA ΦOS toolkit extends this free two-option experiment into a four-option weighted decision workbook, with CSV/JSON exports, a source-checking playbook and EN/DE/TR guidance.</p>
+<p class="sale-note">One-time price €9.90, no subscription. The optional purchase is processed externally on Stripe. This page does not process payments. Product delivery uses the existing post-payment download destination; keep your receipt. No financial, legal or investment outcome is guaranteed.</p>
+<div class="row-actions"><a class="button" href="../offers.html" aria-label="See ATHENA toolkit in our existing digital offers catalogue">See €9.90 toolkit offer ↗</a><a class="button secondary" href="https://hypnotic-aura-878t7t3.shipstatic.com/" target="_blank" rel="noopener noreferrer">Read product documentation ↗</a></div>
+</div>
+<div><div class="eyebrow">BUILT AROUND TRACEABILITY</div><ul class="features"><li>Understand every score before trusting the result</li><li>Write down evidence sources and unknowns</li><li>Compare without creating an account</li><li>Take a screenshot or copy the free result</li><li>Keep the free two-option experiment separate from the optional purchase</li></ul>
+<p class="note">The free calculator performs all scoring locally. External links (offers, documentation and Stripe checkout if you choose it) have their own terms and data practices.</p></div>
+</section>
+</div>
+<footer><div class="wrap footer-flex"><span>ATHENA ΦOS · An independent CERBERRUS project · 2026</span><span>Free local-browser comparison. Optional independent paid product is linked through the existing offers catalogue. <a href="../offers.html">Offer details</a></span></div></footer>
+<script>
+(function () {
+"use strict";
+const byId = (id) => document.getElementById(id);
+const idList = ["aName","bName","aValue","aCost","aProof","bValue","bCost","bProof","aNote","bNote"];
+let lastSummary = "";
+function score(prefix) {
+ const v = Number(byId(prefix+"Value").value);
+ const c = Number(byId(prefix+"Cost").value);
+ const e = Number(byId(prefix+"Proof").value);
+ return Math.round((v*.5+c*.3+e*.2)*10)/10;
+}
+function clean(str) { return String(str||"").trim().slice(0,80) || "Unnamed option"; }
+function compute() {
+ for (const key of ["aValue","aCost","aProof","bValue","bCost","bProof"]) byId(key+"Out").textContent = byId(key).value;
+ const a = score("a"), b = score("b"), an = clean(byId("aName").value), bn = clean(byId("bName").value);
+ byId("aScore").textContent = a.toFixed(1)+"/10";
+ byId("bScore").textContent = b.toFixed(1)+"/10";
+ byId("aLabel").textContent = an;
+ byId("bLabel").textContent = bn;
+ let conclusion = a===b ? "Both options tie under your assumptions." : ((a>b?an:bn)+" scores higher under your assumptions.");
+ byId("recommendation").textContent = conclusion;
+ const proofMin = Math.min(Number(byId("aProof").value),Number(byId("bProof").value));
+ byId("explanation").textContent = proofMin<5 ? "At least one option has weak evidence: verify missing sources before committing." : "Check underlying sources and the risks your three scores may omit. Scores are not guarantees.";
+ lastSummary = [
+  "ATHENA ΦOS · Local two-option comparison",
+  an+": "+a.toFixed(1)+"/10 (usefulness "+byId("aValue").value+", cost-fit "+byId("aCost").value+", evidence "+byId("aProof").value+")",
+  "Evidence A: "+(byId("aNote").value.trim()||"not recorded"),
+  bn+": "+b.toFixed(1)+"/10 (usefulness "+byId("bValue").value+", cost-fit "+byId("bCost").value+", evidence "+byId("bProof").value+")",
+  "Evidence B: "+(byId("bNote").value.trim()||"not recorded"),
+  conclusion,
+  "Inputs are subjective. This comparison was performed locally; no data was submitted by this tool."
+ ].join("\n");
+ byId("copyFeedback").textContent = "";
+}
+idList.forEach(id => byId(id).addEventListener("input", compute));
+byId("compute").addEventListener("click",compute);
+byId("copy").addEventListener("click",async () => {
+ compute();
+ try {
+  await navigator.clipboard.writeText(lastSummary);
+  byId("copyFeedback").textContent="Summary copied to clipboard.";
+ } catch (_) {
+  byId("copyFeedback").textContent="Clipboard access unavailable. Select your result text above to copy manually.";
+ }
+});
+compute();
+})();
+</script>
+</body></html>
