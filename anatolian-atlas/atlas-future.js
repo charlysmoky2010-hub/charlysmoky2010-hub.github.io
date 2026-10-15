@@ -70,7 +70,7 @@ const unsupported=()=>{
 viewer.classList.add("fallback");const status=$("#fallback-status");if(status)status.textContent=t.fallback;};
 (async()=>{
 let THREE;
-try{THREE=await import("https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js");}catch(_){unsupported();return;}
+try{THREE=await import("https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js");}catch(_){try{THREE=await import("https://unpkg.com/three@0.160.1/build/three.module.js");}catch(__){unsupported();return;}}
 try{
 scene=new THREE.Scene();
 camera=new THREE.PerspectiveCamera(38,1,.1,200);
@@ -213,7 +213,7 @@ function dispose(root){root.traverse(obj=>{if(obj.geometry)obj.geometry.dispose(
 function switchModel(key){if(!creators[key])return;if(current){study.remove(current);dispose(current);}current=creators[key]();study.add(current);requestDraw();}
 changed=switchModel;switchModel(active);
 let dt=0,old=0;
-function size(){const rect=canvas.getBoundingClientRect();if(rect.width<5||rect.height<5)return false;const w=Math.round(rect.width),h=Math.round(rect.height);renderer.setSize(w,h,false);renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));camera.aspect=w/h;camera.updateProjectionMatrix();return true;}
+let lastW=0,lastH=0,lastPixelRatio=0;function size(){const rect=canvas.getBoundingClientRect();if(rect.width<5||rect.height<5)return false;const w=Math.round(rect.width),h=Math.round(rect.height),px=Math.min(devicePixelRatio||1,1.5);if(w!==lastW||h!==lastH||px!==lastPixelRatio){renderer.setPixelRatio(px);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();lastW=w;lastH=h;lastPixelRatio=px;}return true;}
 function requestDraw(){if(!reduce&&visible&&!document.hidden&&!raf)raf=requestAnimationFrame(frame);else if(reduce&&visible&&!document.hidden)requestAnimationFrame(frame);}
 function frame(ms){
 raf=0;if(!visible||document.hidden||!size())return;
