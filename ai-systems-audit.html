@@ -9,9 +9,18 @@
   <meta property="og:title" content="PHI NEXUS AI Systems Audit" />
   <meta property="og:description" content="Independent review of one AI-enabled workflow: evidence, failure modes, controls and a prioritized action plan." />
   <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://charlysmoky2010-hub.github.io/ai-systems-audit.html" />
+  <meta property="og:url" content="https://charlysmoky2010-hub.github.io/ai-systems-audit.html" />
   <style>
     :root{--bg:#061018;--panel:#0d1a24;--panel2:#112633;--text:#eef7f4;--muted:#a8bbb8;--aqua:#65e3cf;--blue:#70a7ff;--line:rgba(101,227,207,.2);--warn:#ffd48a}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 12% 0,rgba(101,227,207,.14),transparent 30%),radial-gradient(circle at 88% 12%,rgba(112,167,255,.14),transparent 28%),linear-gradient(180deg,#061018,#040a10);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}a{color:inherit}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}.top{position:sticky;top:0;z-index:10;background:rgba(6,16,24,.91);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.top-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{text-decoration:none;font-weight:900;letter-spacing:.12em;color:var(--aqua)}.nav{display:flex;gap:18px;align-items:center}.nav a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:800}.hero{padding:92px 0 66px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;color:var(--aqua);font-size:12px;font-weight:900}h1,h2,h3{line-height:1.08}h1{font-size:clamp(44px,7vw,82px);letter-spacing:-.05em;max-width:980px;margin:20px 0 22px}.lead{max-width:840px;color:var(--muted);font-size:20px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;border-radius:13px;text-decoration:none;font-weight:900;background:linear-gradient(135deg,var(--aqua),var(--blue));color:#031014}.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}.trust{display:flex;flex-wrap:wrap;gap:16px;margin-top:25px;color:#c3d2cf;font-size:13px}.trust span:before{content:'✓';color:var(--aqua);margin-right:7px}.section{padding:72px 0;border-top:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.box,.price-card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:22px;padding:26px}.box p,.muted{color:var(--muted)}.scope{display:grid;grid-template-columns:1.25fr .75fr;gap:22px}.list{list-style:none;padding:0;margin:0}.list li{position:relative;padding:9px 0 9px 26px;color:#d9e6e3}.list li:before{content:'◆';position:absolute;left:0;color:var(--aqua);font-size:11px;top:13px}.score{display:grid;gap:13px;margin-top:18px}.score-row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.score-row strong{color:var(--aqua)}.price-card{position:sticky;top:92px}.price{font-size:68px;line-height:1;color:var(--aqua);font-weight:950;margin:15px 0 8px}.small{font-size:13px;color:var(--muted)}.notice{margin-top:22px;padding:18px;border:1px solid rgba(255,212,138,.3);background:rgba(255,212,138,.06);border-radius:15px;color:#e8dcc4}.steps{counter-reset:step}.step{position:relative;padding-left:58px;margin:28px 0}.step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(101,227,207,.12);border:1px solid var(--line);color:var(--aqua);font-weight:900}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{cursor:pointer;font-weight:900}.faq p{color:var(--muted)}footer{border-top:1px solid var(--line);padding:28px 0 42px;color:#829492;font-size:13px}@media(max-width:900px){.grid,.scope{grid-template-columns:1fr}.price-card{position:static}.nav a:first-child{display:none}}
+
+    .proof-demo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:20px;margin-top:26px}
+    .proof-controls{display:grid;gap:11px}.proof-choice{cursor:pointer;width:100%;text-align:left;display:block;background:#102633;color:var(--text);border:1px solid var(--line);border-radius:13px;padding:16px 18px;font:inherit;font-weight:800}.proof-choice:hover,.proof-choice[aria-pressed=true]{background:#183d46;border-color:var(--aqua)}
+    .proof-choice span{display:block;font-size:12px;color:var(--muted);font-weight:450;margin-top:2px}.proof-result{border:1px solid var(--line);border-radius:17px;padding:24px;background:#091b24}
+    .proof-result h3{font-size:28px;margin:12px 0}.proof-result p{color:var(--muted)}.proof-flag{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--aqua);font-weight:900}
+    .proof-rules{font-size:13px;color:#c1d7d2;padding-left:20px}.proof-rules li{margin:8px 0}.proof-disclaimer{font-size:12px;color:#b2c8c0;border-left:3px solid #ffd48a;padding:10px 14px;background:rgba(255,212,138,.05);margin-top:22px}.proof-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:24px}.proof-actions a{font-size:13px}
+    @media(max-width:900px){.proof-demo{grid-template-columns:1fr}}
   </style>
   <script type="application/ld+json">
   {
@@ -30,9 +39,35 @@
     <section class="hero"><div class="wrap">
       <div class="eyebrow">Independent AI workflow review · Fixed scope</div>
       <h1>Find the weak points in one AI workflow before they become expensive.</h1>
-      <p class="lead">The PHI NEXUS AI Systems Audit reviews one defined AI-enabled workflow for evidence quality, reliability, failure modes, human controls, data exposure and operational readiness. You receive a structured report with prioritized actions—not a vague strategy presentation.</p>
-      <div class="hero-actions"><a class="btn" href="ai-systems-audit-sample.html">View the demonstration report</a><a class="btn secondary" href="https://book.stripe.com/fZu7sLgEAdC65WPbjb6Na0Y">Book the audit — €490</a></div>
+      <p class="lead">A model claiming “done” is not evidence that an external action actually succeeded. PHI NEXUS separates agent claims, approval records, execution receipts and independent provider readback. Our existing AI Systems Audit reviews one defined workflow for evidence quality, reliability, failure modes, human controls, data exposure and operational readiness. You receive a structured report with prioritized actions—not a vague strategy presentation.</p>
+      <div class="hero-actions"><a class="btn" href="#action-proof">Try a free action-proof example</a><a class="btn secondary" href="ai-systems-audit-sample.html">View the fictional audit report</a><a class="btn secondary" href="#scope">Review the €490 service</a></div>
       <div class="trust"><span>No subscription</span><span>One workflow per audit</span><span>Secure Stripe checkout</span><span>No guaranteed outcome claims</span></div>
+    </div></section>
+
+
+    <section class="section" id="action-proof"><div class="wrap">
+      <div class="eyebrow">A tangible example · no signup · no personal data</div>
+      <h2>Did the AI agent really finish the job?</h2>
+      <p class="lead">Explore three fictional states of the <strong>same action</strong>: an agent claims it sent an important customer message. See why approvals and execution logs alone are not proof that a customer received it. This is a demonstration of the evidence principle, not a live integration or certification.</p>
+      <div class="proof-demo">
+        <div class="proof-controls" role="group" aria-label="Select a fictional agent action scenario">
+          <button type="button" class="proof-choice" data-proof="claim" aria-pressed="true">01 · Agent says “sent”<span>Only the agent's own message is available</span></button>
+          <button type="button" class="proof-choice" data-proof="receipt" aria-pressed="false">02 · Approved + provider accepted the send<span>Approval and a provider-generated message reference are present</span></button>
+          <button type="button" class="proof-choice" data-proof="readback" aria-pressed="false">03 · Independently checked provider state<span>A separate authenticated readback reports delivery for the same message</span></button>
+        </div>
+        <div class="proof-result" aria-live="polite" aria-atomic="true">
+          <div class="proof-flag" id="proof-state">UNVERIFIED · ILLUSTRATIVE</div>
+          <h3 id="proof-title">A claim is not proof.</h3>
+          <p id="proof-description">The agent reported that the message was sent. We have no independently verified evidence of approval, execution or delivery.</p>
+          <ul class="proof-rules" id="proof-reasons"><li>Approval evidence: missing</li><li>Provider-generated reference: missing</li><li>Independent provider readback: missing</li></ul>
+        </div>
+      </div>
+      <p class="proof-disclaimer"><strong>Strict truth boundary:</strong> Every scenario here is fictional and runs locally in the browser. No credentials, workflow descriptions, agent messages or visitor scores are transmitted. Selecting the third option illustrates what sufficient evidence would look like; it does <strong>not</strong> verify a real action, authenticate a real provider, certify security or prove any client outcome.</p>
+      <div class="proof-actions">
+        <a class="btn" href="mailto:cerberrus144-os@agentmail.to?subject=PHI%20NEXUS%20%7C%20Agent%20Action%20Proof%20Review%20%7C%20Audit%20Page&amp;body=Company%20or%20project%3A%0AWorkflow%20type%3A%0AWhich%20action%20needs%20independent%20verification%3F%0AAvailable%20non-confidential%20provider%20evidence%3A%0ATiming%20and%20scope%3A%0A%0AI%20am%20requesting%20a%20human-reviewed%20scope%20discussion.%20I%20will%20not%20send%20passwords%2C%20keys%20or%20sensitive%20records.">Request a scoped B2B review by email</a>
+        <a class="btn secondary" href="ai-systems-audit-sample.html">Inspect the example report</a>
+      </div>
+      <p class="small">Your email application handles the optional request. We receive your details only if you choose to send the email; it does not book or charge anything. Don't include personal records, API keys, passwords or confidential client data. <a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=en">Privacy notice</a>.</p>
     </div></section>
 
     <section class="section"><div class="wrap">
@@ -100,6 +135,46 @@
       <details><summary>Is implementation included?</summary><p>No. The €490 audit provides findings and prioritized recommendations. Implementation, custom development and ongoing monitoring are separate services only after a new written scope.</p></details>
     </div></section>
   </main>
-  <footer><div class="wrap">© 2026 PHI NEXUS · Independent AI workflow review · <a href="offers.html">Story products</a></div></footer>
+  <footer><div class="wrap">© 2026 PHI NEXUS · Independent AI workflow review · <a href="offers.html">Other projects</a> · <a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&amp;locale=en">Imprint</a> · <a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=en">Privacy</a> · <a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=terms&amp;locale=en">Terms</a> · <a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=withdrawal&amp;locale=en">Withdrawal</a></div></footer>
+
+  <script>
+  (function(){
+    "use strict";
+    const scenarios={
+      claim:{
+        state:"UNVERIFIED · ILLUSTRATIVE",
+        title:"A claim is not proof.",
+        description:"The agent reported the message was sent. We have no independently verified evidence of approval, execution or delivery.",
+        reasons:["Approval evidence: missing","Provider-generated reference: missing","Independent provider readback: missing"]
+      },
+      receipt:{
+        state:"EXECUTED ≠ DELIVERED · ILLUSTRATIVE",
+        title:"The system accepted the send.",
+        description:"A fictional approval and execution record match the action, and the provider issued a message reference. But a delivery claim is still unverified: the message could have bounced or been rejected later.",
+        reasons:["Approval evidence: illustrated","Provider reference: illustrated","Independent delivery readback: missing"]
+      },
+      readback:{
+        state:"ILLUSTRATIVE COMPLETE EVIDENCE CHAIN",
+        title:"Now the claim can be checked.",
+        description:"The fictional provider returned an authenticated delivery result for the exact same external reference, matching the claimed action. A real implementation still requires independently trusted authentication, source-of-record access and anti-forgery controls.",
+        reasons:["Approval evidence: illustrated","Provider reference: illustrated","Authenticated provider readback: illustrated — not actually fetched"]
+      }
+    };
+    const choices=[...document.querySelectorAll("[data-proof]")];
+    const el=id=>document.getElementById(id);
+    function render(key){
+      if(!Object.hasOwn(scenarios,key))return;
+      const s=scenarios[key];
+      choices.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.proof===key)));
+      el("proof-state").textContent=s.state;
+      el("proof-title").textContent=s.title;
+      el("proof-description").textContent=s.description;
+      const list=el("proof-reasons");
+      list.replaceChildren(...s.reasons.map(x=>{const li=document.createElement("li");li.textContent=x;return li}));
+    }
+    choices.forEach(b=>b.addEventListener("click",()=>render(b.dataset.proof)));
+    render("claim");
+  })();
+  </script>
 </body>
 </html>
