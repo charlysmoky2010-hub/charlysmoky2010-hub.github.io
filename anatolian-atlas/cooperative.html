@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anatolian Atlas — Digital Cooperative Operating System</title><meta name="description" content="Transparent producer governance, secure applications, member voting and evidence-based revenue records for the Anatolian Atlas craft network. Pilot, not a registered cooperative.">
+<meta name="theme-color" content="#101e27">
+<link rel="canonical" href="https://charlysmoky2010-hub.github.io/anatolian-atlas/cooperative.html">
+<link rel="alternate" hreflang="en" href="https://charlysmoky2010-hub.github.io/anatolian-atlas/cooperative.html"><link rel="alternate" hreflang="de" href="https://charlysmoky2010-hub.github.io/anatolian-atlas/kooperative.html">
+<link rel="stylesheet" href="./coop.css"><script type="module" src="./coop.js"></script>
+</head><body>
+<header class="top"><div class="wrap nav"><a class="brand" href="https://charlysmoky2010-hub.github.io/anatolian-atlas/"><em>A·</em>ANATOLIAN ATLAS</a>
+<div class="navlinks"><a href="https://charlysmoky2010-hub.github.io/anatolian-atlas/">Atlas museum ↗</a><a href="#participate">Participate</a><a href="./kooperative.html" lang="de">Deutsch</a></div>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+<span class="kicker">DIGITAL COOPERATION / SECURE PILOT</span>
+<h1>Craft belongs<br>to its <em>makers.</em></h1><p>The network behind the objects. An accountable digital cooperation system for independent Anatolian artists and workshops: own your work, participate in decisions and see how future shared value would be accounted for.</p>
+<a href="#participate" class="button gold">Join the producer network ↗</a>
+<p class="hero-small">A working operating layer, not a German registered eG. No legal membership or shares are issued here.</p></div></section>
+<div class="band"><div class="wrap band-inner"><span>ATLAS COOPERATIVE OS / PILOT 01</span><strong>Not a statutory cooperative membership</strong></div></div>
+<section class="section"><div class="wrap">
+<span class="kicker">What we are building</span>
+<h2 class="title">Organize together.<br>Remain independent.</h2>
+<div class="grid"><article class="card"><span class="index">01</span><h3>Independence</h3><p>The maker retains authorship, production and responsibility for delivery. Atlas supports discovery and verified referrals.</p></article><article class="card"><span class="index">02</span><h3>Democratic governance</h3><p>Approved participants can propose decisions. Each eligible participant gets one ballot per approved open motion; ballots cannot be silently overwritten.</p></article><article class="card"><span class="index">03</span><h3>Financial evidence</h3><p>Payments, commissions and cooperative shares are reported only with evidence from the real payment provider and adopted policies. No invented income.</p></article></div>
+</div></section>
+<section class="stats" id="ledger"><div class="wrap">
+<span class="kicker">LIVE / SOURCE-OF-TRUTH</span><h2 class="title">Not a simulated dashboard.</h2><p class="lede" style="color:#bbc6c2">These counts come from the actual cooperative database. A blank network is shown as blank, not filled with fabricated participants or votes.</p>
+<div class="statgrid">
+<div class="stat"><strong id="coop-active">—</strong><span>Approved participants</span></div><div class="stat"><strong id="coop-applications">—</strong><span>Applications for review</span></div><div class="stat"><strong id="coop-motions">—</strong><span>Registered motions</span></div><div class="stat"><strong id="coop-revenue">—</strong><span>Verified revenue entries</span></div>
+</div>
+<div class="flow" style="margin-top:22px"><span class="seal">Ballots cast: <strong id="coop-votes">—</strong></span><span class="seal">Approved allocation policies: <strong id="coop-policy">—</strong></span></div>
+<p class="note" id="coop-live" role="status">Loading authoritative data…</p>
+</div></section>
+<section class="section portal" id="participate"><div class="wrap portal-grid">
+<div class="portal-info"><span class="kicker">PRODUCER ACCESS / ACCOUNTABILITY</span><h2 class="title">The door is open.<br>The status is earned.</h2>
+<p class="lede">Apply through email-verified identity; onboarding never creates statutory cooperative membership. Eligibility, craft provenance and producer agreements require separate review.</p>
+<div class="divider"></div>
+<h3 style="font:400 30px Georgia">Data and trust</h3>
+<p class="muted" style="line-height:1.85">Email authentication is handled by Supabase Auth. The application records your verified user ID, public maker name, craft area, optional region and explicit consent timestamp. The applicant record is not publicly searchable. We do not automatically email customers or initiate payments.</p>
+<p class="muted"><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=en">Privacy notice ↗</a> · <a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&amp;locale=en">Provider information ↗</a></p>
+</div>
+<div class="panel">
+<h3>Account / authentication</h3>
+<p class="muted">Use a separate password for this service; never share secrets or customer records.</p>
+<div id="guest-form">
+<form id="login-form" autocomplete="on">
+<div class="formrow">
+<label>Email address<input type="email" name="email" autocomplete="email" maxlength="240" required></label>
+<label>Password (8+ characters)<input type="password" name="password" autocomplete="current-password" minlength="8" maxlength="128" required></label>
+</div>
+<div class="flow"><button class="button" type="submit">Sign in</button><button class="button outline" style="color:var(--ink)" type="button" id="register-account">Create applicant account</button></div>
+</form></div>
+<div id="signed-in" hidden>
+<p class="seal" style="margin-bottom:14px">Email-verified area</p>
+<button class="button outline" style="color:var(--ink)" type="button" id="logout">Sign out</button>
+<p class="muted" style="margin-top:20px" id="member-status">Sign in to begin a producer application.</p>
+</div>
+<p id="auth-note" class="muted"></p>
+<p id="account-feedback" class="feedback" role="status" aria-live="polite"></p>
+<form id="application-form" hidden>
+<div class="divider"></div><h3>Producer application</h3><p class="muted">A submitted form is an application only. It does not constitute a contract, eG share or approved supplier status.</p>
+<label>Public maker name<input name="name" maxlength="120" minlength="2" required autocomplete="organization"></label>
+<label>Craft or technique<input name="craft" maxlength="120" minlength="2" required></label>
+<div class="formrow">
+<label>Country / region (optional)<input name="country" maxlength="90" autocomplete="country-name"></label>
+<label>Type of practice<select name="role"><option value="artist">Artist</option><option value="workshop">Workshop</option><option value="producer">Independent producer</option></select></label>
+</div>
+<label class="consent"><input type="checkbox" name="consent" required> <span>I request a review of my candidacy and consent to processing the information entered solely to evaluate my application. I understand that the legal entity is not a registered cooperative and that I may request data access or deletion via the linked privacy contact.</span></label>
+<button type="submit" class="button">Send application for review ↗</button></form>
+<form id="motion-form" hidden>
+<div class="divider"></div><h3>Propose a member motion</h3><p class="muted">Only reviewed active participants can propose a draft. It will not become a public vote until separately approved.</p>
+<label>Proposal title (12–160 characters)<input name="title" minlength="12" maxlength="160" required></label>
+<label>Proposal rationale (30–3500 characters)<textarea name="detail" minlength="30" maxlength="3500" required></textarea></label>
+<button type="submit" class="button">Submit motion as draft ↗</button></form>
+</div></div></section>
+<section class="section" id="governance"><div class="wrap governance">
+<div><span class="kicker">DEMOCRACY / NO FABRICATED PARTICIPATION</span><h2 class="title">One participant.<br>One ballot.</h2><p class="lede">Voting requires a real approved participant identity and an open motion. A unique database constraint prevents duplicate ballots. There are no automatically generated votes or dummy members.</p></div>
+<div class="panel"><h3>Published motions</h3><p class="muted">Open motions will appear here only after actual review and publication.</p><div id="public-motions" aria-live="polite"><p class="muted">…</p></div></div>
+</div></section>
+<section class="section"><div class="wrap governance"><div><span class="kicker">FINANCIAL ACCOUNTABILITY</span><h2 class="title">Our financial boundary</h2><p class="lede">Every allocation must add up to 100%. A draft policy cannot be portrayed as an agreed commission, and no amount enters the cooperative revenue ledger without an external payment reference and supporting evidence.</p></div>
+<div class="panel"><h3>Legal and financial boundary</h3><p class="muted" style="font-size:15px;line-height:1.9">This software does not create a German eingetragene Genossenschaft (eG). Formal cooperative status requires founders, articles, required governance, audit association and registration. No funds are collected and no distribution is activated by this page.</p>
+<a href="https://charlysmoky2010-hub.github.io/anatolian-atlas/" class="button">Back to Anatolian Atlas ↗</a></div></div></section>
+</main>
+<footer class="footer"><div class="wrap"><a href="https://charlysmoky2010-hub.github.io/anatolian-atlas/">ANATOLIAN ATLAS</a><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=en">Privacy notice</a><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&amp;locale=en">Provider information</a></div></footer>
+</body></html>
