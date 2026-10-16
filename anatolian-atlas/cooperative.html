@@ -26,12 +26,16 @@
 <div class="statgrid">
 <div class="stat"><strong id="coop-active">—</strong><span>Approved participants</span></div><div class="stat"><strong id="coop-applications">—</strong><span>Applications for review</span></div><div class="stat"><strong id="coop-motions">—</strong><span>Registered motions</span></div><div class="stat"><strong id="coop-revenue">—</strong><span>Verified revenue entries</span></div>
 </div>
-<div class="flow" style="margin-top:22px"><span class="seal">Ballots cast: <strong id="coop-votes">—</strong></span><span class="seal">Approved allocation policies: <strong id="coop-policy">—</strong></span></div>
+<div class="flow" style="margin-top:22px"><span class="seal">Ballots cast: <strong id="coop-votes">—</strong></span><span class="seal">Approved allocation policies: <strong id="coop-policy">—</strong></span><span class="seal">Maker interest records: <strong id="coop-interests">—</strong></span></div>
 <p class="note" id="coop-live" role="status">Loading authoritative data…</p>
 </div></section>
 <section class="section portal" id="participate"><div class="wrap portal-grid">
 <div class="portal-info"><span class="kicker">PRODUCER ACCESS / ACCOUNTABILITY</span><h2 class="title">The door is open.<br>The status is earned.</h2>
 <p class="lede">Apply through email-verified identity; onboarding never creates statutory cooperative membership. Eligibility, craft provenance and producer agreements require separate review.</p>
+<div class="fast-track" id="interest-first-step"><span class="kicker">01 / EXPRESS INTEREST</span><h3>Send a maker interest — no account</h3><p>Step 1: register an initial expression of interest on the existing Atlas form. No cooperative membership or purchase is created. Step 2: after the eligibility checks, use the verified account process below.</p>
+<a class="button gold" href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/anatolian-atlas-store?locale=en#join" rel="noopener noreferrer">Maker interest form ↗</a>
+<div class="pathway"><span>01 / EXPRESS INTEREST</span><span>02 / VERIFY IDENTITY</span><span>03 / REVIEW & ACTIVATE</span></div>
+<small>Independent review is required. No automatic membership, payment or distribution.</small></div>
 <div class="divider"></div>
 <h3 style="font:400 30px Georgia">Data and trust</h3>
 <p class="muted" style="line-height:1.85">Email authentication is handled by Supabase Auth. The application records your verified user ID, public maker name, craft area, optional region and explicit consent timestamp. The applicant record is not publicly searchable. We do not automatically email customers or initiate payments.</p>
@@ -39,7 +43,7 @@
 </div>
 <div class="panel">
 <h3>Account / authentication</h3>
-<p class="muted">Use a separate password for this service; never share secrets or customer records.</p>
+<p class="muted">For verified accounts and later governance. You can begin with the no-account interest form above. Use a separate password for this service; never share secrets or customer records.</p><p class="muted"><small>Account email confirmation needs Supabase redirect settings configured; until this is verified, the existing interest form is the recommended first step.</small></p>
 <div id="guest-form">
 <form id="login-form" autocomplete="on">
 <div class="formrow">
