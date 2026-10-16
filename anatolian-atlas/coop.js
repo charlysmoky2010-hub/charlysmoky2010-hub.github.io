@@ -31,10 +31,11 @@ async function refreshStats(){
   const data=await request("status");
   const countMap={"coop-active":data.active_participants,"coop-applications":data.applications_under_review,
   "coop-motions":data.motions_registered,"coop-revenue":data.provider_verified_revenue_entries,
-  "coop-votes":data.ballots_recorded,"coop-policy":data.approved_distribution_policies};
+  "coop-votes":data.ballots_recorded,"coop-policy":data.approved_distribution_policies,
+  "coop-interests":data.maker_interest_records};
   for(const [id,value] of Object.entries(countMap))text(id,Number.isFinite(value)?value:"?");
   const x=el("coop-live");if(x)x.textContent=de?"Echtzeitstatus: geprüft · Keine rechtliche eG":"Live record: verified · Not a legal eG";
- }catch(_){text("coop-live",t.server);for(const id of ["coop-active","coop-applications","coop-motions","coop-revenue","coop-votes","coop-policy"])text(id,"—");}
+ }catch(_){text("coop-live",t.server);for(const id of ["coop-active","coop-applications","coop-motions","coop-revenue","coop-votes","coop-policy","coop-interests"])text(id,"—");}
 }
 async function refreshMotions(){
  const container=el("public-motions");
