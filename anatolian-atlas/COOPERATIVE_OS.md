@@ -31,6 +31,13 @@ Important: email sign-up and account login use a public Supabase publishable key
 
 The public producer portal is at `/anatolian-atlas/cooperative.html` or `/anatolian-atlas/kooperative.html`.
 
+### First-miler onboarding, verified 2026-10-16
+The original `anatolian-atlas-store` (GET `?locale=de#join` or `?locale=en#join`) already operates a consent-gated **maker expression-of-interest** form. It writes only genuine voluntary submissions to `public.aa_leads` with `source_system=anatolian_atlas_portal_v1`, `source_form_id=maker_application`, and `consent_to_contact=true`.
+
+The public cooperative homepage now prominently directs first-time makers to this **no-account, non-member first step**, while keeping verified Auth registration and legally separate membership review as a later step. The `coop_status` API includes `maker_interest_records` as an **interest record count** separate from application and member counts. This does not indicate unique people, paid customers or statutory members, and the publicly accessible view does not include PII. Both EN/DE paths are in the GitHub Pages root sitemap. Google indexing, search traffic and conversions are not yet verified.
+
+Identity sign-up redirect allow-list, confirmation email delivery, new Auth account verification and a real end-to-end applicant admission remain **untested** because there are no Auth users and fabricated test customers are prohibited. Never claim this step passed without an actual consenting maker and confirmed legal/privacy prerequisites. Candidate details remain in privileged server-side records; there is no public listing of submissions.
+
 ### No fabricated results
 On initial rollout: 0 active participants; 0 cooperative applications; 0 proposals; 0 ballots; 0 income ledger entries; 0 approved distribution policies. The preexisting Atlas store contained 1 unverified maker and 2 review-stage products; these were not promoted into the cooperative or the buyable catalog.
 
