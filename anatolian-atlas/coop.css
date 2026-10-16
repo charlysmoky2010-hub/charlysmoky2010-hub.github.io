@@ -62,3 +62,11 @@ input[type=checkbox]{width:16px;height:16px;accent-color:#294a4d}
 [hidden]{display:none!important}
 @media(max-width:900px){.portal-grid,.governance{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.statgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:570px){.wrap{width:calc(100% - 36px)}.nav{padding:15px 0;min-height:68px}.brand{font-size:11px}.brand em{font-size:20px}.navlinks{gap:12px}.navlinks a{font-size:10px}.hero{padding:75px 0}.hero h1{font-size:58px}.hero p{font-size:16px}.section,.stats{padding:62px 0}.statgrid{grid-template-columns:repeat(2,1fr)}.panel{padding:24px 18px}.formrow{grid-template-columns:1fr}}
+
+/* Low-friction independent maker interest: existing secure Atlas form, no new account */
+.fast-track{margin:28px 0;padding:25px 24px 26px;background:#fffef9;border:1px solid #cfc4ae;border-left:4px solid var(--gold);box-shadow:0 8px 28px #1c27280c}
+.fast-track .kicker{color:#916e3e}.fast-track h3{font:400 30px/1.16 Georgia,serif;margin:12px 0 12px;letter-spacing:-.045em}.fast-track p{font-size:14px;line-height:1.82;color:#4d615e;max-width:560px}
+.fast-track .button{margin:8px 0 16px}.fast-track small{display:block;font-size:11px;color:#6a756e;line-height:1.6}
+.pathway{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#cfcbc0;margin:22px 0 15px}
+.pathway span{display:flex;align-items:center;background:#e9e5da;min-height:54px;padding:12px;color:#43565b;font:700 9px/1.45 system-ui;letter-spacing:.09em}
+@media(max-width:560px){.fast-track{padding:22px 18px}.pathway{grid-template-columns:1fr}.pathway span{min-height:35px}}
