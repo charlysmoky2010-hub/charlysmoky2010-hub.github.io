@@ -21,3 +21,10 @@
 This is an early-stage research and enquiry initiative. No Atlas craft producer is currently verified and publicly approved for sale, and no Atlas products are presented here as available for immediate checkout. Submitting interest does not create a purchase, vendor approval, or contract. Product listings and payment will require separate checks.
 
 Operated as part of the CERBERRUS144 digital research initiative. [Public home](https://charlysmoky2010-hub.github.io/) · [Legal / Impressum](https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&locale=de) · [Privacy / Datenschutz](https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&locale=de)
+
+## MicroVault CSV Datenqualität
+
+- [Kostenloser CSV-Prüfleitfaden mit fiktiven Beispieldaten (Deutsch)](https://charlysmoky2010-hub.github.io/microvault/)
+- [MicroVault – CSV online auf exakte Duplikate und leere Felder prüfen](https://microvault.floot.app/csv-datei-pruefen?src=share)
+
+Die CSV-Analyse läuft lokal im Browser. Kostenlose Grundprüfung; optionale einmalige Berichte 5 € / 29 €. Keine automatischen Datenkorrekturen oder zertifizierte Prüfung. Das ist ein gesondertes digitales Softwareangebot und kein Angebot für Kunsthandwerk.
