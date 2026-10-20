@@ -3,65 +3,86 @@ on:
   push:
     branches: [main]
     paths:
-      - 'microvault/global/**'
+      - 'microvault/**'
+      - 'sitemap.xml'
       - '.github/workflows/microvault-global-indexnow.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: microvault-indexnow-main
+  cancel-in-progress: true
+
 jobs:
-  submit-updated-global-pages:
+  submit-current-microvault-sitemap:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 7
     steps:
-      - name: Verify IndexNow ownership and submit five owned URLs
+      - name: Read public site sitemap at this commit
+        uses: actions/checkout@v4
+      - name: Verify owned host and submit MicroVault pages
         shell: bash
+        env:
+          INDEXNOW_KEY: 'd1d972fbfb20d0bd13106a81777e56acf865b023'
         run: |
           set -euo pipefail
-          KEY="d1d972fbfb20d0bd13106a81777e56acf865b023"
-          HOST="charlysmoky2010-hub.github.io"
-          KEY_URL="https://${HOST}/${KEY}.txt"
-          echo "Verifying published ownership key"
-          expected="${KEY}"
+          HOST='charlysmoky2010-hub.github.io'
+          KEY_URL="https://${HOST}/${INDEXNOW_KEY}.txt"
+          echo 'Verifying existing published IndexNow ownership key'
           verified=0
           for attempt in 1 2 3 4 5 6; do
             actual="$(curl --fail --silent --show-error --location --max-time 15 "${KEY_URL}" || true)"
-            if [ "${actual}" = "${expected}" ]; then verified=1; break; fi
+            if [ "${actual}" = "${INDEXNOW_KEY}" ]; then verified=1; break; fi
             sleep 12
           done
           if [ "${verified}" != 1 ]; then
-            echo "::warning::Published IndexNow key inaccessible or not matching; refusing to submit"
+            echo "::error::Existing IndexNow ownership proof unavailable; refusing notification"
             exit 1
           fi
-          cat > /tmp/microvault-indexnow.json <<'JSON'
-          {
-            "host": "charlysmoky2010-hub.github.io",
-            "key": "d1d972fbfb20d0bd13106a81777e56acf865b023",
-            "keyLocation": "https://charlysmoky2010-hub.github.io/d1d972fbfb20d0bd13106a81777e56acf865b023.txt",
-            "urlList": [
-              "https://charlysmoky2010-hub.github.io/microvault/global/",
-              "https://charlysmoky2010-hub.github.io/microvault/global/es.html",
-              "https://charlysmoky2010-hub.github.io/microvault/global/pt-br.html",
-              "https://charlysmoky2010-hub.github.io/microvault/global/ja.html",
-              "https://charlysmoky2010-hub.github.io/microvault/global/checker.html"
-            ]
-          }
-          JSON
-          echo "Confirming pages are reachable without authentication"
           python3 - <<'PY'
-          import json
-          from urllib.request import Request, urlopen
-          data = json.load(open("/tmp/microvault-indexnow.json",encoding="utf-8"))
-          for url in data["urlList"]:
-              request = Request(url, headers={"User-Agent":"MicroVault-IndexNow-Verification/1.0"})
-              with urlopen(request, timeout=18) as response:
-                  if response.status != 200:
-                      raise SystemExit(f"Unable to verify publication: {url} status={response.status}")
-                  print(f"Verified HTTP 200: {url}")
+          import json, os, xml.etree.ElementTree as ET
+          from pathlib import Path
+          from urllib.parse import urlsplit
+          host = 'charlysmoky2010-hub.github.io'
+          root = ET.parse('sitemap.xml').getroot()
+          namespace = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          urls = []
+          for node in root.findall('.//sm:url/sm:loc', namespace):
+              raw = (node.text or '').strip()
+              target = urlsplit(raw)
+              if (target.scheme == 'https' and target.netloc == host
+                      and target.path.startswith('/microvault/')
+                      and not target.query and not target.fragment):
+                  urls.append(raw)
+          urls = list(dict.fromkeys(urls))
+          if not (10 <= len(urls) <= 60):
+              raise SystemExit('Refusing unexpected number of owned MicroVault URLs: ' + str(len(urls)))
+          payload = {'host': host, 'key': os.environ['INDEXNOW_KEY'],
+                     'keyLocation': f'https://{host}/{os.environ["INDEXNOW_KEY"]}.txt',
+                     'urlList': urls}
+          Path('/tmp/microvault-indexnow.json').write_text(json.dumps(payload))
+          print('Qualified owner-controlled MicroVault URL count:',len(urls))
           PY
-          echo "Submitting owned, verified URLs to IndexNow"
-          http_code="$(curl --silent --show-error --max-time 20 -o /tmp/microvault-indexnow-response.txt -w '%{http_code}' \
+          echo 'Verifying every declared URL is already live'
+          python3 - <<'PY'
+          import json, time
+          from urllib.request import Request, urlopen
+          data = json.load(open('/tmp/microvault-indexnow.json', encoding='utf-8'))
+          for url in data['urlList']:
+              for attempt in range(4):
+                  try:
+                      req = Request(url, headers={'User-Agent':'MicroVault-IndexNow-Verify/1.0'})
+                      with urlopen(req, timeout=15) as r:
+                          if r.status == 200: break
+                  except Exception:
+                      pass
+                  if attempt == 3: raise SystemExit('Site not published (no IndexNow claim): '+url)
+                  time.sleep(10)
+              print('Verified live:',url)
+          PY
+          http_code="$(curl --silent --show-error --max-time 25 -o /tmp/microvault-indexnow-response.txt -w '%{http_code}' \
             -H 'Content-Type: application/json; charset=utf-8' \
             -X POST --data-binary @/tmp/microvault-indexnow.json \
             https://api.indexnow.org/indexnow)"
@@ -70,4 +91,4 @@ jobs:
             cat /tmp/microvault-indexnow-response.txt
             exit 1
           fi
-          echo "Submission accepted for processing; indexing or traffic is not guaranteed."
+          echo 'IndexNow accepted owned URL notification. Indexing, leads or purchases are not promised.'
