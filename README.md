@@ -24,6 +24,8 @@ Operated as part of the CERBERRUS144 digital research initiative. [Public home](
 
 ## MicroVault CSV Datenqualität
 
+**Global English product — free CSV duplicate checker:** [Try MicroVault in your browser](https://microvault.floot.app/csv-duplicate-checker). Find exact duplicate rows, blank cells and structural issues in CSV exports up to 2 MB without signing up or uploading the CSV to MicroVault's server. The free summary can be downloaded without payment. For buyers needing more detail, the product offers optional one-time €5 and €29 reports through Stripe; those are separate purchases and do not automatically correct the source data.
+
 - [Kostenloser CSV-Prüfleitfaden mit fiktiven Beispieldaten (Deutsch)](https://charlysmoky2010-hub.github.io/microvault/)
 - [MicroVault – CSV online auf exakte Duplikate und leere Felder prüfen](https://microvault.floot.app/csv-datei-pruefen?src=share)
 
