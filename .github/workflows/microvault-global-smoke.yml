@@ -1,0 +1,58 @@
+name: MicroVault global production smoke test
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'microvault/global/**'
+      - '.github/workflows/microvault-global-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live-global-checker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Check production pages and run exact deployed CSV parser tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://charlysmoky2010-hub.github.io/microvault/global'
+          for target in '/' '/checker.html' '/es.html' '/pt-br.html' '/ja.html'; do
+            if [ "${target}" = "/" ]; then url="${BASE}/"; else url="${BASE}${target}"; fi
+            echo "Checking ${url}"
+            curl -sSL --fail-with-body --retry 3 --retry-delay 8 --max-time 20 "${url}" -o /tmp/checker-page.html
+            if [ "${target}" = "/checker.html" ]; then
+              grep -q 'csv-mini-core.js' /tmp/checker-page.html || { echo 'Missing working parser import'; exit 1; }
+              grep -q 'microvault.floot.app' /tmp/checker-page.html || { echo 'Missing production purchase handoff'; exit 1; }
+            else
+              grep -q '/microvault/global/checker.html' /tmp/checker-page.html || { echo "Missing global checker link at ${url}"; exit 1; }
+            fi
+          done
+          curl -sSL --fail-with-body --retry 3 --retry-delay 8 "${BASE}/csv-mini-core.js" -o /tmp/microvault-checker.mjs
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import {analyzeCsv} from 'file:///tmp/microvault-checker.mjs';
+          const cases = [
+            ['semicolon and decimal commas','id;amount;status\n1;12,50;ok\n1;12,50;ok\n2;11,00;', x=>x.rows===3 && x.identicalExtraRows===1 && x.missingCells===1 && x.delimiter==='semicolon'],
+            ['quoted multiline','name,notes\n"A, B","Hello\nworld"\n"C","Hi"', x=>x.rows===2 && x.columns===2 && x.missingCells===0],
+            ['TSV','a\tb\nx\ty\nx\ty', x=>x.delimiter==='tab' && x.identicalExtraRows===1],
+            ['BOM + CRLF','\ufeffname,value\r\nA,1\r\nA,1\r\n',x=>x.rows===2 && x.identicalExtraRows===1],
+            ['uneven row width','a,b\n1,2,3\n1,2',x=>x.irregularWidthRows===1],
+            ['escaped CSV quotes','a,b\n"He said ""Hi""",ok\n"He said ""Hi""",ok',x=>x.identicalExtraRows===1],
+            ['empty-value-only row','a,b\n,\nx,y',x=>x.rows===2 && x.missingCells===2],
+            ['empty quoted fields','a,b\n"",""\nx,y',x=>x.rows===2 && x.missingCells===2]
+          ];
+          for(const [name,text,check] of cases){
+            const result=analyzeCsv(text);
+            assert.ok(check(result),name+': '+JSON.stringify(result));
+            console.log('PASS',name);
+          }
+          for(const [name,text] of [['empty CSV',''],['broken quote','a,b\n"unterminated,x'],['binary content','a,b\nx,\u0000']]){
+            assert.throws(()=>analyzeCsv(text),Error,name);
+            console.log('PASS rejects',name);
+          }
+          console.log('All deployed CSV parser tests passed.');
+          JS
