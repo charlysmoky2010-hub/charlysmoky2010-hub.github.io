@@ -24,14 +24,14 @@ export function analyzeCsv(text, maxRows = 50000) {
   let delimiter = Object.entries(candidateCounts).sort((a,b) => b[1]-a[1])[0][0];
   if (candidateCounts[delimiter] === 0) delimiter = ",";
   const rows = [], current = [];
-  let value = "", quoted = false, atStart = true;
+  let value = "", quoted = false, atStart = true, recordStarted = false;
   const pushRecord = () => {
     current.push(value);
-    if (current.some(s => s.length) || rows.length === 0) {
+    if (recordStarted || rows.length === 0) {
       if (rows.length > maxRows) throw new Error("Too many CSV rows. Use a file with up to 50,000 data rows.");
       rows.push([...current]);
     }
-    current.length = 0; value = ""; atStart = true;
+    current.length = 0; value = ""; atStart = true; recordStarted = false;
   };
   for (let i = 0; i < clean.length; i++) {
     const ch = clean[i];
@@ -40,17 +40,17 @@ export function analyzeCsv(text, maxRows = 50000) {
         if (clean[i+1] === '"') { value += '"'; i++; }
         else quoted = false;
       } else value += ch;
-    } else if (ch === '"' && atStart) { quoted = true; atStart = false; }
-    else if (ch === delimiter) { current.push(value); value = ""; atStart = true; }
+    } else if (ch === '"' && atStart) { quoted = true; atStart = false; recordStarted = true; }
+    else if (ch === delimiter) { current.push(value); value = ""; atStart = true; recordStarted = true; }
     else if (ch === "\n" || ch === "\r") {
       if (ch === "\r" && clean[i+1] === "\n") i++;
       pushRecord();
     } else if (ch === '"' && !atStart) {
       throw new Error("Invalid quote inside an unquoted CSV field.");
-    } else { value += ch; atStart = false; }
+    } else { value += ch; atStart = false; recordStarted = true; }
   }
   if (quoted) throw new Error("The CSV contains an unclosed quoted field.");
-  if (current.length || value.length) pushRecord();
+  if (recordStarted || current.length || value.length) pushRecord();
   if (!rows.length || rows[0].length < 1) throw new Error("The CSV does not contain a header.");
   const headers = rows[0];
   const records = rows.slice(1);
