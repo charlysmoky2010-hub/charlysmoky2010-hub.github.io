@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102b2d">
+<meta name="robots" content="index,follow">
+<title>Free CSV Duplicate & Missing Data Check | MicroVault</title>
+<meta name="description" content="Find exact duplicate rows and missing values in CSV files locally in your browser. Free screening, optional €5 or €29 evidence reports. No account needed to try.">
+<link rel="canonical" href="https://charlysmoky2010-hub.github.io/microvault/csv-quality-report/">
+<link rel="alternate" hreflang="de" href="https://charlysmoky2010-hub.github.io/microvault/">
+<meta property="og:title" content="MicroVault — Check your CSV before importing it">
+<meta property="og:description" content="Inspect duplicate rows and missing CSV cells locally. Optional actionable reports after your free check.">
+<meta property="og:url" content="https://charlysmoky2010-hub.github.io/microvault/csv-quality-report/">
+<style>
+:root{color-scheme:light;--ink:#133235;--cream:#faf8f2;--teal:#08685d;--line:#cfdad1;--soft:#e9efea}
+*{box-sizing:border-box}body{background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,sans-serif;line-height:1.65;margin:0}
+header,main,footer{max-width:1010px;width:calc(100% - 38px);margin:auto}
+header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:17px 0}
+header strong{font-size:13px;letter-spacing:.12em}header a{color:var(--ink);font-size:13px}
+main{padding:48px 0}h1,h2{line-height:1.13;letter-spacing:-.045em}h1{font-size:clamp(38px,6.5vw,70px);max-width:850px;margin:18px 0}h2{font-size:clamp(25px,4vw,36px)}
+.lead{font-size:clamp(17px,2.1vw,22px);max-width:800px;color:#46605c}
+.eyebrow{font-size:12px;font-weight:750;letter-spacing:.15em;color:var(--teal)}
+.cta{display:inline-block;color:white;background:var(--ink);text-decoration:none;padding:16px 23px;border-radius:6px;font-weight:720;margin:18px 0}
+.cta:hover,.cta:focus-visible{background:var(--teal)}
+section{padding:35px 0;border-bottom:1px solid var(--line)}
+article{background:white;border:1px solid var(--line);padding:24px;border-radius:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+pre{padding:22px;background:#102f32;color:#e5f8f1;overflow:auto;border-radius:8px}
+table{width:100%;border-collapse:collapse;background:white;font-size:14px}th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--line)}th{background:var(--soft)}.scroll{overflow:auto}
+.note{font-size:13px;color:#526c67}.steps li{margin-bottom:6px}footer{font-size:13px;color:#526c67;padding:32px 0 60px}footer a{color:var(--teal);margin-right:18px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}main{padding-top:25px}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MicroVault CSV Preflight","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","description":"Browser-local CSV quality screening for exact duplicate rows and missing values. Optional one-time technical reports available from the vendor site.","url":"https://microvault.floot.app/csv-datei-pruefen"}
+</script>
+</head>
+<body>
+<header><strong>MICROVAULT / DATA QUALITY</strong><a href="https://charlysmoky2010-hub.github.io/microvault/" lang="de">Deutsch</a></header>
+<main>
+<section>
+<p class="eyebrow">CSV DATA QUALITY · FREE FIRST CHECK</p>
+<h1>Find duplicate rows and missing values before your next CSV import.</h1>
+<p class="lead">A small data issue can become an expensive import mistake. Run a quick, local CSV structure check before sending files to Excel, reporting software, or another business system.</p>
+<a class="cta" href="https://microvault.floot.app/csv-datei-pruefen?src=global-english-guide">CHECK MY CSV FOR FREE →</a>
+<p class="note">The CSV screening runs inside your browser. The original CSV is not uploaded for the analysis. Only use data you are authorized to process.</p>
+</section>
+<section>
+<h2>What will the check actually show?</h2>
+<p>A fictional mini export (not customer data):</p>
+<pre>OrderID;Date;Amount
+A101;2026-10-14;129,00
+A102;2026-10-14;89,00
+A102;2026-10-14;89,00
+A103;2026-10-15;</pre>
+<div class="scroll">
+<table><thead><tr><th>Finding</th><th>Why it matters</th><th>Safe action</th></tr></thead><tbody>
+<tr><td>Rows 3 and 4 match exactly</td><td>Possible duplicate, not proof of duplicate business transaction</td><td>Review against the source before deleting</td></tr>
+<tr><td>Row 5: Amount is empty</td><td>May cause incomplete downstream reports</td><td>Confirm value from original source</td></tr>
+<tr><td>Semicolon delimiter + comma decimals</td><td>Import settings may affect data interpretation</td><td>Match the expected target format</td></tr>
+</tbody></table>
+</div>
+<p class="note">Illustrative editorial example. Not an exported paid report, client success story, or verified sample of live customer data.</p>
+</section>
+<section>
+<p class="eyebrow">CLEAR CHOICE</p>
+<h2>Start free. Upgrade only when a documented check is useful.</h2>
+<div class="grid">
+<article><h3>Free CSV screening</h3><p>Check exact duplicate rows, missing entries and structural warnings in your own browser. Review the findings before changing any file.</p><p><strong>€0</strong> · No subscription</p></article>
+<article><h3>Optional technical reporting</h3><p>Deep Report (once €5): additional finding details for review. Decision Pack (once €29): structured follow-up actions and acceptance criteria. See exact scope before purchase.</p><p><strong>€5 / €29 once</strong> · No subscription</p></article>
+</div>
+<a class="cta" href="https://microvault.floot.app/csv-datei-pruefen?src=global-english-guide">OPEN THE REAL PRODUCT AND PRICES →</a>
+<p class="note">The free checker is not an Excel repair service. It does not fix workbook formulas, normalize unique customer identities, reconcile separate databases, or certify financial records. Never auto-delete ambiguous duplicates. The seller name at Stripe checkout is currently SMOKYCHARLY.</p>
+</section>
+<section>
+<h2>Questions before you try</h2>
+<h3>Does it remove duplicates automatically?</h3><p>No. It identifies exact repeated CSV rows so the data owner can decide what to do. Two identical rows may both represent valid transactions.</p>
+<h3>Can I fix an XLSX file with this browser checker?</h3><p>Not with this offer. Export a suitable CSV for preliminary structure screening. The separate PHI-BRAIN Excel quality-audit research engine is not yet a public, unattended XLSX-cleaning service.</p>
+<h3>Is the paid report required?</h3><p>No. The initial check is free. Only purchase a report if its stated additional detail is useful to your workflow.</p>
+<h3>Can I check a file with sensitive data?</h3><p>Only process files you are entitled to handle. For confidential company exports, first confirm your organization's security and procurement rules. The browser tool is not a contractual guarantee of security compliance.</p>
+</section>
+</main>
+<footer>
+<p>MicroVault · 2026 · A CERBERRUS144 digital software offering. No artificial testimonials or simulated earnings.</p>
+<a href="https://microvault.floot.app/csv-datei-pruefen">Official product and payment details</a>
+<a href="https://charlysmoky2010-hub.github.io/microvault/">Deutsch</a>
+</footer>
+</body>
+</html>
