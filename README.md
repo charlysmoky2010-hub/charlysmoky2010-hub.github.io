@@ -31,6 +31,7 @@ MicroVault is a browser-based CSV structure checker for exact duplicate rows, em
 - [Español](https://charlysmoky2010-hub.github.io/microvault/global/es.html)
 - [Português (Brasil)](https://charlysmoky2010-hub.github.io/microvault/global/pt-br.html)
 - [日本語](https://charlysmoky2010-hub.github.io/microvault/global/ja.html)
+- [Try the global zero-upload CSV mini checker](https://charlysmoky2010-hub.github.io/microvault/global/checker.html)
 - [Use the free CSV checker](https://microvault.floot.app/?src=share#analyzer)
 
 ## MicroVault CSV Datenqualität
