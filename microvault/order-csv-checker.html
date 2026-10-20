@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f272b">
+<title>Check Order CSV for Duplicate Rows & Missing Data | MicroVault</title>
+<meta name="description" content="Before importing order exports into your store, spreadsheet or CRM, find exact duplicate CSV rows, empty cells and structural issues with MicroVault's free browser-based CSV checker.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://charlysmoky2010-hub.github.io/microvault/order-csv-checker.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Order CSV Quality Check — Free Browser Tool | MicroVault">
+<meta property="og:description" content="Check order export CSV files for identical rows and missing data locally in your browser. Free first-pass scan.">
+<meta property="og:url" content="https://charlysmoky2010-hub.github.io/microvault/order-csv-checker.html">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--bg:#f5f6ef;--ink:#0f292b;--secondary:#416362;--line:#d1dbd7;--mint:#147366;--amber:#e2bb72}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--mint)}a:focus-visible,button:focus-visible{outline:3px solid #dba550;outline-offset:3px}
+header,main,footer{width:min(1060px,calc(100% - 38px));margin:0 auto}
+header{min-height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px}
+header a{text-decoration:none;font-weight:800;color:var(--ink);letter-spacing:.09em}header nav{display:flex;gap:15px;flex-wrap:wrap}header nav a{color:var(--secondary);font-size:13px;font-weight:600;letter-spacing:0}
+main{padding-bottom:64px}.hero{padding:72px 0 65px;display:grid;grid-template-columns:1.45fr .8fr;gap:40px;align-items:center}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--mint);font-weight:800}
+h1{font-size:clamp(38px,6.2vw,76px);letter-spacing:-.055em;line-height:1.04;margin:20px 0 24px}
+h1 em{font-weight:450;color:var(--mint)}h2{font-size:clamp(26px,3.4vw,42px);letter-spacing:-.044em;line-height:1.2;margin:0 0 18px}
+h3{font-size:19px;line-height:1.35;margin:0 0 10px}
+.lead{font-size:clamp(17px,2vw,22px);color:var(--secondary);max-width:710px}
+.button{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;text-decoration:none;font-weight:750;border-radius:7px;padding:15px 21px;margin:18px 14px 12px 0;min-height:52px}
+.button:hover{background:var(--mint)}.plain{display:inline-block;font-weight:750;margin-top:12px}
+.note{color:var(--secondary);font-size:13px;max-width:800px}
+.demo{background:var(--ink);color:#f2f7f2;border-radius:16px;padding:25px 26px;box-shadow:0 14px 45px #12332c19}
+.demo .small{color:#9cd2c2;font-size:12px;letter-spacing:.13em;font-weight:750}
+.demo pre{white-space:pre;overflow:auto;font-size:12px;line-height:2;color:#e1ece9}
+.demo p{font-size:13px;color:#c0d9d2;margin-bottom:0}
+section.content{border-top:1px solid var(--line);padding:46px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.tile{border:1px solid var(--line);background:#fff;border-radius:11px;padding:25px}.tile p{color:var(--secondary);margin:0}
+.steps{padding-left:24px;max-width:820px}.steps li{margin:14px 0;padding-left:5px}
+.priceGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:25px}
+.price{background:#fff;border:1px solid var(--line);border-radius:12px;padding:27px}
+.price strong{font-size:34px;display:block;letter-spacing:-.035em}.price p{color:var(--secondary)}
+.pill{display:inline-block;border-radius:999px;background:#e8f3ef;padding:4px 11px;color:#15685c;font-size:12px;font-weight:700}
+aside{margin:28px 0;padding:22px 26px;border-left:5px solid var(--mint);background:#fff}
+.faq h3{margin-top:28px}.faq p{max-width:800px;color:var(--secondary)}
+footer{border-top:1px solid var(--line);padding:32px 0 45px;color:var(--secondary);font-size:13px;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+footer a{margin-right:15px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:48px 0}.grid{grid-template-columns:1fr}.priceGrid{grid-template-columns:1fr}header{padding:18px 0;align-items:flex-start;flex-direction:column}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Check order CSV files for exact duplicate rows and empty cells before import","description":"A practical guide to free, local browser-based checks of e-commerce CSV exports.","inLanguage":"en","datePublished":"2026-10-20","dateModified":"2026-10-20","mainEntityOfPage":"https://charlysmoky2010-hub.github.io/microvault/order-csv-checker.html","publisher":{"@type":"Organization","name":"MicroVault"},"about":{"@type":"SoftwareApplication","name":"MicroVault","url":"https://microvault.floot.app/","operatingSystem":"Web browser","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}}
+</script>
+</head>
+<body>
+<header>
+<a href="https://microvault.floot.app/">M / MICROVAULT</a>
+<nav aria-label="Related free CSV guides">
+<a href="/microvault/global/">Global / English</a>
+<a href="/microvault/shop-bestellungen.html">Deutsch / Shop CSV</a>
+<a href="/microvault/global/es.html">Español</a>
+<a href="/microvault/global/pt-br.html">Português</a>
+</nav>
+</header>
+<main>
+<div class="hero">
+<div>
+<p class="eyebrow">ECOMMERCE DATA QUALITY / FREE CSV TOOL</p>
+<h1>Before you import orders,<br><em>check the CSV.</em></h1>
+<p class="lead">One repeated export row or an empty field can confuse reporting and manual reconciliation. Quickly screen a CSV for <strong>exact duplicate rows</strong>, <strong>blank values</strong> and basic structural signals — in your browser.</p>
+<a class="button" href="https://microvault.floot.app/?src=global-english-guide#analyzer">CHECK MY ORDER CSV FREE →</a>
+<p class="note">Free basic scan · No signup · CSV up to 2 MB · No CSV content upload to the MicroVault application server · The analyzer interface is in English</p>
+</div>
+<div class="demo">
+<div class="small">ILLUSTRATIVE DATASET / NOT A CUSTOMER RECORD</div>
+<pre>order_id,status,total
+A101,paid,29
+A102,paid,18
+A101,paid,29
+A103,,12</pre>
+<p><strong>What to inspect:</strong> the third data row repeats the first exactly; the fourth is missing a status. This does not prove either order should be removed.</p>
+</div>
+</div>
+<section class="content">
+<p class="eyebrow">COMMON PRE-IMPORT ISSUES</p>
+<h2>Small CSV problems create expensive questions.</h2>
+<div class="grid">
+<div class="tile"><h3>Exact repeated rows</h3><p>Spot rows where the full set of values is identical. This is not the same as detecting duplicate order IDs when line items or statuses differ.</p></div>
+<div class="tile"><h3>Missing order fields</h3><p>Find blank cells that deserve investigation before analysis or re-import. Empty does not automatically mean wrong.</p></div>
+<div class="tile"><h3>Export structure</h3><p>Review detected columns and numeric fields in common comma-, semicolon- or tab-separated CSV files. No accountancy or tax certification is provided.</p></div>
+</div>
+</section>
+<section class="content">
+<p class="eyebrow">SAFE FOUR-STEP WORKFLOW</p>
+<h2>How a small store can check a CSV export.</h2>
+<ol class="steps">
+<li>Export the CSV from your authorized order system and keep a copy of the original.</li>
+<li>Open MicroVault's free checker and choose a CSV under 2 MB, or test with the built-in sample.</li>
+<li>Review the number of exact duplicate rows, empty cells and basic structural findings; export the free summary if helpful.</li>
+<li>Ask the order-data owner before editing, merging or deleting records. Re-run the scan on a separately approved copy.</li>
+</ol>
+<a class="button" href="https://microvault.floot.app/?src=global-english-guide#analyzer">OPEN THE FREE CHECKER →</a>
+</section>
+<section class="content">
+<p class="eyebrow">WHEN A SUMMARY IS NOT ENOUGH</p>
+<h2>Start free. Choose more detail only if useful.</h2>
+<p>The free scanner is a complete first step. Optional one-time reports are purchased separately on the MicroVault website through Stripe and require verified payment before download.</p>
+<div class="priceGrid">
+<div class="price"><span class="pill">OPTIONAL / ONE-TIME</span><strong>€5</strong><h3>Deep Report</h3><p>Additional column diagnostics and up to 200 flagged locations for missing cells, exactly repeated rows and numeric outlier candidates.</p></div>
+<div class="price"><span class="pill">OPTIONAL / ONE-TIME</span><strong>€29</strong><h3>Decision Pack</h3><p>Includes the deeper diagnostics plus a prioritized review plan, proposed owner roles and acceptance checks for follow-up work.</p></div>
+</div>
+<aside><strong>Before you pay:</strong> run the free check first to see whether this tool fits your data. On Stripe Checkout the merchant appears as SMOKYCHARLY, while MicroVault is the product name. A paid report is not a guarantee of data accuracy, data repair or financial savings. The seller's legal details and policies are linked on the checkout destination.</aside>
+<a class="button" href="https://microvault.floot.app/?src=global-english-guide#analyzer">TRY FREE / SEE REPORT OPTIONS →</a>
+</section>
+<section class="content faq">
+<p class="eyebrow">FREQUENT QUESTIONS</p>
+<h2>What this tool does — and does not — promise.</h2>
+<h3>Will MicroVault detect that two different rows share one order number?</h3>
+<p>Not necessarily. The basic check identifies exactly identical data rows. The same order ID can legitimately occur in multiple line items or lifecycle events, so check your order system's business rules separately.</p>
+<h3>Does MicroVault alter my order export?</h3>
+<p>No. The scanner does not automatically delete, merge or modify source CSV records. Save an original and make any authorized corrections separately.</p>
+<h3>Is the free check really free?</h3>
+<p>Yes. The initial browser-based CSV check and basic summary do not require signup or a paid subscription. The €5 and €29 reports are optional one-time purchases.</p>
+<h3>Can I check customer data?</h3>
+<p>Only if you are authorized to do so. The CSV content is analyzed locally in your browser, but your business remains responsible for its applicable privacy and security rules.</p>
+</section>
+</main>
+<footer>
+<span>© 2026 MicroVault. All CSV examples are fictional.</span>
+<div>
+<a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&amp;locale=de">Seller details</a>
+<a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=de">Privacy</a>
+<a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=terms&amp;locale=de">Terms</a>
+<a href="https://microvault.floot.app/">Open MicroVault</a>
+</div>
+</footer>
+</body>
+</html>
