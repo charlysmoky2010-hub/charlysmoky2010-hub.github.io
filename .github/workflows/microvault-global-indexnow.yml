@@ -1,0 +1,73 @@
+name: MicroVault global IndexNow
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'microvault/global/**'
+      - '.github/workflows/microvault-global-indexnow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit-updated-global-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Verify IndexNow ownership and submit five owned URLs
+        shell: bash
+        run: |
+          set -euo pipefail
+          KEY="d1d972fbfb20d0bd13106a81777e56acf865b023"
+          HOST="charlysmoky2010-hub.github.io"
+          KEY_URL="https://${HOST}/${KEY}.txt"
+          echo "Verifying published ownership key"
+          expected="${KEY}"
+          verified=0
+          for attempt in 1 2 3 4 5 6; do
+            actual="$(curl --fail --silent --show-error --location --max-time 15 "${KEY_URL}" || true)"
+            if [ "${actual}" = "${expected}" ]; then verified=1; break; fi
+            sleep 12
+          done
+          if [ "${verified}" != 1 ]; then
+            echo "::warning::Published IndexNow key inaccessible or not matching; refusing to submit"
+            exit 1
+          fi
+          cat > /tmp/microvault-indexnow.json <<'JSON'
+          {
+            "host": "charlysmoky2010-hub.github.io",
+            "key": "d1d972fbfb20d0bd13106a81777e56acf865b023",
+            "keyLocation": "https://charlysmoky2010-hub.github.io/d1d972fbfb20d0bd13106a81777e56acf865b023.txt",
+            "urlList": [
+              "https://charlysmoky2010-hub.github.io/microvault/global/",
+              "https://charlysmoky2010-hub.github.io/microvault/global/es.html",
+              "https://charlysmoky2010-hub.github.io/microvault/global/pt-br.html",
+              "https://charlysmoky2010-hub.github.io/microvault/global/ja.html",
+              "https://charlysmoky2010-hub.github.io/microvault/global/checker.html"
+            ]
+          }
+          JSON
+          echo "Confirming pages are reachable without authentication"
+          python3 - <<'PY'
+          import json
+          from urllib.request import Request, urlopen
+          data = json.load(open("/tmp/microvault-indexnow.json",encoding="utf-8"))
+          for url in data["urlList"]:
+              request = Request(url, headers={"User-Agent":"MicroVault-IndexNow-Verification/1.0"})
+              with urlopen(request, timeout=18) as response:
+                  if response.status != 200:
+                      raise SystemExit(f"Unable to verify publication: {url} status={response.status}")
+                  print(f"Verified HTTP 200: {url}")
+          PY
+          echo "Submitting owned, verified URLs to IndexNow"
+          http_code="$(curl --silent --show-error --max-time 20 -o /tmp/microvault-indexnow-response.txt -w '%{http_code}' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -X POST --data-binary @/tmp/microvault-indexnow.json \
+            https://api.indexnow.org/indexnow)"
+          echo "IndexNow HTTP status: ${http_code}"
+          if [ "${http_code}" != 200 ] && [ "${http_code}" != 202 ]; then
+            cat /tmp/microvault-indexnow-response.txt
+            exit 1
+          fi
+          echo "Submission accepted for processing; indexing or traffic is not guaranteed."
