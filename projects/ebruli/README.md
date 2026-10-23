@@ -1,11 +1,11 @@
 # Ebruli — Su Lalesi
 
-Independent live ebru art, digital studio and cultural-event project.
+Independent ebru art, digital studio and cultural-event project. Historical deployment records are not proof of current public availability or readiness for orders.
 
-## Live surfaces
+## Historically deployed surfaces (live HTTP reachability not independently verified on 2026-10-23)
 
 - Main website: https://ebruli-su-lalesi-live.vercel.app
-- Water Tulip Art Pack delivery: private redirect after successful Stripe checkout
+- Water Tulip Art Pack delivery: historical checkout redirect design; payment link currently inactive, delivery not recently verified
 - Vercel main project: `ebruli-su-lalesi-live`
 - Vercel delivery project: `ebruli-wt-pack-9q7k2m`
 
@@ -21,28 +21,39 @@ Supported interface languages:
 - Spanish
 - Arabic with RTL layout
 
-## Live commerce
+## Historical commerce wiring — payment links independently verified inactive on 2026-10-23
 
 ### Water Tulip Art Pack — EUR 19
 
 - Stripe product: `prod_UwfV8uTlXoGvm6`
 - Stripe price: `price_1TwmAgGup9HWwEMCkf2LnmSn`
-- Stripe Payment Link: `plink_1TwmB5Gup9HWwEMCQ2Ao7a7M`
+- Historical Stripe Payment Link: `plink_1TwmB5Gup9HWwEMCQ2Ao7a7M` — **inactive**
 - Delivery: instant redirect to a no-index page generating 12 downloadable 2400 × 3000 PNG artworks
 
 ### Online Ebru Workshop — EUR 49
 
 - Stripe product: `prod_UwfVL0hWunZ1SX`
 - Stripe price: `price_1TwmAtGup9HWwEMCDUmXgLQz`
-- Stripe Payment Link: `plink_1TwmBAGup9HWwEMC7ns8cxrX`
+- Historical Stripe Payment Link: `plink_1TwmBAGup9HWwEMC7ns8cxrX` — **inactive**
 - Fulfilment: scheduling by checkout email
 
 ### Custom Digital Ebru Commission — EUR 79
 
 - Stripe product: `prod_UwfWjxzbJlyBJb`
 - Stripe price: `price_1TwmAyGup9HWwEMC1elGgR8A`
-- Stripe Payment Link: `plink_1TwmBHGup9HWwEMCu5fpdKMR`
+- Historical Stripe Payment Link: `plink_1TwmBHGup9HWwEMCu5fpdKMR` — **inactive**
 - Fulfilment: customer preferences and delivery coordinated by checkout email
+
+
+## Current non-binding commission inquiry
+
+- EBRULI landing page: https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/ebruli-store?locale=en
+- Public source page: https://charlysmoky2010-hub.github.io/offers.html#ebruli
+- The commission request redirects to an existing Jotform URL via the EBRULI Edge Function, with an allowlist and UTM attribution.
+- Product control state: `verification`, `approval_first=true`, `inquiry_only=true`, `checkout_open=false`.
+- Reference price: EUR 79, **not a charged order**. The studio does not charge on this inquiry route.
+- The actual public HTTP response, Jotform acceptance and completed delivery are not yet independently verified. Never claim a sale on the strength of an active Stripe product or a submitted inquiry.
+- There is a separate newer live Stripe payment link; its existence does **not** bypass the canonical merchant-release conditions. Do not route incomplete offers to it.
 
 ## Current interactive features
 
@@ -52,7 +63,7 @@ Supported interface languages:
 - Multilingual Ebruli Assistant
 - Verified product and price answers
 - Explicit refusal to invent event dates, venues, capacity or partners
-- Live Stripe checkout buttons
+- Historical Stripe checkout integration; the three payment links above are now inactive
 - Automated digital Art Pack delivery after payment
 
 ## Separation boundary
