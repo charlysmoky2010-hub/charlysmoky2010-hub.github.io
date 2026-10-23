@@ -1,18 +1,27 @@
 {
   "project": "EBRULI_SU_LALESI",
   "version": "3.0.0-real-archive",
-  "updated_at": "2026-07-24",
+  "updated_at": "2026-10-23",
   "live_url": "https://ebruli-su-lalesi-live.vercel.app",
   "default_language": "en",
-  "languages": ["en", "de", "nl", "es", "ar"],
-  "rtl_languages": ["ar"],
+  "languages": [
+    "en",
+    "de",
+    "nl",
+    "es",
+    "ar"
+  ],
+  "rtl_languages": [
+    "ar"
+  ],
   "release": {
     "name": "Real Archive Release",
     "production_deployment": "dpl_GSeBb18mB4eLURGMzSnBn2kQUvJ2",
     "status": "READY",
     "http_status": 200,
     "real_media": true,
-    "ai_placeholder_archive": false
+    "ai_placeholder_archive": false,
+    "historical_status_note": "Deployment READY is a historical build state, not proof of current live commercial readiness."
   },
   "vercel": {
     "main_project": {
@@ -72,7 +81,7 @@
     "five_language_interface",
     "arabic_rtl",
     "multilingual_ebruli_assistant",
-    "live_stripe_checkout"
+    "historical_stripe_checkout_integration_links_currently_inactive"
   ],
   "offers": [
     {
@@ -83,7 +92,10 @@
       "stripe_price": "price_1TwmAgGup9HWwEMCkf2LnmSn",
       "stripe_payment_link": "plink_1TwmB5Gup9HWwEMCQ2Ao7a7M",
       "delivery": "instant_redirect_to_private_download_page",
-      "status": "live"
+      "status": "inactive",
+      "payment_link_active": false,
+      "last_verified_at": "2026-10-23",
+      "status_note": "Stripe live-account read-only check: the historical payment link is inactive. Do not present as purchasable."
     },
     {
       "key": "online_workshop",
@@ -93,7 +105,10 @@
       "stripe_price": "price_1TwmAtGup9HWwEMCDUmXgLQz",
       "stripe_payment_link": "plink_1TwmBAGup9HWwEMC7ns8cxrX",
       "delivery": "manual_schedule_by_checkout_email",
-      "status": "live"
+      "status": "inactive",
+      "payment_link_active": false,
+      "last_verified_at": "2026-10-23",
+      "status_note": "Stripe live-account read-only check: the historical payment link is inactive. Do not present as purchasable."
     },
     {
       "key": "custom_digital_ebru",
@@ -103,13 +118,23 @@
       "stripe_price": "price_1TwmAyGup9HWwEMC1elGgR8A",
       "stripe_payment_link": "plink_1TwmBHGup9HWwEMCu5fpdKMR",
       "delivery": "manual_brief_and_delivery_by_checkout_email",
-      "status": "live"
+      "status": "inactive",
+      "payment_link_active": false,
+      "last_verified_at": "2026-10-23",
+      "status_note": "Stripe live-account read-only check: the historical payment link is inactive. Do not present as purchasable."
     }
   ],
   "assistant": {
     "name": "Ebruli Assistant",
     "mode": "browser_rule_based",
-    "knowledge": ["ebru", "real_archive", "workshop", "live_offers", "payment", "event_truth_boundary"],
+    "knowledge": [
+      "ebru",
+      "real_archive",
+      "workshop",
+      "live_offers",
+      "payment",
+      "event_truth_boundary"
+    ],
     "truth_boundary": [
       "do_not_invent_event_dates",
       "do_not_invent_venues",
@@ -130,5 +155,14 @@
     "cerberrus_overwrite": false,
     "independent_art_identity": true,
     "cerberrus_learning_allowed_from_documented_patterns": true
+  },
+  "commerce_verification": {
+    "checked_at": "2026-10-23",
+    "source": "Stripe live-account read-only lookup",
+    "historical_checkout_links_active": 0,
+    "scope": "3 payment links listed in this file",
+    "note": "READY historical deployment metadata does not prove an active checkout, verified delivery, customers, or paid sales. A newer separate EBRULI commission link exists but the canonical merchant release remains fail-closed.",
+    "approved_nonbinding_inquiry": "https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/ebruli-store?locale=en",
+    "payment_collected_on_inquiry": false
   }
 }
