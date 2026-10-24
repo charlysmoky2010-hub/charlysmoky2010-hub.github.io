@@ -1,0 +1,90 @@
+name: MicroVault pilot source and interaction tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'microvault/pilot/**'
+      - 'microvault/index.html'
+      - 'microvault/csv-quality-report/index.html'
+      - '.github/workflows/microvault-pilot-verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate public entry routes and prepare module
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import os, re
+          home = Path('microvault/pilot/index.html').read_text(encoding='utf-8')
+          de = Path('microvault/index.html').read_text(encoding='utf-8')
+          en = Path('microvault/csv-quality-report/index.html').read_text(encoding='utf-8')
+          parser = Path('microvault/global/csv-mini-core.js').read_text(encoding='utf-8')
+          assert '/microvault/pilot/?lang=de' in de, 'German page does not lead to the pilot'
+          assert '/microvault/pilot/?lang=en' in en, 'English page does not lead to the pilot'
+          assert 'cerberrus144-os@agentmail.to' in home, 'Verified business inquiry mailbox missing'
+          assert 'This pilot does not accept payment' in home, 'Payment evidence warning missing'
+          assert 'Diese Pilotseite nimmt keine Zahlung an' in home, 'German payment warning missing'
+          assert 'No CSV upload' in home and 'Keine CSV-Übertragung' in home
+          for prohibited in ('buy.stripe.com', 'XMLHttpRequest', 'sendBeacon(', 'fetch(', 'localStorage', 'sessionStorage'):
+              assert prohibited not in home, f'Unexpected browser data transfer or payment token: {prohibited}'
+          assert 'export function analyzeCsv' in parser, 'Shared CSV parser missing'
+          modules = re.findall(r'<script\s+type="module"[^>]*>(.*?)</script>', home, re.I|re.S)
+          assert len(modules) == 1, 'Expected exactly one inline module'
+          assert "../global/csv-mini-core.js" in modules[0], 'Parser import path changed'
+          temp = Path(os.environ['RUNNER_TEMP'])/'microvault-pilot-contract'
+          (temp/'pilot').mkdir(parents=True,exist_ok=True)
+          (temp/'global').mkdir(parents=True,exist_ok=True)
+          (temp/'global/csv-mini-core.mjs').write_text(parser,encoding='utf-8')
+          (temp/'pilot/inline.mjs').write_text(modules[0].replace("../global/csv-mini-core.js","../global/csv-mini-core.mjs"),encoding='utf-8')
+          print('Pilot copy, safety boundaries, and both language entry points: PASS')
+          PY
+      - name: Check JavaScript syntax and simulated sample interaction
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check "$RUNNER_TEMP/microvault-pilot-contract/pilot/inline.mjs"
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import { pathToFileURL } from 'node:url';
+          const mock={};
+          const E=(id)=>mock[id]??=( {
+            id,disabled:false,value:'',href:'https://example.invalid/',hidden:true,
+            textContent:'',classList:{toggle(){},remove(){}},
+            listeners:{},setAttribute(){},scrollIntoView(){},
+            addEventListener(ev,cb){this.listeners[ev]=cb;},
+            click(ev='click'){this.listeners[ev]?.({target:this});}
+          });
+          E('imprint').href='https://example.invalid/?locale=de';
+          E('privacyLink').href='https://example.invalid/?locale=de';
+          globalThis.document={getElementById:E,querySelectorAll:()=>[]};
+          globalThis.location={search:'?lang=de'};
+          const modulePath=process.env.RUNNER_TEMP+'/microvault-pilot-contract/pilot/inline.mjs';
+          await import(pathToFileURL(modulePath).href);
+          E('sample').click();
+          assert.equal(E('analyze').disabled,false,'sample should enable Analyze');
+          E('analyze').click();
+          assert.equal(E('rows').textContent,'4','sample rows');
+          assert.equal(E('duplicates').textContent,'1','sample duplicate');
+          assert.equal(E('missing').textContent,'1','sample empty cell');
+          assert.equal(E('resultPanel').hidden,false,'results must become visible');
+          assert.ok(E('inquiry').href.startsWith('mailto:cerberrus144-os@agentmail.to?'),'mail draft');
+          assert.ok(!E('inquiry').href.includes('A-101'),'source records must never enter email draft');
+          assert.ok(E('verdict').textContent.includes('Duplikate'),'German verdict');
+          E('en').click();
+          assert.ok(E('verdict').textContent.includes('extra exact duplicate rows'),'English verdict');
+          assert.ok(E('full').href.includes('src=microvault-pilot-en'),'English full-app routing');
+          E('reset').click();
+          assert.equal(E('resultPanel').hidden,true,'Reset hides old results');
+          console.log('Pilot JavaScript syntax, local sample, DE/EN, email privacy, reset: PASS');
+          JS
