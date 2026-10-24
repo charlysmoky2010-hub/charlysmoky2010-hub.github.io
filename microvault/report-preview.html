@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MicroVault Berichtsvorschau | CSV Deep Report & Decision Pack</title>
+<meta name="description" content="Fiktive, transparente Vorschau der MicroVault CSV-Berichte: Fundstellen, Prüfschritte und Leistungsgrenzen vor einer freiwilligen Einmalzahlung von 5 € oder 29 €.">
+<link rel="canonical" href="https://charlysmoky2010-hub.github.io/microvault/report-preview.html">
+<meta property="og:title" content="MicroVault: Was steht im CSV-Prüfbericht?">
+<meta property="og:description" content="Kostenloses fiktives Beispiel mit Fundstellen und Entscheidungsschritten. Keine Zahlung erforderlich.">
+<style>
+:root{--bg:#f5f7f3;--ink:#193432;--muted:#4b625e;--line:#cbdcd4;--accent:#087565;--surface:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header,main,footer{max-width:980px;margin:auto;padding:20px}header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line)}
+a{color:#075e54}a:focus-visible{outline:3px solid #e4a83c;outline-offset:4px}nav{display:flex;gap:14px}
+header a{text-decoration:none;font-weight:700}h1{font-size:clamp(2.3rem,6vw,4rem);letter-spacing:-.05em;line-height:1.08;margin:0 0 22px}
+h2{font-size:1.55rem;letter-spacing:-.025em}h3{margin-bottom:6px}.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+.hero{padding:60px 0 24px}.lead{font-size:1.2rem;color:var(--muted);max-width:700px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,4vw,32px);margin:26px 0;box-shadow:0 3px 18px #133c2e0b}
+.sample{border-left:5px solid #e3ae51;background:#fffaf1;padding:15px 20px;border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf5f0}
+.scroll{overflow-x:auto}.pill{display:inline-block;font-size:.85rem;padding:4px 11px;background:#e5f1eb;border-radius:20px;font-weight:700}
+.cta{display:inline-flex;min-height:48px;align-items:center;justify-content:center;background:var(--accent);color:#fff;border-radius:8px;padding:11px 20px;font-weight:800;text-decoration:none;margin:8px 0}
+.cta:hover{background:#005d4f}.disclaimer{font-size:.92rem;color:var(--muted)}pre{overflow:auto;background:#163331;color:#e9f9ee;padding:18px;border-radius:8px;line-height:1.6}
+footer{border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}footer a{margin-right:18px}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"MicroVault CSV-Berichtsvorschau","inLanguage":["de","en"],"description":"Illustrative fictional examples of optional CSV quality check reports.","url":"https://charlysmoky2010-hub.github.io/microvault/report-preview.html"}</script>
+</head>
+<body>
+<header><a href="/microvault/">M / MICROVAULT</a><nav aria-label="Sprachen"><a href="#de">Deutsch</a><a href="#en" lang="en">English</a></nav></header>
+<main>
+<section class="hero" id="de" lang="de">
+<p class="eyebrow">Kostenlose Vorschau · Fiktive Beispieldaten</p>
+<h1>Was bekomme ich für 5 € oder 29 €?</h1>
+<p class="lead">Zuerst kostenlos die eigene CSV im Browser prüfen. Nur bei Bedarf danach einen zusätzlichen Bericht erwerben. Diese Vorschau ist eine redaktionelle Demonstration, <strong>kein automatisch erzeugter Kaufbericht</strong>.</p>
+<div class="sample"><strong>Beispiel, kein Kundenergebnis:</strong> Alle Vorgangsnummern, Werte, Fehler und Empfehlungen unten sind frei erfunden.</div>
+<div class="card">
+<h2>Beispieldatei</h2>
+<pre>Vorgang;Datum;Betrag
+A-101;2026-10-12;129,00
+A-102;2026-10-12;89,00
+A-102;2026-10-12;89,00
+A-103;2026-10-13;</pre>
+<p class="disclaimer">MicroVault erkennt exakt identische Datenzeilen und leere Felder. Eine doppelte Geschäftsnummer allein oder ein auffälliger Betrag beweist keine doppelte Bestellung oder fehlerhafte Buchung.</p>
+</div>
+<div class="card">
+<p class="pill">Deep Report · 5 € einmalig</p>
+<h2>Beispiel für Fundstellen</h2>
+<div class="scroll"><table><thead><tr><th>Fundstelle</th><th>Struktureller Hinweis</th><th>Nächste Prüfung</th></tr></thead>
+<tbody><tr><td>CSV-Datenzeilen 3 und 4</td><td>Exakt identische Zeilen</td><td>Im Ursprungssystem abgleichen; nicht automatisch löschen</td></tr>
+<tr><td>CSV-Datenzeile 5, Spalte Betrag</td><td>Leeres Feld</td><td>Prüfen, ob leerer Betrag zulässig ist</td></tr></tbody></table></div>
+<p class="disclaimer">Im echten Deep Report hängen Art und Anzahl der Fundstellen von deiner Datei ab. Es kann auch keine Funde geben; maximal 200 Fundstellen werden angezeigt. Dies ist keine exakte Kopie des technischen Ausgabeformats.</p>
+</div>
+<div class="card">
+<p class="pill">Decision Pack · 29 € einmalig</p>
+<h2>Zusätzlicher beispielhafter Prüfplan</h2>
+<div class="scroll"><table><thead><tr><th>Priorität</th><th>Arbeitsschritt</th><th>Wer prüft?</th><th>Abnahmekriterium</th></tr></thead>
+<tbody><tr><td>1</td><td>Identische Exporteinträge mit Quelle vergleichen</td><td>Dateneigentümer</td><td>Jeder Treffer ist erläutert</td></tr>
+<tr><td>2</td><td>Fehlende Pflichtfelder prüfen</td><td>Fachverantwortliche</td><td>Fehlwerte bewertet</td></tr>
+<tr><td>3</td><td>Korrektur dokumentieren</td><td>Dateneigentümer</td><td>Änderungen nachvollziehbar</td></tr></tbody></table></div>
+<p class="disclaimer">Das Decision Pack ergänzt einen priorisierten Maßnahmenplan und Prüfkriterien. Keine automatische Datenkorrektur, Rechts-, Steuer- oder Buchhaltungsprüfung.</p>
+</div>
+<a class="cta" href="https://microvault.floot.app/?src=sample-report-de#analyzer">Meine CSV zuerst kostenlos prüfen →</a>
+<p class="disclaimer">Keine Anmeldung für den kostenlosen Check. Ein Kauf erfolgt nur auf ausdrückliche Auswahl im Produkt. Der CSV-Inhalt wird für diese Analyse nicht an den Server übertragen. Preis, Nutzungsbedingungen und etwaige Steuern vor der Zahlung kontrollieren.</p>
+</section>
+<section class="card" id="en" lang="en">
+<p class="eyebrow">Free preview · Fictional demonstration</p>
+<h2>What do the €5 and €29 reports provide?</h2>
+<p>Start with a free browser-based CSV analysis. The optional <strong>€5 Deep Report</strong> adds row/column issue locations for exact duplicate rows and empty cells (up to 200 findings). The <strong>€29 Decision Pack</strong> additionally provides a prioritized review plan, responsible roles and acceptance checks.</p>
+<div class="sample"><strong>Example only:</strong> Imaginary rows 3 and 4 match exactly, and row 5 has an empty amount. These findings are not from a real customer, are not proof of duplicate billing, and are not an exact reproduction of the downloadable format.</div>
+<p>Neither product verifies business transactions or fixes CSV files automatically. No account or payment is needed for the free scan.</p>
+<a class="cta" href="https://microvault.floot.app/?src=sample-report-en#analyzer">Check my CSV privately — free →</a>
+</section>
+</main>
+<footer><a href="/microvault/">Zurück zur deutschen Anleitung</a><a href="/microvault/global/">English guide</a><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&amp;locale=de">Impressum</a><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=de">Datenschutz</a><p>© 2026 MicroVault · All example data fictional; no guarantees of savings or sales.</p></footer>
+</body>
+</html>
