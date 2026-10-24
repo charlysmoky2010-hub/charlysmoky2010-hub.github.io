@@ -67,7 +67,7 @@ jobs:
           });
           E('imprint').href='https://example.invalid/?locale=de';
           E('privacyLink').href='https://example.invalid/?locale=de';
-          globalThis.document={getElementById:E,querySelectorAll:()=>[]};
+          globalThis.document={documentElement:{lang:'en'},getElementById:E,querySelectorAll:()=>[]};
           globalThis.location={search:'?lang=de'};
           const modulePath=process.env.RUNNER_TEMP+'/microvault-pilot-contract/pilot/inline.mjs';
           await import(pathToFileURL(modulePath).href);
