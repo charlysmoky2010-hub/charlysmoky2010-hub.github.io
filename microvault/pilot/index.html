@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102c29">
+<meta name="robots" content="index,follow">
+<title>MicroVault Pilot – CSV kostenlos prüfen | Free CSV Quality Check</title>
+<meta name="description" content="Prüfe CSV-Dateien kostenlos und lokal auf identische Duplikate, leere Zellen und Strukturprobleme. Free English and German CSV check.">
+<link rel="canonical" href="https://charlysmoky2010-hub.github.io/microvault/pilot/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MicroVault – Check your CSV before import">
+<meta property="og:description" content="Free local CSV analysis with transparent next steps. No file upload, account or subscription.">
+<meta property="og:url" content="https://charlysmoky2010-hub.github.io/microvault/pilot/">
+<style>
+:root{--bg:#f7f8f3;--ink:#102f2c;--soft:#e8f2eb;--muted:#46635b;--border:#cbdad0;--forest:#0e3430;--mint:#bcf0c5;--warn:#95541e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#135d51}button,input{font:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #d39a35;outline-offset:3px}
+.wrap{max-width:1050px;width:calc(100% - 34px);margin:0 auto}
+header{background:var(--forest);color:white}header .wrap{min-height:73px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+header a{color:#dff7e7;text-decoration:none;font-weight:750}header strong{font-size:13px;letter-spacing:.16em}
+.langs{display:flex;gap:9px;align-items:center}.lang{background:transparent;border:1px solid #72958a;color:#e9f8ef;border-radius:6px;padding:6px 12px;cursor:pointer}.lang[aria-pressed="true"]{background:var(--mint);color:var(--forest);border-color:var(--mint);font-weight:800}
+.hero{background:radial-gradient(circle at 87% 12%,#286454,transparent 39%),linear-gradient(115deg,#0e3430,#164b40);color:white;padding:65px 0 90px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#bdf2c9}
+h1{font-size:clamp(37px,6.5vw,70px);line-height:1.09;letter-spacing:-.055em;max-width:930px;margin:18px 0}
+h2{font-size:clamp(25px,4vw,35px);letter-spacing:-.035em;line-height:1.18;margin:0 0 17px}
+.hero p{color:#dcf0e4;max-width:700px;font-size:19px}.flags{display:flex;flex-wrap:wrap;gap:9px;margin:23px 0 0}.flags span{border:1px solid #7b9c8e;border-radius:99px;padding:6px 11px;font-size:13px}
+main{position:relative;margin-top:-52px;padding-bottom:50px}.panel{padding:clamp(19px,4vw,36px);background:#fff;border:1px solid var(--border);border-radius:15px;margin-bottom:19px;box-shadow:0 6px 29px #163e2c0a}
+.small{font-size:13px;color:var(--muted)}.upload{display:block;background:#f1faf3;border:2px dashed #8abca1;border-radius:12px;text-align:center;padding:32px 16px;font-weight:750;cursor:pointer}.upload input{display:block;margin:14px auto 0;max-width:100%;font-size:14px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:17px 0}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 18px;border-radius:8px;border:1px solid var(--forest);background:var(--forest);color:white;text-decoration:none;font-weight:750;cursor:pointer;text-align:center}.button:hover{background:#17665b;color:white}.button.alt{background:#fff;color:var(--forest);border-color:var(--border)}.button.alt:hover{background:var(--soft)}.button:disabled{opacity:.45;cursor:not-allowed}
+#status{min-height:24px;color:var(--muted)}.error{color:#a22525!important}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}.stat{background:var(--soft);border-radius:10px;padding:18px}.stat strong{font-size:clamp(22px,3.4vw,37px);display:block;line-height:1.3}.stat span{font-size:13px}
+.evidence{border-left:5px solid #277b64;background:#f0f8f2;padding:17px 21px;border-radius:4px}.evidence.positive{border-color:#9c702e;background:#fff8e7}.purchase{background:var(--forest);color:white;border-color:var(--forest)}.purchase p,.purchase .small{color:#dbeee5}.purchase h2{color:white}.purchase .button{background:var(--mint);border-color:var(--mint);color:var(--forest)}.purchase .button:hover{background:white}.purchase .button.alt{background:transparent;border-color:#8ba89b;color:white}.purchase .button.alt:hover{background:#246055}.offers{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:19px 0}.offer{background:#17483e;border:1px solid #467568;border-radius:11px;padding:21px}.offer h3{margin:0 0 8px}.price{font-weight:900;font-size:28px;color:#ceffd5}
+footer{border-top:1px solid var(--border);font-size:13px;color:var(--muted);padding:27px 0 48px}footer a{margin-right:15px}
+@media(max-width:650px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.offers{grid-template-columns:1fr}.hero{padding:43px 0 83px}header .wrap{padding:13px 0}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MicroVault Pilot CSV Quality Check","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","url":"https://charlysmoky2010-hub.github.io/microvault/pilot/","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Free local CSV check for exactly repeated rows, missing cells and irregular column counts."}</script>
+</head>
+<body>
+<header><div class="wrap"><strong>M / MICROVAULT PILOT</strong><div class="langs" aria-label="Language / Sprache"><button type="button" id="de" class="lang" aria-pressed="true">Deutsch</button><button type="button" id="en" class="lang" aria-pressed="false">English</button></div></div></header>
+<section class="hero"><div class="wrap">
+<div class="eyebrow" data-t="eyebrow">KOSTENLOS · CSV-DATENQUALITÄT</div>
+<h1 data-t="hero">CSV prüfen. Probleme erkennen. Erst danach entscheiden.</h1>
+<p data-t="intro">Exakt doppelte Zeilen, leere Felder und unregelmäßige Spalten vor einem Datenimport erkennen. Die Analyse erfolgt direkt auf deinem Gerät.</p>
+<div class="flags"><span data-t="flag1">Keine CSV-Übertragung</span><span data-t="flag2">Keine Anmeldung</span><span data-t="flag3">Max. 2 MB</span><span data-t="flag4">Kein Abonnement</span></div>
+</div></section>
+<main class="wrap">
+<section class="panel">
+<h2 data-t="step1">1. Kostenlos prüfen</h2><p data-t="instruction">Mit fiktiven Beispieldaten testen oder eine CSV-Datei auswählen, für die du eine Verarbeitungsberechtigung hast.</p>
+<label class="upload"><span data-t="fileLabel">CSV-Datei auswählen (max. 2 MB)</span><input type="file" id="csvfile" accept=".csv,text/csv,text/plain"></label>
+<div class="actions"><button class="button" type="button" id="analyze" disabled data-t="run">Lokal analysieren</button><button class="button alt" type="button" id="sample" data-t="sample">Fiktives Beispiel testen</button><button class="button alt" type="button" id="reset" data-t="clear">Zurücksetzen</button></div>
+<div id="status" role="status" aria-live="polite"></div>
+</section>
+<section class="panel" id="resultPanel" hidden>
+<h2 data-t="step2">2. Dein Ergebnis</h2>
+<div class="stats"><div class="stat"><strong id="rows">0</strong><span data-t="rows">Datenzeilen</span></div><div class="stat"><strong id="columns">0</strong><span data-t="columns">Spalten</span></div><div class="stat"><strong id="missing">0</strong><span data-t="missing">Leere Zellen</span></div><div class="stat"><strong id="duplicates">0</strong><span data-t="duplicates">Exakte zusätzliche Duplikate</span></div></div>
+<p id="shape" class="small"></p>
+<div id="verdict" class="evidence" role="status" aria-live="polite"></div>
+<p class="small" data-t="limitations">Eine exakte Zeilenübereinstimmung beweist keine doppelte Bestellung. Die Bewertung und jede Korrektur müssen im Quellsystem fachlich überprüft werden.</p>
+<div class="actions"><button class="button alt" type="button" id="download" data-t="export">Kostenlose JSON-Zusammenfassung speichern</button></div>
+<p class="small" data-t="privacy">Der Download enthält Kennzahlen und Beispielpositionen, nicht die Originalwerte deiner CSV.</p>
+</section>
+<section class="panel purchase" id="next">
+<div class="eyebrow" data-t="step3">OPTIONAL · NÄCHSTER SCHRITT</div><h2 data-t="need">Brauchst du mehr als einen kostenlosen Strukturcheck?</h2>
+<p data-t="offerIntro">Prüfe zuerst die CSV. Für tiefergehende Fundstellen oder die Planung interner Prüfschritte gibt es folgende beschriebene Optionen:</p>
+<div class="offers"><div class="offer"><h3 data-t="deep">Deep Report</h3><div class="price">5 €</div><p data-t="deepDesc">Detailliertere technische Fundstellen zur manuellen Prüfung; einmalige Zahlung, sofern im vollständigen Produkt verfügbar.</p></div><div class="offer"><h3 data-t="decision">Decision Pack</h3><div class="price">29 €</div><p data-t="decisionDesc">Erweiterte Handlungsempfehlungen und Abnahmekriterien; einmalige Zahlung, sofern verfügbar.</p></div></div>
+<p class="small" data-t="gate">Wichtig: Die sichere Kauf- und individuelle Auslieferungskette wird noch geprüft. Diese Pilotseite nimmt keine Zahlung an. Preise sind keine Zusicherung der Verfügbarkeit; das vollständige Produkt zeigt die aktuellen Bedingungen.</p>
+<div class="actions"><a class="button" id="full" href="https://microvault.floot.app/?src=microvault-pilot-de#analyzer" target="_blank" rel="noopener noreferrer" data-t="full">Vollständiges kostenloses Produkt öffnen →</a><a class="button alt" id="inquiry" href="mailto:cerberrus144-os@agentmail.to?subject=MicroVault%20pilot%20inquiry" data-t="inquiry">Frage zum Bericht per E-Mail stellen →</a></div>
+<p class="small" data-t="contactNote">Die E-Mail wird nur nach deiner Bestätigung im eigenen E-Mail-Programm versendet. Der Entwurf enthält ausschließlich Zählwerte, niemals Dateiname oder CSV-Inhalte. Diese Seite sendet keine Analysedaten an einen Server.</p>
+<p class="small" data-t="handoff">Das vollständige Produkt ist ein separater Dienst. Du musst dort deine CSV erneut lokal auswählen; die Datei wird nicht von dieser Seite übertragen.</p>
+</section>
+<section class="panel"><h2 data-t="faqHeading">Grenzen und Transparenz</h2><p data-t="faq">Keine automatische Datenkorrektur, Buchungsprüfung, Betrugserkennung oder verbindliche Zertifizierung. Prüfe keine personenbezogenen oder vertraulichen CSV-Dateien ohne entsprechende Berechtigung. Keine automatisierten Kunden-E-Mails oder erfundenen Empfehlungen.</p></section>
+</main>
+<footer class="wrap"><a href="/microvault/" data-t="germanGuide">Deutscher Leitfaden</a><a href="/microvault/csv-quality-report/" data-t="englishGuide">English guide</a><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=imprint&amp;locale=de" id="imprint" data-t="imprint">Impressum</a><a href="https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/phi-nexus-public?page=privacy&amp;locale=de" id="privacyLink" data-t="privacyLink">Datenschutz</a><p>© 2026 MicroVault · CERBERRUS144 · <span data-t="footer">Fiktive Beispieldaten, keine Kundenreferenzen.</span></p></footer>
+<script type="module">
+import { analyzeCsv } from '../global/csv-mini-core.js';
+const t={
+de:{eyebrow:'KOSTENLOS · CSV-DATENQUALITÄT',hero:'CSV prüfen. Probleme erkennen. Erst danach entscheiden.',intro:'Exakt doppelte Zeilen, leere Felder und unregelmäßige Spalten vor einem Datenimport erkennen. Die Analyse erfolgt direkt auf deinem Gerät.',flag1:'Keine CSV-Übertragung',flag2:'Keine Anmeldung',flag3:'Max. 2 MB',flag4:'Kein Abonnement',step1:'1. Kostenlos prüfen',instruction:'Mit fiktiven Beispieldaten testen oder eine CSV-Datei auswählen, für die du eine Verarbeitungsberechtigung hast.',fileLabel:'CSV-Datei auswählen (max. 2 MB)',run:'Lokal analysieren',sample:'Fiktives Beispiel testen',clear:'Zurücksetzen',step2:'2. Dein Ergebnis',rows:'Datenzeilen',columns:'Spalten',missing:'Leere Zellen',duplicates:'Exakte zusätzliche Duplikate',limitations:'Eine exakte Zeilenübereinstimmung beweist keine doppelte Bestellung. Die Bewertung und jede Korrektur müssen im Quellsystem fachlich überprüft werden.',export:'Kostenlose JSON-Zusammenfassung speichern',privacy:'Der Download enthält Kennzahlen und Beispielpositionen, nicht die Originalwerte deiner CSV.',step3:'OPTIONAL · NÄCHSTER SCHRITT',need:'Brauchst du mehr als einen kostenlosen Strukturcheck?',offerIntro:'Prüfe zuerst die CSV. Für tiefergehende Fundstellen oder die Planung interner Prüfschritte gibt es folgende beschriebene Optionen:',deep:'Deep Report',deepDesc:'Detailliertere technische Fundstellen zur manuellen Prüfung; einmalige Zahlung, sofern im vollständigen Produkt verfügbar.',decision:'Decision Pack',decisionDesc:'Erweiterte Handlungsempfehlungen und Abnahmekriterien; einmalige Zahlung, sofern verfügbar.',gate:'Wichtig: Die sichere Kauf- und individuelle Auslieferungskette wird noch geprüft. Diese Pilotseite nimmt keine Zahlung an. Preise sind keine Zusicherung der Verfügbarkeit; das vollständige Produkt zeigt die aktuellen Bedingungen.',full:'Vollständiges kostenloses Produkt öffnen →',inquiry:'Frage zum Bericht per E-Mail stellen →',contactNote:'Die E-Mail wird nur nach deiner Bestätigung im eigenen E-Mail-Programm versendet. Der Entwurf enthält ausschließlich Zählwerte, niemals Dateiname oder CSV-Inhalte. Diese Seite sendet keine Analysedaten an einen Server.',handoff:'Das vollständige Produkt ist ein separater Dienst. Du musst dort deine CSV erneut lokal auswählen; die Datei wird nicht von dieser Seite übertragen.',faqHeading:'Grenzen und Transparenz',faq:'Keine automatische Datenkorrektur, Buchungsprüfung, Betrugserkennung oder verbindliche Zertifizierung. Prüfe keine personenbezogenen oder vertraulichen CSV-Dateien ohne entsprechende Berechtigung. Keine automatisierten Kunden-E-Mails oder erfundenen Empfehlungen.',germanGuide:'Deutscher Leitfaden',englishGuide:'English guide',imprint:'Impressum',privacyLink:'Datenschutz',footer:'Fiktive Beispieldaten, keine Kundenreferenzen.',ready:'Fiktive Daten stehen bereit. Starte die lokale Analyse.',choose:'Bitte zuerst eine Datei auswählen oder das Beispiel laden.',selected:'Datei eingelesen. Der Inhalt wird nicht hochgeladen.',large:'Datei ist größer als 2 MB.',done:'CSV lokal ausgewertet. Es fand keine Übertragung statt.',noFlags:'Im einfachen Strukturcheck wurden keine dieser Auffälligkeiten gefunden. Für diese Datei ist ein zusätzlicher kostenpflichtiger Bericht möglicherweise nicht nötig.',flagsFound:'Im Strukturcheck gefunden: {a} exakt doppelte Zusatzzeilen, {b} leere Zellen und {c} Zeilen mit abweichender Spaltenzahl. Prüfe zuerst die Fundstellen. Ein Detailbericht ist nur sinnvoll, wenn dir die kostenlose Zusammenfassung nicht genügt.',shape:'Trennzeichen: {d} · Zeilen mit abweichender Spaltenzahl: {w}',error:'CSV kann nicht gelesen oder geprüft werden.',emailSubject:'MicroVault – Anfrage zum CSV-Bericht',emailBody:'Hallo MicroVault,\n\nich interessiere mich für die optionale Berichtsfunktion.\n\nZusammenfassung meiner lokalen Prüfung (keine CSV-Inhalte):\nDatenzeilen: {r}\nLeere Zellen: {m}\nExakte zusätzliche Duplikate: {d}\nAbweichende Spaltenbreiten: {w}\n\nBitte teilt mir die aktuellen Kauf-/Lieferbedingungen mit.\n\n(Die E-Mail wird erst beim Absenden in meinem eigenen Programm verschickt.)'},
+en:{eyebrow:'FREE · CSV DATA QUALITY',hero:'Check your CSV. Understand the issues. Then decide.',intro:'Find exactly repeated rows, empty cells and inconsistent column counts before import. The analysis runs locally on your device.',flag1:'No CSV upload',flag2:'No account',flag3:'Up to 2 MB',flag4:'No subscription',step1:'1. Run the free check',instruction:'Try fictional sample data or select a CSV you are authorized to process.',fileLabel:'Choose CSV file (max 2 MB)',run:'Analyze locally',sample:'Try fictional sample',clear:'Reset',step2:'2. Your results',rows:'Data rows',columns:'Columns',missing:'Empty cells',duplicates:'Extra exact duplicate rows',limitations:'Exact row matches are not proof of duplicate transactions. A qualified person must check findings against the source before changing records.',export:'Download free JSON summary',privacy:'The download contains counts and example positions, never original CSV field values.',step3:'OPTIONAL · NEXT STEP',need:'Need more than a free structural check?',offerIntro:'Analyze your CSV for free first. These additional report options describe deeper finding details or review planning:',deep:'Deep Report',deepDesc:'Additional technical finding locations for manual review; one-time purchase if currently available in the full product.',decision:'Decision Pack',decisionDesc:'Extended follow-up guidance and acceptance criteria; one-time purchase if currently available.',gate:'Important: secure payment and buyer-specific fulfillment are still being verified. This pilot does not accept payment. Prices do not guarantee availability; check the current terms in the full app.',full:'Open the full free product →',inquiry:'Ask about the report by email →',contactNote:'The email is sent only if you confirm it in your own email app. The prepared draft contains summary counts only — no filename or CSV values. This page transmits no analysis data to a server.',handoff:'The full product is a separate service. You must select your CSV locally again there; this page does not transfer your file.',faqHeading:'Limitations and transparency',faq:'No automatic correction, business-transaction validation, fraud detection, or formal certification. Do not process personal or confidential CSV data without the required authorization. No automated customer email or fabricated reviews.',germanGuide:'German guide',englishGuide:'English guide',imprint:'Imprint',privacyLink:'Privacy',footer:'Fictional sample data, no testimonials.',ready:'Fictional sample loaded. Run the local check.',choose:'Select a file or load the fictional sample first.',selected:'File loaded locally. Its contents have not been uploaded.',large:'File exceeds 2 MB.',done:'CSV analyzed locally. Nothing was transferred.',noFlags:'No issues of these kinds were detected by the basic structural check. You may not need a paid report for this file.',flagsFound:'Basic scan: {a} extra exact duplicate rows, {b} empty cells and {c} rows with inconsistent column counts. Review these first. Consider a detailed report only if the free summary is insufficient.',shape:'Delimiter: {d} · Rows with inconsistent column counts: {w}',error:'CSV cannot be read or analyzed.',emailSubject:'MicroVault – CSV report enquiry',emailBody:'Hello MicroVault,\n\nI am interested in the optional reporting capability.\n\nMy local scan summary (no CSV contents):\nData rows: {r}\nEmpty cells: {m}\nExtra exact duplicate rows: {d}\nInconsistent row widths: {w}\n\nPlease confirm current purchase and fulfillment terms.\n\n(This email sends only when I choose to send it in my email app.)'}
+};
+const $=id=>document.getElementById(id);
+const sample='order_id;item;status;amount\nA-100;book;paid;22,00\nA-101;poster;open;15,00\nA-101;poster;open;15,00\nA-102;card;;4,00';
+let lang=new URLSearchParams(location.search).get('lang')==='en'?'en':'de';
+let pending='',report=null;
+function format(s,values){return s.replace(/\{([a-z])\}/g,(_,k)=>String(values[k]??''))}
+function updateMail(){
+ const v=report?{r:report.rows,m:report.missingCells,d:report.identicalExtraRows,w:report.irregularWidthRows}:{r:'not run',m:'not run',d:'not run',w:'not run'};
+ const query=new URLSearchParams({subject:t[lang].emailSubject,body:format(t[lang].emailBody,v)});
+ $('inquiry').href='mailto:cerberrus144-os@agentmail.to?'+query.toString();
+}
+function displayResult(){
+ if(!report)return;
+ $('rows').textContent=report.rows.toLocaleString(lang==='de'?'de-DE':'en-GB');
+ $('columns').textContent=report.columns.toLocaleString(lang==='de'?'de-DE':'en-GB');
+ $('missing').textContent=report.missingCells.toLocaleString(lang==='de'?'de-DE':'en-GB');
+ $('duplicates').textContent=report.identicalExtraRows.toLocaleString(lang==='de'?'de-DE':'en-GB');
+ $('shape').textContent=format(t[lang].shape,{d:report.delimiter,w:report.irregularWidthRows});
+ const total=report.missingCells+report.identicalExtraRows+report.irregularWidthRows;
+ $('verdict').classList.toggle('positive',total>0);
+ $('verdict').textContent=total>0?format(t[lang].flagsFound,{a:report.identicalExtraRows,b:report.missingCells,c:report.irregularWidthRows}):t[lang].noFlags;
+ $('resultPanel').hidden=false;
+ updateMail();
+}
+function setLang(value){
+ lang=value;document.documentElement.lang=lang;
+ for(const node of document.querySelectorAll('[data-t]'))node.textContent=t[lang][node.dataset.t];
+ $('de').setAttribute('aria-pressed',String(lang==='de'));
+ $('en').setAttribute('aria-pressed',String(lang==='en'));
+ $('full').href='https://microvault.floot.app/?src=microvault-pilot-'+lang+'#analyzer';
+ for(const id of ['imprint','privacyLink']){const u=new URL($(id).href);u.searchParams.set('locale',lang);$(id).href=u.toString()}
+ $('status').textContent=pending?t[lang].ready:t[lang].choose;
+ displayResult();updateMail();
+}
+function reset(){pending='';report=null;$('csvfile').value='';$('analyze').disabled=true;$('resultPanel').hidden=true;$('status').classList.remove('error');$('status').textContent=t[lang].choose;updateMail()}
+function status(s,error=false){$('status').textContent=s;$('status').classList.toggle('error',error)}
+$('de').addEventListener('click',()=>setLang('de'));
+$('en').addEventListener('click',()=>setLang('en'));
+$('sample').addEventListener('click',()=>{pending=sample;report=null;$('csvfile').value='';$('analyze').disabled=false;$('resultPanel').hidden=true;status(t[lang].ready)});
+$('reset').addEventListener('click',reset);
+$('csvfile').addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file){reset();return}if(file.size>2097152){reset();status(t[lang].large,true);return}try{pending=await file.text();report=null;$('analyze').disabled=false;$('resultPanel').hidden=true;status(t[lang].selected)}catch{reset();status(t[lang].error,true)}});
+$('analyze').addEventListener('click',()=>{try{report=analyzeCsv(pending);displayResult();status(t[lang].done);$('resultPanel').scrollIntoView({behavior:'smooth',block:'start'})}catch{report=null;$('resultPanel').hidden=true;status(t[lang].error,true)}});
+$('download').addEventListener('click',()=>{if(!report)return;const safe={schema:'microvault-pilot-local-v1',createdAt:new Date().toISOString(),rows:report.rows,columns:report.columns,missingCells:report.missingCells,identicalExtraRows:report.identicalExtraRows,irregularWidthRows:report.irregularWidthRows,delimiter:report.delimiter,duplicateExamples:report.duplicateExamples,missingExamples:report.missingExamples,notes:report.notes};const blob=new Blob([JSON.stringify(safe,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='microvault-free-summary.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)});
+setLang(lang);
+</script>
+</body>
+</html>
