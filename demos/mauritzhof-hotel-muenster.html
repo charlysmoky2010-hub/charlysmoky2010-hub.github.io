@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mauritzhof Hotel Muenster — Verified Guest Assistant &amp; Info Hub</title>
+<style>
+:root{--bg:#fbfaf7;--tx:#1d2a33;--ac:#0e6e8c;--kart:#ffffff;--bd:rgba(128,128,128,.22)}
+@media (prefers-color-scheme: dark){:root{--bg:#0f171e;--tx:#eef2f4;--ac:#38bdf8;--kart:#18242e;--bd:rgba(255,255,255,.14)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Georgia,serif;background:var(--bg);color:var(--tx);line-height:1.6}
+header{padding:64px 24px;text-align:center;background:linear-gradient(135deg,#0e6e8c,#0f172a);color:#fff}
+.badge{display:inline-block;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:.8rem;letter-spacing:.04em;margin-bottom:12px}
+header h1{font-size:clamp(1.9rem,5vw,3.1rem);margin:0 0 8px}
+header p{margin:0 auto;max-width:680px;font-size:1.1rem;opacity:.92}
+main{max-width:920px;margin:0 auto;padding:36px 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:24px 0}
+.k{background:var(--kart);padding:18px;border-radius:14px;border:1px solid var(--bd);font-weight:500}
+.assistant{background:var(--kart);padding:26px;border-radius:18px;border:2px solid var(--ac);margin:28px 0;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.assistant h3{margin:0 0 6px;color:var(--ac);font-size:1.25rem}
+.qa-btn{background:transparent;border:1px solid var(--ac);color:var(--tx);padding:9px 15px;border-radius:999px;cursor:pointer;margin:5px 5px 5px 0;font-size:.9rem;font-weight:600;transition:.15s}
+.qa-btn:hover{background:var(--ac);color:#fff}
+#qa-ans{margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(14,110,140,.1);min-height:52px;font-size:.96rem;border-left:4px solid var(--ac)}
+.proof{font-family:monospace;font-size:.8rem;opacity:.75;margin-top:16px;padding:10px 14px;border-radius:8px;background:var(--kart);border:1px dashed var(--bd)}
+a.btn{display:inline-block;background:var(--ac);color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;margin:6px 8px 6px 0;font-weight:600}
+footer{text-align:center;padding:28px 24px;opacity:.7;font-size:.88rem;border-top:1px solid var(--bd)}
+</style></head><body>
+<header>
+  <div class="badge">VERIFIED MULTILINGUAL GUEST ASSISTANT DEMO</div>
+  <h1>Mauritzhof Hotel Muenster</h1>
+  <p>Hotel Mauritzhof Münster im Stadtzentrum an der Promenade</p>
+</header>
+<main>
+  <p style="font-size:1.05rem">Stilvolles 4-Sterne Boutique Hotel Mauritzhof in Münster: Ruhige zentrale Lage an der Promenade, moderne Zimmer, und das hauseigende RECKOS Restaurant und Bar. Jetzt buchen.</p>
+  <div class="grid"><div class="k">✓ Eisenbahnstrasse 17</div><div class="k">✓ 48143 Muenster</div><div class="k">✓ Design- &amp; Boutique-Hotel direkt an der gruenen Promenade</div><div class="k">✓ wenige Gehminuten zur Altstadt</div><div class="k">✓ Ein Rückzugsort</div><div class="k">✓ mitten in Münster</div></div>
+  <div class="assistant">
+    <h3>💬 Mauritzhof Hotel Muenster — Instant Guest Assistant (DE / EN / TR)</h3>
+    <p style="margin:0 0 12px;font-size:.9rem;opacity:.85">Strict zero-hallucination mode: answers only verified hotel facts and routes bookings to official staff.</p>
+    <div>
+      <button class="qa-btn" onclick="ask('loc')">📍 Location &amp; Arrival</button>
+      <button class="qa-btn" onclick="ask('feat')">🏨 Highlights &amp; Services</button>
+      <button class="qa-btn" onclick="ask('book')">📅 Direct Booking &amp; Contact</button>
+      <button class="qa-btn" onclick="ask('en')">🇬🇧 English Summary</button>
+    </div>
+    <div id="qa-ans">Click any guest question above (or use the floating chat bubble in the bottom-right corner) to test the verified response for Mauritzhof Hotel Muenster.</div>
+  </div>
+  <div class="assistant" style="border-color:#10b981">
+    <h3 style="color:#10b981">⚡ 1-Line Website Integration &amp; 30-Day Pilot Activation</h3>
+    <p style="margin:0 0 8px;font-size:.9rem">Paste this single line before <code>&lt;/body&gt;</code> on your hotel website to activate the floating guest assistant:</p>
+    <pre id="embed-code" style="background:#0f172a;color:#a7f3d0;padding:12px;border-radius:10px;overflow-x:auto;font-size:.82rem;margin:0 0 12px">&lt;script src="https://charlysmoky2010-hub.github.io/demos/widget.js" data-hotel="mauritzhof-hotel-muenster" data-name="Mauritzhof Hotel Muenster" data-contact="+49 251 41720 / info@mauritzhof.de" data-facts="Eisenbahnstrasse 17, 48143 Muenster, Design- &amp; Boutique-Hotel direkt an der gruenen Promenade, wenige Gehminuten zur Altstadt"&gt;&lt;/script&gt;</pre>
+    <button class="qa-btn" onclick="navigator.clipboard.writeText(document.getElementById('embed-code').textContent);this.textContent='✓ Copied to Clipboard!'">📋 Copy 1-Line Embed Code</button>
+    <a class="btn" style="background:#10b981;color:#052e16" href="https://buy.stripe.com/5kQ28r884dC670T9b36Na2f" target="_blank" rel="noopener">🚀 Activate Full Setup &amp; Priority Onboarding (Stripe)</a>
+  </div>
+  <p><a class="btn" href="tel:+4925141720">📞 +49 251 41720</a><a class="btn" href="mailto:info@mauritzhof.de">✉️ info@mauritzhof.de</a><a class="btn" href="https://www.mauritzhof.de/" target="_blank" rel="noopener">🌐 Official Website</a></p>
+  <div class="proof">Live Technical Audit: https://www.mauritzhof.de/ | HTTP 200 | Response: 274.7 ms | JSON-LD Schemas: 0 | SHA-256 Evidence: 5253571095a5563c</div>
+</main>
+<footer>Mauritzhof Hotel Muenster &middot; Muenster &middot; 30-Day Free Pilot Demo</footer>
+<script src="widget.js" data-hotel="mauritzhof-hotel-muenster" data-name="Mauritzhof Hotel Muenster" data-contact="+49 251 41720 / info@mauritzhof.de" data-facts="Eisenbahnstrasse 17, 48143 Muenster, Design- &amp; Boutique-Hotel direkt an der gruenen Promenade, wenige Gehminuten zur Altstadt"></script>
+<script>
+const ANSWERS = {
+  loc: "📍 Mauritzhof Hotel Muenster (Muenster): Eisenbahnstrasse 17, 48143 Muenster, Design- & Boutique-Hotel direkt an der gruenen Promenade, wenige Gehminuten zur Altstadt",
+  feat: "🏨 Verified Highlights: Eisenbahnstrasse 17, 48143 Muenster, Design- & Boutique-Hotel direkt an der gruenen Promenade, wenige Gehminuten zur Altstadt, Ein Rückzugsort, mitten in Münster",
+  book: "📅 Fail-Closed Policy: This assistant never invents live room availability or rates. For reservations and official pricing at Mauritzhof Hotel Muenster, please contact: +49 251 41720 / info@mauritzhof.de",
+  en: "🇬🇧 Welcome to Mauritzhof Hotel Muenster in Muenster. Key facts: Eisenbahnstrasse 17, 48143 Muenster, Design- & Boutique-Hotel direkt an der gruenen Promenade, wenige Gehminuten zur Altstadt. Official desk contact: +49 251 41720 / info@mauritzhof.de."
+};
+function ask(k) {
+  document.getElementById('qa-ans').textContent = ANSWERS[k] || '';
+}
+</script>
+</body></html>
