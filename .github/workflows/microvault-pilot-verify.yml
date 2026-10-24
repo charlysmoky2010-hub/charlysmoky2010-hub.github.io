@@ -80,7 +80,7 @@ jobs:
           assert.equal(E('resultPanel').hidden,false,'results must become visible');
           assert.ok(E('inquiry').href.startsWith('mailto:cerberrus144-os@agentmail.to?'),'mail draft');
           assert.ok(!E('inquiry').href.includes('A-101'),'source records must never enter email draft');
-          assert.ok(E('verdict').textContent.includes('Duplikate'),'German verdict');
+          assert.ok(E('verdict').textContent.includes('exakt doppelte Zusatzzeilen'),'German verdict');
           E('en').click();
           assert.ok(E('verdict').textContent.includes('extra exact duplicate rows'),'English verdict');
           assert.ok(E('full').href.includes('src=microvault-pilot-en'),'English full-app routing');
