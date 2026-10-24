@@ -36,8 +36,12 @@ jobs:
           assert 'This pilot does not accept payment' in home, 'Payment evidence warning missing'
           assert 'Diese Pilotseite nimmt keine Zahlung an' in home, 'German payment warning missing'
           assert 'No CSV upload' in home and 'Keine CSV-Übertragung' in home
-          for prohibited in ('buy.stripe.com', 'XMLHttpRequest', 'sendBeacon(', 'fetch(', 'localStorage', 'sessionStorage'):
+          for prohibited in ('buy.stripe.com', 'XMLHttpRequest', 'sendBeacon(', 'localStorage', 'sessionStorage'):
               assert prohibited not in home, f'Unexpected browser data transfer or payment token: {prohibited}'
+          assert home.count('fetch(') == 1, 'Only the explicit opt-in contact form may connect to a remote service'
+          assert "await fetch('https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/acquisition-intake'" in home, 'Only owner-controlled lead intake is allowed'
+          assert "mode:'microvault_inquiry'" in home, 'Commercial intake mode missing'
+          assert "contactConsent" in home and "contactForm.addEventListener('submit'" in home, 'Explicit consent-based submission missing'
           assert 'export function analyzeCsv' in parser, 'Shared CSV parser missing'
           modules = re.findall(r'<script\s+type="module"[^>]*>(.*?)</script>', home, re.I|re.S)
           assert len(modules) == 1, 'Expected exactly one inline module'
@@ -60,8 +64,8 @@ jobs:
           const mock={};
           const E=(id)=>mock[id]??=( {
             id,disabled:false,value:'',href:'https://example.invalid/',hidden:true,
-            textContent:'',classList:{toggle(){},remove(){}},
-            listeners:{},setAttribute(){},scrollIntoView(){},
+            textContent:'',classList:{toggle(){},remove(){},add(){}},
+            listeners:{},setAttribute(){},scrollIntoView(){},reset(){this.resetCount=(this.resetCount||0)+1;},
             addEventListener(ev,cb){this.listeners[ev]=cb;},
             click(ev='click'){this.listeners[ev]?.({target:this});}
           });
@@ -86,5 +90,25 @@ jobs:
           assert.ok(E('full').href.includes('src=microvault-pilot-en'),'English full-app routing');
           E('reset').click();
           assert.equal(E('resultPanel').hidden,true,'Reset hides old results');
+          let calls=[];
+          globalThis.fetch=async (url,options)=>{calls.push({url,options});return {ok:true,json:async()=>({ok:true,status:'received'})}};
+          E('contactEmail').value='buyer@example.test';
+          E('contactMessage').value='Please advise whether your report covers my exported order columns.';
+          E('contactConsent').checked=false;
+          await E('contactForm').listeners.submit({preventDefault(){}});
+          assert.equal(calls.length,0,'No consent means no network');
+          E('contactConsent').checked=true;
+          await E('contactForm').listeners.submit({preventDefault(){}});
+          assert.equal(calls.length,1,'One user submit must make one request');
+          assert.equal(calls[0].url,'https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/acquisition-intake','Trusted intake only');
+          const payload=JSON.parse(calls[0].options.body);
+          assert.equal(payload.consent,true,'Explicit consent flag');
+          assert.equal(payload.mode,'microvault_inquiry','MicroVault routing');
+          assert.equal(payload.language,'en','Locale propagation');
+          assert.equal(Object.hasOwn(payload,'pending'),false,'No raw CSV contents');
+          assert.equal(Object.hasOwn(payload,'report'),false,'No derived customer report');
+          assert.ok(!calls[0].options.body.includes('A-101'),'Fictional CSV rows must never appear in submission');
+          assert.ok(E('contactStatus').textContent.includes('human review'),'Inquiry success confirmation');
+          console.log('Opt-in form, no-consent fail-closed, data minimization: PASS');
           console.log('Pilot JavaScript syntax, local sample, DE/EN, email privacy, reset: PASS');
           JS
