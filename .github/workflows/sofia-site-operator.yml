@@ -1,0 +1,71 @@
+name: SOFIA · safe storefront operator
+
+# Scheduled agent requires default branch, and never publishes automatically.
+on:
+  schedule:
+    - cron: "37 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sofia-storefront-operator
+  cancel-in-progress: false
+
+jobs:
+  check-and-propose:
+    name: Audit three owned storefront entry pages
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Checkout owned public site
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+
+      - name: Run deterministic agent tests
+        run: python3 -m unittest discover -s tests -p "test_sofia_site_operator.py" -v
+
+      - name: Execute bounded SOFIA repair
+        run: |
+          python3 tools/sofia_site_operator.py --mode fix --root . --report /tmp/sofia-audit.json
+
+      - name: Publish diagnostic summary without collecting visitor data
+        run: |
+          python3 - <<'PY'
+          import json, os
+          report=json.load(open('/tmp/sofia-audit.json',encoding='utf-8'))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:
+              f.write('## SOFIA storefront audit\n\n')
+              for p in report['pages']:
+                  f.write(f"- {p['file']}: {p['passed']}/{p['total']} static checks; proposed fix={p['changed_by_sofia']}; missing={', '.join(p['failed']) or 'none'}\n")
+              f.write('\n**No AI API usage, customer data, checkout mutation or automatic production deployment.**\n')
+          PY
+
+      - name: Open draft fix proposal, never auto-merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          PAGES=(
+            microvault/global/index.html
+            microvault/shop-bestellungen.html
+            microvault/order-csv-checker.html
+          )
+          if git diff --quiet -- "${PAGES[@]}"; then
+            echo "No allowed source changes required."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          BRANCH="sofia/keyboard-focus-fix-${GITHUB_RUN_ID}"
+          git switch -c "$BRANCH"
+          git add -- "${PAGES[@]}"
+          git commit -m "fix(sofia): make storefront keyboard focus visible"
+          git push -u origin "$BRANCH"
+          gh pr create --draft --base main --head "$BRANCH" \
+            --title "SOFIA: verified storefront keyboard-focus corrections" \
+            --body "Deterministic and allowlisted CSS-only proposal from SOFIA. Existing Stripe URLs, merchant/legal disclosures and CSV processing remain untouched. Static HTML audit and unit tests passed in GitHub Actions. **Review before merging**; this is not a visual 10/10 or sales guarantee."
