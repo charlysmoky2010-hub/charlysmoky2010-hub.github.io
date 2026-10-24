@@ -53,6 +53,33 @@ jobs:
           (temp/'pilot/inline.mjs').write_text(modules[0].replace("../global/csv-mini-core.js","../global/csv-mini-core.mjs"),encoding='utf-8')
           print('Pilot copy, safety boundaries, and both language entry points: PASS')
           PY
+      - name: Live public intake — reject missing consent and foreign origins
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error, time
+          url='https://vlgibwclecuhnnrgycnx.supabase.co/functions/v1/acquisition-intake'
+          with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'TITANIUS-safe-smoke/1.0'}),timeout=25) as res:
+              data=json.load(res)
+              assert res.status==200 and data.get('ok') is True, 'Existing endpoint health regression'
+          def check(payload,origin,expected,reason):
+              body=json.dumps(payload).encode()
+              req=urllib.request.Request(url,method='POST',data=body,
+                  headers={'Content-Type':'application/json','Origin':origin,'User-Agent':'TITANIUS-safe-smoke/1.0'})
+              try:
+                  with urllib.request.urlopen(req,timeout=25) as res:
+                      status=res.status;data=json.load(res)
+              except urllib.error.HTTPError as exc:
+                  status=exc.code;data=json.loads(exc.read().decode())
+              assert status==expected and data.get('error')==reason, (status,data)
+          fake={'mode':'microvault_inquiry','email':'not-a-real-buyer@example.invalid',
+                'message':'This is a negative validation test.','consent':False,'language':'en','website':''}
+          check(fake,'https://charlysmoky2010-hub.github.io',400,'consent_required')
+          fake['consent']=True
+          check(fake,'https://untrusted.example',403,'untrusted_origin')
+          print('Live negative tests PASS: no real email, payment or lead record was created.')
+          PY
       - name: Check JavaScript syntax and simulated sample interaction
         shell: bash
         run: |
