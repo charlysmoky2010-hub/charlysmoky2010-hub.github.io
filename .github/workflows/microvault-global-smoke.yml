@@ -6,6 +6,8 @@ on:
       - 'microvault/global/**'
       - '.github/workflows/microvault-global-smoke.yml'
   workflow_dispatch:
+  schedule:
+    - cron: "13 6,18 * * *"
 
 permissions:
   contents: read
@@ -56,3 +58,46 @@ jobs:
           }
           console.log('All deployed CSV parser tests passed.');
           JS
+
+      - name: Reject forged MicroVault payment receipts on the live endpoint
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import urllib.error
+          import urllib.request
+
+          # A fixed impossible purchase reference; this job never pays or requests a real customer's data.
+          url = "https://microvault.floot.app/_api/payment/verify"
+          payload = json.dumps({
+              "session_id": "invalid-not-a-real-session",
+              "sessionId": "invalid-not-a-real-session"
+          }).encode()
+          req = urllib.request.Request(
+              url, method="POST", data=payload,
+              headers={"Content-Type": "application/json", "User-Agent": "MicroVault-Receipt-Canary/1.0"}
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=20) as response:
+                  status, body = response.status, response.read(8192)
+          except urllib.error.HTTPError as exc:
+              status, body = exc.code, exc.read(8192)
+
+          try:
+              data = json.loads(body)
+          except (ValueError, UnicodeDecodeError):
+              raise SystemExit("FAIL: payment verification returned non-JSON; denial unverified")
+          if not isinstance(data, dict):
+              raise SystemExit("FAIL: payment verification returned non-object JSON")
+          forbidden = ("eligible", "download_allowed", "entitled", "access_granted", "verified", "success")
+          # A server error, redirect, or missing explicit false is NOT a passing guard.
+          if (status not in (400, 401, 403, 404, 422)
+              or data.get("paid") is not False
+              or any(data.get(key) is True for key in forbidden)):
+              raise SystemExit(
+                  "FAIL: fake receipt denial is unverified; "
+                  + "http=" + str(status)
+                  + " paid=" + repr(data.get("paid"))
+              )
+          print("PASS: fabricated receipt denied without payment or digital delivery")
+          PY
