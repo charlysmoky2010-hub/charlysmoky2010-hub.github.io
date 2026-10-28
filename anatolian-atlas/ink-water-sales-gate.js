@@ -10,7 +10,7 @@
     try {
       var u = new URL(value);
       return u.protocol === 'https:' && u.hostname === 'ko-fi.com' &&
-        /^\\/s\\/[A-Za-z0-9_-]{5,64}$/.test(u.pathname) &&
+        u.pathname.startsWith('/s/') && /^[A-Za-z0-9_-]{5,64}$/.test(u.pathname.slice(3)) &&
         u.username === '' && u.password === '' && u.port === '' &&
         !u.search && !u.hash;
     } catch (_) { return false; }
