@@ -124,7 +124,56 @@ form.addEventListener("submit",event=>{
  button.addEventListener("click",async()=>{
   try{if(!navigator.clipboard?.writeText)throw Error("clipboard_unavailable");await navigator.clipboard.writeText(currentText);note.textContent=d.copied;}catch{note.textContent=d.failed;}
  });
- controls.append(button,note);section.append(title,label,sub,list,controls);
+ controls.append(button,note);
+ // A prospective B2B buyer can package a research scope locally.
+ // No request is sent, no identity is collected and no price or order is activated.
+ const scopeButton=document.createElement("button");
+ scopeButton.className="btn light";
+ scopeButton.type="button";
+ scopeButton.textContent=de?"Rechercheauftrag als Entwurf speichern":"Download B2B research scope draft";
+ const scopeNotice=document.createElement("small");
+ scopeNotice.textContent=de?"Unverbindlicher Entwurf · Richtpreis 79 € · kein Kauf, keine Datenübertragung":"Non-binding pilot scope · indicative €79 · no purchase or data upload";
+ scopeButton.addEventListener("click",()=>{
+  const data={
+   schema:"atlas-discovery-research-scope/v1",
+   offer_status:"DRAFT_NOT_PURCHASABLE",
+   indicative_price_eur:79,
+   currency:"EUR",
+   craft_category:craft,
+   buyer_use:usage,
+   destination_region:region,
+   language:de?"de":"en",
+   deliverables:[
+    "Bounded publicly sourced product/craft research scope",
+    "Attributed source log and claim-versus-evidence separation",
+    "Provenance, seller identity, product-compliance and delivery gaps",
+    "Prioritized follow-up verification checklist"
+   ],
+   excluded:[
+    "Supplier partnership or independent certification",
+    "Guaranteed stock, price or seller performance",
+    "Merchant checkout, physical fulfillment or legal advice"
+   ],
+   buyer_to_complete_offline:{
+    exact_item_or_requirement:"",
+    approximate_quantity:"",
+    budget_band:"",
+    acceptable_lead_time:"",
+    additional_questions:""
+   },
+   human_review_required:true,
+   privacy:"Prepared on device only. No request submitted; do not place personal data in this draft."
+  };
+  const file=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(file);
+  const anchor=document.createElement("a");
+  anchor.href=url;
+  anchor.download="anatolian-atlas-discovery-b2b-scope-draft.json";
+  document.body.append(anchor);anchor.click();anchor.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+ });
+ controls.append(scopeButton,scopeNotice);
+ section.append(title,label,sub,list,controls);
  section.hidden=false;section.scrollIntoView({behavior:"smooth",block:"nearest"});
  const stat=$("planner-status");if(stat)stat.textContent=d.done;
 });
