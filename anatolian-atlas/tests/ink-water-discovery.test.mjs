@@ -17,9 +17,10 @@ const gate=read("ink-water-sales-gate.js");
 const release=JSON.parse(read("ink-water-release.json"));
 const sitemap=read("../sitemap.xml");
 
-test("seven flower rows are presented with four explicitly named languages",()=>{
+test("seven flower rows are presented with five explicitly named languages",()=>{
   assert.equal((guide.match(/<tr><td lang="tr">/g)||[]).length,7);
-  for(const lang of ['lang="tr"','lang="de"','lang="en"','lang="el"']){
+  assert.equal((guide.match(/<td lang="es">/g)||[]).length,7);
+  for(const lang of ['lang="tr"','lang="de"','lang="en"','lang="el"','lang="es"']){
     assert.ok(guide.includes(lang),lang);
   }
   for(const flower of ["Lale","Karanfil","Sümbül","Gül","Menekşe","Gelincik","Papatya"]){
@@ -99,4 +100,38 @@ test("sitemap contains the current product, exercise and new glossary",()=>{
  for(const path of ["ink-water.html","free-wave-exercise.html","ebru-flower-motifs.html"]){
   assert.ok(sitemap.includes("<loc>https://charlysmoky2010-hub.github.io/anatolian-atlas/"+path+"</loc>"),path);
  }
+});
+
+
+test("Japanese Suminagashi is documented with original script and credible museum",()=>{
+  assert.ok(guide.includes('id="traditions"'));
+  assert.ok(guide.includes('墨流し'));
+  assert.ok(guide.includes('Suminagashi'));
+  assert.ok(guide.includes("https://www.metmuseum.org/perspectives/playing-with-paper"));
+  assert.ok(guide.includes("twelfth century"));
+  assert.ok(guide.includes("ink is floated on water") || guide.includes("Ink is floated on water"));
+  assert.ok(guide.includes("not automatically an authentic handmade Suminagashi piece"));
+});
+
+test("Spanish marmoleado has correct bookbinding terms and distinguishes heritage",()=>{
+  for(const term of ["Papel jaspeado","papel de aguas","papel al baño","book endpapers"]){
+    assert.ok(guide.toLowerCase().includes(term.toLowerCase()),term);
+  }
+  assert.ok(guide.includes("https://www.ucm.es/quidestliber/marmoleado"));
+  assert.ok(guide.includes("https://www.cultura.gob.es/cultura/archivos/difusion/mc-difusion/encuadernaciones-artisticas/papeles-pintados/papeles-jaspeados.html"));
+  assert.match(guide,/wider European paper-marbling tradition/);
+  assert.match(guide,/not a separate claim that all such marbling originated in Spain/);
+});
+
+test("new international tradition is educational, not a made-up purchasable SKU",()=>{
+  assert.match(guide,/INK &amp; WATER/);
+  assert.ok(guide.includes("not available for checkout yet"));
+  assert.equal(release.state,"prelaunch");
+  assert.equal(release.checkout_url,null);
+  const schemaTag=guide.match(/<script type="application\/ld\+json">([^<]+)<\/script>/);
+  assert.ok(schemaTag,"Article schema must be present");
+  const schema=JSON.parse(schemaTag[1]);
+  for(const code of ["tr","en","de","el","es"]){
+    assert.ok(schema.inLanguage.includes(code),code);
+  }
 });
