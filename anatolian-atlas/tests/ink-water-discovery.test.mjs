@@ -135,3 +135,40 @@ test("new international tradition is educational, not a made-up purchasable SKU"
     assert.ok(schema.inLanguage.includes(code),code);
   }
 });
+
+
+test("real Stripe draft IDs are recorded but no checkout is enabled",()=>{
+  assert.equal(release.stripe_draft.product_id,"prod_VXO1ZMrCzsE0BZ");
+  assert.equal(release.stripe_draft.price_id,"price_1UWJFBGup9HWwEMCzeGmeQS1");
+  assert.equal(release.stripe_draft.product_active,false);
+  assert.equal(release.stripe_draft.price_active,false);
+  assert.equal(release.stripe_draft.amount_minor,890);
+  assert.equal(release.checkout_url,null);
+  assert.equal(release.state,"prelaunch");
+});
+
+test("simulated verified Stripe checkout requires all provenance flags",async()=>{
+  const verified={...paidReady,checkout_url:"https://buy.stripe.com/aFacN54VSbtY5WP3QJ6Na2i",
+    checkout_provider:"stripe",verified_stripe_price_mapping:true,
+    stripe_draft:{...release.stripe_draft,product_active:true,price_active:true}};
+  const {cta,status}=await runGate(verified);
+  assert.equal(cta.href,verified.checkout_url);
+  assert.match(status.textContent,/Stripe/);
+  for(const patch of [
+    {verified_stripe_price_mapping:false},
+    {verified_paid_fulfillment:false},
+    {verified_product_rights:false},
+    {verified_merchant_compliance:false},
+    {owner_release_approved:false},
+    {stripe_draft:{...verified.stripe_draft,price_active:false}},
+    {stripe_draft:{...verified.stripe_draft,product_active:false}},
+    {checkout_url:"https://buy.stripe.com.evil.example/aFacN54VSbtY5WP3QJ6Na2i"},
+    {checkout_url:"https://buy.stripe.com/aFacN54VSbtY5WP3QJ6Na2i?coupon=unverified"},
+    {checkout_url:"https://user:pass@buy.stripe.com/aFacN54VSbtY5WP3QJ6Na2i"},
+    {checkout_url:"https://buy.stripe.com/abc/def"}
+  ]) {
+    const result=await runGate({...verified,...patch});
+    assert.equal(result.cta.href,"free-wave-exercise.html",JSON.stringify(patch));
+    assert.match(result.status.textContent,/No payment/);
+  }
+});
