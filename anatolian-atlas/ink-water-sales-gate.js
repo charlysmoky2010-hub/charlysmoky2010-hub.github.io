@@ -13,9 +13,11 @@
         u.username === '' && u.password === '' && u.port === '' &&
         !u.search && !u.hash && (
           (u.hostname === 'ko-fi.com' &&
-           /^\\/s\\/[A-Za-z0-9_-]{5,64}$/.test(u.pathname)) ||
+           u.pathname.startsWith('/s/') &&
+           /^[A-Za-z0-9_-]{5,64}$/.test(u.pathname.slice(3))) ||
           (u.hostname === 'buy.stripe.com' &&
-           /^\\/[A-Za-z0-9]{8,90}$/.test(u.pathname))
+           u.pathname.startsWith('/') &&
+           /^[A-Za-z0-9]{8,90}$/.test(u.pathname.slice(1)))
         );
     } catch (_) { return false; }
   }
