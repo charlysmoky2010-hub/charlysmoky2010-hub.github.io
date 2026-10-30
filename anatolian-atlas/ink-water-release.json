@@ -10,5 +10,15 @@
   "verified_product_rights": false,
   "verified_merchant_compliance": false,
   "public_message": "This digital workbook is being prepared for sale. Try the free printable exercise while checkout remains unavailable.",
-  "snapshot_date": "2026-10-28"
+  "snapshot_date": "2026-10-30",
+  "stripe_draft": {
+    "product_id": "prod_VXO1ZMrCzsE0BZ",
+    "price_id": "price_1UWJFBGup9HWwEMCzeGmeQS1",
+    "product_active": false,
+    "price_active": false,
+    "amount_minor": 890,
+    "currency": "eur",
+    "linked_to_supabase_catalog": false,
+    "has_checkout_link": false
+  }
 }
