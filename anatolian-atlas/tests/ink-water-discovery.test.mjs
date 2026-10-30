@@ -15,6 +15,7 @@ const homepage=read("index.html");
 const free=read("free-wave-exercise.html");
 const gate=read("ink-water-sales-gate.js");
 const release=JSON.parse(read("ink-water-release.json"));
+const sitemap=read("../sitemap.xml");
 
 test("seven flower rows are presented with four explicitly named languages",()=>{
   assert.equal((guide.match(/<tr><td lang="tr">/g)||[]).length,7);
@@ -91,4 +92,11 @@ test("missing legal gate and malicious checkout URL both fail closed",async()=>{
     assert.equal(cta.href,"free-wave-exercise.html");
     assert.match(status.textContent,/No payment/);
   }
+});
+
+
+test("sitemap contains the current product, exercise and new glossary",()=>{
+ for(const path of ["ink-water.html","free-wave-exercise.html","ebru-flower-motifs.html"]){
+  assert.ok(sitemap.includes("<loc>https://charlysmoky2010-hub.github.io/anatolian-atlas/"+path+"</loc>"),path);
+ }
 });
