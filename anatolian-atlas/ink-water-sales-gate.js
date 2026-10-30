@@ -9,10 +9,14 @@
   function validCheckout(value) {
     try {
       var u = new URL(value);
-      return u.protocol === 'https:' && u.hostname === 'ko-fi.com' &&
-        u.pathname.startsWith('/s/') && /^[A-Za-z0-9_-]{5,64}$/.test(u.pathname.slice(3)) &&
+      return u.protocol === 'https:' &&
         u.username === '' && u.password === '' && u.port === '' &&
-        !u.search && !u.hash;
+        !u.search && !u.hash && (
+          (u.hostname === 'ko-fi.com' &&
+           /^\\/s\\/[A-Za-z0-9_-]{5,64}$/.test(u.pathname)) ||
+          (u.hostname === 'buy.stripe.com' &&
+           /^\\/[A-Za-z0-9]{8,90}$/.test(u.pathname))
+        );
     } catch (_) { return false; }
   }
   function failClosed() {
@@ -35,11 +39,21 @@
           d.verified_product_rights !== true ||
           d.verified_merchant_compliance !== true ||
           !validCheckout(d.checkout_url)) return;
+      var host = new URL(d.checkout_url).hostname;
+      if (host === 'buy.stripe.com' &&
+          (d.checkout_provider !== 'stripe' ||
+           d.verified_stripe_price_mapping !== true ||
+           !d.stripe_draft || d.stripe_draft.product_active !== true ||
+           d.stripe_draft.price_active !== true ||
+           !/^prod_[A-Za-z0-9]{8,90}$/.test(d.stripe_draft.product_id || '') ||
+           !/^price_[A-Za-z0-9]{8,90}$/.test(d.stripe_draft.price_id || ''))) return;
       cta.href = d.checkout_url;
       cta.textContent = 'Buy INK & WATER — €8.90';
       cta.target = '_blank';
       cta.rel = 'noopener noreferrer';
-      status.textContent = 'Secure checkout is provided by Ko-fi. After payment, download the PDF files through Ko-fi.';
+      status.textContent = host === 'ko-fi.com'
+        ? 'Secure checkout is provided by Ko-fi. After payment, download the PDF files through Ko-fi.'
+        : 'Secure checkout is provided by Stripe. Digital delivery is available only after independently verified payment and secure fulfillment.';
     })
     .catch(function () { failClosed(); });
 }());
