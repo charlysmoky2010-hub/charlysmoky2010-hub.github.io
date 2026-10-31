@@ -9,6 +9,14 @@
   "verified_paid_fulfillment": false,
   "verified_product_rights": false,
   "verified_merchant_compliance": false,
-  "public_message": "This digital workbook is being prepared for sale. Try the free printable exercise while checkout remains unavailable.",
-  "snapshot_date": "2026-10-28"
+  "public_message": "Edition 02 contains 26 printable pages, 12 guided drawing exercises and six AI-assisted digital art prints, in A4 and US Letter. Paid checkout remains unavailable until Ko-fi payment and delivery are verified.",
+  "snapshot_date": "2026-10-31",
+  "edition": "02",
+  "page_count_per_edition": 26,
+  "guided_exercises": 12,
+  "digital_art_prints": 6,
+  "files_expected": [
+    "Anatolian_Atlas_INK_AND_WATER_Edition02_A4.pdf",
+    "Anatolian_Atlas_INK_AND_WATER_Edition02_US_Letter.pdf"
+  ]
 }
