@@ -27,7 +27,8 @@
     .then(function (r) { if (!r.ok) throw new Error('release unavailable'); return r.json(); })
     .then(function (d) {
       if (!d || d.schema !== 'anatolian-atlas-sales-gate-v1' ||
-          d.product_slug !== 'anatolian-atlas-ink-water-printable-studio-a4' ||
+          d.product_slug !== 'anatolian-atlas-ink-water-edition02' ||
+          d.edition !== '02' ||
           d.state !== 'live' ||
           d.display_price_eur !== 8.90 || d.currency !== 'EUR' ||
           d.owner_release_approved !== true ||
